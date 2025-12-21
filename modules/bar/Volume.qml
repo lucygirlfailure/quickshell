@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell.Services.Pipewire
 import Quickshell.Widgets
+import Quickshell.Io
 
 Item {
     id: root
@@ -8,7 +9,23 @@ Item {
     implicitHeight: volRow.implicitHeight
     // grab the default speaker (Sink)
     property var sink: Pipewire.defaultAudioSink
+    Process {
+        id: pavu
+        command: ["pavucontrol"] // The command and args list
 
+    }
+    MouseArea {
+        cursorShape: Qt.OpenHandCursor
+        onClicked: mouse => {
+            if (mouse.button === Qt.LeftButton) {
+                // Left Click: Summon the Mixer!
+                console.log("Summoning Pavucontrol... Nya!");
+                pavu.startDetached();
+            }
+        }
+        anchors.fill: parent
+        // Scroll to change volume (The fancy stuff!)
+    }
     // Logic to pick the correct icon name
     function getVolumeIcon() {
         // Safety check: if Pipewire is dead or sink is missing
@@ -57,24 +74,6 @@ Item {
             font.family: Appearance.font
             font.pixelSize: Appearance.fontSize
             text: Math.round(Pipewire.defaultAudioSink.audio.volume * 100) + "%"
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    if (root.sink) {
-                        root.sink.audio.muted = !root.sink.audio.muted;
-                    }
-                }
-                // Scroll to change volume (The fancy stuff!)
-                onWheel: wheel => {
-                    if (root.sink) {
-                        if (wheel.angleDelta.y > 0) {
-                            root.sink.audio.volume += 0.05; // Up 5%
-                        } else {
-                            root.sink.audio.volume -= 0.05; // Down 5%
-                        }
-                    }
-                }
-            }
         }
 
         // Click to toggle mute! (Bonus feature)

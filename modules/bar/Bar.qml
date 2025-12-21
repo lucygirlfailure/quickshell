@@ -17,7 +17,9 @@ PanelWindow {
         id: leftLayout
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        Workspaces {}
+        Workspaces {
+            Layout.leftMargin: 10
+        }
     }
 
     RowLayout {
