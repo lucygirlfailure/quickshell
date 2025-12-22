@@ -5,6 +5,8 @@ import "."
 
 WlrLayershell {
     id: root
+    property string wall: WallpaperStore.currentWall
+    onWallChanged: console.log("new wall!:" + wall)
 
     // 1. Send it to the bottom of the stack!
     layer: WlrLayer.Background
@@ -27,20 +29,7 @@ WlrLayershell {
         id: actualWall
         anchors.fill: parent
         source: WallpaperStore.currentWall
-        fillMode: Image.PreserveAspectCrop
 
-        Behavior on source {
-            NumberAnimation {
-                duration: 500
-            }
-        }
-        onSourceChanged: console.log("🖼️ Wallpaper noticed change! New source: " + source)
-    }
-
-    // Bonus: A dark rectangle to dim the wallpaper slightly?
-    Rectangle {
-        anchors.fill: parent
-        color: "black"
-        opacity: 0.2
+        onSourceChanged: console.log("🖼️ Wallpaper noticed change! New source: " + wall)
     }
 }
