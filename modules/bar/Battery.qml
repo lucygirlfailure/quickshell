@@ -17,6 +17,7 @@ Item {
         }
         Text {
             id: batteryText
+            font.weight: 900
             font.family: Appearance.font
             font.pixelSize: Appearance.fontSize
             color: Colors.foreground

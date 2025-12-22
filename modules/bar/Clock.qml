@@ -3,10 +3,23 @@ import Quickshell
 
 Item {
     id: root
-    implicitWidth: clockText.text.length + 10
+    // FIX: Real pixels please!
+    implicitWidth: clockText.implicitWidth
+    implicitHeight: 30
+
     Text {
         id: clockText
         anchors.centerIn: parent
-        text: "sigma balls"
+        font.weight: 900
+        font.family: Appearance.font
+        font.pixelSize: Appearance.fontSize
+        color: Colors.foreground
+
+        text: Qt.formatDateTime(clock.date, "hh:mm")
+
+        SystemClock {
+            id: clock
+            precision: SystemClock.Minutes
+        }
     }
 }

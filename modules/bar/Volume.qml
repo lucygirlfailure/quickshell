@@ -70,6 +70,7 @@ Item {
             PwObjectTracker {
                 objects: Pipewire.defaultAudioSink
             }
+            font.weight: 900
             color: Colors.foreground
             font.family: Appearance.font
             font.pixelSize: Appearance.fontSize

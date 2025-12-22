@@ -13,13 +13,10 @@ Item {
 
         Repeater {
             id: workspaceRepeater
-            model: Hyprland.workspaces
-
             Rectangle {
-                id: workspaceCircle
-                width: 16
-                height: 16
-                radius: 20
+                width: 18
+                height: 18
+                radius: 10
                 //color: modelData.active ? myPallete.accent : myPallete.window
                 color: modelData.active ? Colors.foreground : "transparent"
 
@@ -33,6 +30,7 @@ Item {
                     color: modelData.active ? Colors.background : Colors.foreground // Set contrasting color for workspace number
                 }
             }
+            model: Hyprland.workspaces
         }
     }
 }

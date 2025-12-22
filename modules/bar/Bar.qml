@@ -25,11 +25,12 @@ PanelWindow {
     RowLayout {
         id: centerLayout
         anchors.centerIn: parent
+        Clock {}
     }
 
     RowLayout {
         id: rightLayout
-        spacing: 0
+        spacing: 10
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         Volume {}
