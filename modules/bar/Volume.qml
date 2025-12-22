@@ -56,8 +56,9 @@ Item {
         spacing: 5
 
         IconImage {
-            width: 16
-            height: 16
+            anchors.verticalCenter: parent.verticalCenter
+            width: Appearance.fontSize
+            height: Appearance.fontSize
 
             // The magic: 'image://theme/' pulls from your system icon theme (Papirus, Adwaita, etc.)
             source: "root:/icons/" + root.getVolumeIcon() + "-symbolic.svg"

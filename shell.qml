@@ -15,7 +15,6 @@ Scope {
     Variants {
         id: barVariants
         model: Quickshell.screens
-
         delegate: Bar {
             screen: modelData
         }

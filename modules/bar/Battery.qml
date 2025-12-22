@@ -11,12 +11,14 @@ Item {
         anchors.centerIn: parent
         spacing: 0
         IconImage {
+            anchors.verticalCenter: parent.verticalCenter
             source: "root:/icons/" + UPower.displayDevice.iconName + ".svg"
-            implicitWidth: 16
-            implicitHeight: 16
+            width: Appearance.fontSize
+            height: Appearance.fontSize
         }
         Text {
             id: batteryText
+            anchors.verticalCenter: parent.verticalCenter
             font.weight: 900
             font.family: Appearance.font
             font.pixelSize: Appearance.fontSize

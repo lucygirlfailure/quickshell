@@ -2,11 +2,10 @@ import QtQuick
 import Quickshell
 import Quickshell.Wayland
 import "."
+import Quickshell.Io
 
 WlrLayershell {
     id: root
-    property string wall: WallpaperStore.currentWall
-    onWallChanged: console.log("new wall!:" + wall)
 
     // 1. Send it to the bottom of the stack!
     layer: WlrLayer.Background
@@ -29,7 +28,5 @@ WlrLayershell {
         id: actualWall
         anchors.fill: parent
         source: WallpaperStore.currentWall
-
-        onSourceChanged: console.log("🖼️ Wallpaper noticed change! New source: " + wall)
     }
 }
