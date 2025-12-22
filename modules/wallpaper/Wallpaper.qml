@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
+import "."
 
 WlrLayershell {
     id: root
@@ -21,10 +22,19 @@ WlrLayershell {
     exclusionMode: ExclusionMode.Ignore
 
     // 4. The actual content
+
     Image {
+        id: actualWall
         anchors.fill: parent
-        source: "/home/lucy/.walls/eoe.png"
+        source: WallpaperStore.currentWall
         fillMode: Image.PreserveAspectCrop
+
+        Behavior on source {
+            NumberAnimation {
+                duration: 500
+            }
+        }
+        onSourceChanged: console.log("🖼️ Wallpaper noticed change! New source: " + source)
     }
 
     // Bonus: A dark rectangle to dim the wallpaper slightly?

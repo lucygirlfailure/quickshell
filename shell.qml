@@ -1,16 +1,11 @@
 //@ pragma UseQApplication
 import qs.modules.bar
-import qs.modules.wallpaper
 import Quickshell
+import "./modules/wallpaper"
 
 Scope {
-    Variants {
-        id: wallpaperVariants
-        model: Quickshell.screens
-        delegate: Wallpaper {
-            screen: modelData
-        }
-    }
+    WallSwitcher {}
+    Wallpaper {}
     Variants {
         id: barVariants
         model: Quickshell.screens
