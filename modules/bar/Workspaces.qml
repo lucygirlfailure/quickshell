@@ -14,8 +14,8 @@ Item {
         Repeater {
             id: workspaceRepeater
             Rectangle {
-                width: 18
-                height: 18
+                width: 14
+                height: 14
                 radius: 10
                 //color: modelData.active ? myPallete.accent : myPallete.window
                 color: modelData.active ? Colors.foreground : "transparent"
