@@ -92,7 +92,7 @@ FloatingWindow {
                     let cleanPath = fileUrl.toString().replace("file://", "");
                     // Update the Singleton!
                     WallpaperStore.currentWall = fileUrl.toString();
-                    generateScheme.startDetached();
+                    //generateScheme.startDetached();
                     console.log(generateScheme.stdout);
                 }
             }

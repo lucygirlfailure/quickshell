@@ -1,0 +1,2 @@
+singleton NotifServer 1.0 NotifServer.qml
+NotiPopup 1.0 NotiPopup.qml

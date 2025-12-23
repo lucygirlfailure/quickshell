@@ -1,7 +1,9 @@
 //@ pragma UseQApplication
-import "./modules/bar/"
+//pragma ComponentBehavior: Bound
 import Quickshell
-import "./modules/wallpaper/"
+import qs.modules.bar
+import qs.modules.wallpaper
+import qs.modules.notifications
 
 Scope {
     WallSwitcher {}
@@ -9,14 +11,15 @@ Scope {
         id: wallVariants
         model: Quickshell.screens
         delegate: Wallpaper {
-            screen: modelData
+            screen: wallVariants.modelData
         }
     }
     Variants {
         id: barVariants
         model: Quickshell.screens
         delegate: Bar {
-            screen: modelData
+            screen: barVariants.modelData
         }
     }
+    NotiPopup {}
 }
