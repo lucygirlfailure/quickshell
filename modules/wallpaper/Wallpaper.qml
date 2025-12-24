@@ -2,10 +2,11 @@ import QtQuick
 import Quickshell
 import Quickshell.Wayland
 import "."
-import Quickshell.Io
+import qs
 
 WlrLayershell {
     id: root
+    // Inside your Wallpaper Window
 
     // 1. Send it to the bottom of the stack!
     layer: WlrLayer.Background

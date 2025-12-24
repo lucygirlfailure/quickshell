@@ -1,7 +1,7 @@
 import Quickshell
 import QtQuick
-import qs.modules.bar
 import QtQuick.Layouts
+import qs
 
 PanelWindow {
     id: root

@@ -1,6 +1,7 @@
 import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
+import qs
 
 Item {
     id: root
@@ -14,8 +15,8 @@ Item {
         Repeater {
             id: workspaceRepeater
             Rectangle {
-                width: 14
-                height: 14
+                width: 16
+                height: 16
                 radius: 10
                 //color: modelData.active ? myPallete.accent : myPallete.window
                 color: modelData.active ? Colors.foreground : "transparent"

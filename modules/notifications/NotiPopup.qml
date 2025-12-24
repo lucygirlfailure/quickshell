@@ -1,7 +1,7 @@
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
-import qs.modules.bar
+import qs
 import "."
 import QtQuick.Layouts
 
@@ -49,16 +49,23 @@ WlrLayershell {
         // ... other imports
 
         // Inside your ListView...
+        model: NotifServer.trackedNotifications
         delegate: Item {
             width: ListView.view.width
             height: 60 // Fixed height is usually better for icon layouts
 
             required property var modelData
+            Timer {
+                id: timout
+                interval: 5000
+                running: true
+                onRunningChanged: modelData.dismiss()
+            }
 
             Rectangle {
                 anchors.fill: parent
                 color: Colors.background
-                radius: 10
+                radius: 20
                 border.color: Colors.color5
 
                 // 2. Use RowLayout to put Image | Text side-by-side
@@ -124,6 +131,5 @@ WlrLayershell {
                 }
             }
         }
-        model: NotifServer.trackedNotifications
     }
 }

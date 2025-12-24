@@ -5,6 +5,7 @@ import Quickshell.Hyprland
 import Quickshell.Io
 import "."
 import qs.modules.bar
+import qs
 
 FloatingWindow {
     id: root
