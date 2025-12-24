@@ -1,25 +1,22 @@
 //@ pragma UseQApplication
 //pragma ComponentBehavior: Bound
+pragma ComponentBehavior: Bound
 import Quickshell
-import qs.modules.bar
-import qs.modules.wallpaper
-import qs.modules.notifications
+import "./modules/bar/"
+import "./modules/wallpaper/"
+import "./modules/notifications/"
 
 Scope {
     WallSwitcher {}
     Variants {
         id: wallVariants
         model: Quickshell.screens
-        delegate: Wallpaper {
-            screen: wallVariants.modelData
-        }
+        delegate: Wallpaper {}
     }
     Variants {
         id: barVariants
         model: Quickshell.screens
-        delegate: Bar {
-            screen: barVariants.modelData
-        }
+        delegate: Bar {}
     }
     NotiPopup {}
     Overlay {}

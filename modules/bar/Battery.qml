@@ -15,8 +15,8 @@ Item {
         IconImage {
             anchors.verticalCenter: parent.verticalCenter
             source: "root:/icons/" + UPower.displayDevice.iconName + ".svg"
-            width: Appearance.fontSize
-            height: Appearance.fontSize
+            width: 12
+            height: 12
         }
         Text {
             id: batteryText

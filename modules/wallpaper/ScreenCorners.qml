@@ -52,7 +52,8 @@ Item {
                 readonly property real screenHeight: cornersShape.height
 
                 strokeWidth: -1 // No outline
-                fillColor: Colors.background
+                //fillColor: Colors.background
+                fillColor: "black"
 
                 // Smooth fade if you toggle it
 

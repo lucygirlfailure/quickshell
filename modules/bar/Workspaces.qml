@@ -5,6 +5,7 @@ import qs
 
 Item {
     id: root
+    property var modelData
     implicitWidth: workspaceRow.implicitWidth
     height: 30
     Row {
@@ -13,20 +14,19 @@ Item {
         spacing: 10 // Slightly increase spacing between workspace buttons
 
         Repeater {
-            id: workspaceRepeater
+            anchors.centerIn: parent
             Rectangle {
+                id: workspaceNumber
                 width: 16
                 height: 16
-                radius: 10
-                //color: modelData.active ? myPallete.accent : myPallete.window
+                radius: 20
                 color: modelData.active ? Colors.foreground : "transparent"
 
                 Text {
-                    id: workspaceNumber
                     font.weight: 900
                     font.family: Appearance.font
                     font.pixelSize: Appearance.fontSize
-                    anchors.centerIn: parent
+                    anchors.centerIn: workspaceNumber
                     text: modelData.id
                     color: modelData.active ? Colors.background : Colors.foreground // Set contrasting color for workspace number
                 }

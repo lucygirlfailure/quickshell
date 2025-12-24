@@ -58,8 +58,8 @@ Item {
 
         IconImage {
             anchors.verticalCenter: parent.verticalCenter
-            width: Appearance.fontSize
-            height: Appearance.fontSize
+            width: 12
+            height: 12
 
             // The magic: 'image://theme/' pulls from your system icon theme (Papirus, Adwaita, etc.)
             source: "root:/icons/" + root.getVolumeIcon() + "-symbolic.svg"
@@ -70,6 +70,7 @@ Item {
 
         Text {
             PwObjectTracker {
+
                 objects: Pipewire.defaultAudioSink
             }
             font.weight: 900

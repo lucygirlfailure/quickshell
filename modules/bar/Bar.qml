@@ -5,8 +5,10 @@ import qs
 
 PanelWindow {
     id: root
+    required property var modelData
     implicitHeight: 30
-    color: Colors.background
+    //color: Colors.background
+    color: "black"
     anchors {
         top: true
         left: true
@@ -17,26 +19,26 @@ PanelWindow {
         id: leftLayout
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        Workspaces {
-            Layout.leftMargin: 10
+        Clock {
+            Layout.leftMargin: 30
         }
     }
 
     RowLayout {
         id: centerLayout
         anchors.centerIn: parent
-        Clock {}
+        Workspaces {}
     }
 
     RowLayout {
         id: rightLayout
-        spacing: 10
+        spacing: 20
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         Volume {}
         Battery {}
         SystemTray {
-            Layout.rightMargin: 10
+            Layout.rightMargin: 30
         }
     }
 }

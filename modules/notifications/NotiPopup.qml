@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
@@ -18,8 +19,8 @@ WlrLayershell {
         top: 30
     }
 
-    width: 400
-    height: notifList.contentHeight + 10
+    implicitWidth: 400
+    implicitHeight: notifList.contentHeight + 10
 
     // 2. Layer: Put it ABOVE normal windows
     layer: WlrLayer.Overlay
@@ -51,15 +52,16 @@ WlrLayershell {
         // Inside your ListView...
         model: NotifServer.trackedNotifications
         delegate: Item {
-            width: ListView.view.width
-            height: 60 // Fixed height is usually better for icon layouts
+            id: notifyItem
+            implicitWidth: ListView.view.width
+            implicitHeight: 60 // Fixed height is usually better for icon layouts
 
             required property var modelData
             Timer {
                 id: timout
                 interval: 5000
                 running: true
-                onRunningChanged: modelData.dismiss()
+                onRunningChanged: notifyItem.modelData.dismiss()
             }
 
             Rectangle {
@@ -78,10 +80,10 @@ WlrLayershell {
                     Image {
                         // Use the image if available, otherwise hide this space?
                         // Or you could use an icon fallback.
-                        source: modelData.image
+                        source: notifyItem.modelData.image
 
                         // Hide if no image exists so text takes full width
-                        visible: modelData.image !== ""
+                        visible: notifyItem.modelData.image !== ""
 
                         // Fixed size for consistency
                         Layout.preferredWidth: 48
@@ -102,7 +104,7 @@ WlrLayershell {
                         spacing: 2
 
                         Text {
-                            text: modelData.summary
+                            text: notifyItem.modelData.summary
                             color: Colors.foreground
                             font.bold: true
                             elide: Text.ElideRight
@@ -110,7 +112,7 @@ WlrLayershell {
                         }
 
                         Text {
-                            text: modelData.body
+                            text: notifyItem.modelData.body
                             color: Colors.foreground
 
                             // Limit to 2 lines
@@ -127,7 +129,7 @@ WlrLayershell {
                 MouseArea {
                     anchors.fill: parent
                     acceptedButtons: Qt.LeftButton
-                    onClicked: modelData.dismiss()
+                    onClicked: notifyItem.modelData.dismiss()
                 }
             }
         }

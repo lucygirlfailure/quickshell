@@ -2,6 +2,6 @@ pragma Singleton
 import QtQuick
 
 QtObject {
-    readonly property string font: "JetBrainsMono Nerd Font"
+    readonly property string font: "Iosevka Nerd Font Propo"
     readonly property real fontSize: 14
 }

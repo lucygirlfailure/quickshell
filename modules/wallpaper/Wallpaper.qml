@@ -1,17 +1,12 @@
 import QtQuick
+import QtQuick.Controls // <--- Needed for StackView
 import Quickshell
 import Quickshell.Wayland
-import "."
-import qs
 
 WlrLayershell {
     id: root
-    // Inside your Wallpaper Window
-
-    // 1. Send it to the bottom of the stack!
     layer: WlrLayer.Background
-
-    // 2. Stretch it to cover the ENTIRE screen
+    keyboardFocus: WlrKeyboardFocus.None
     anchors {
         top: true
         bottom: true
@@ -19,15 +14,69 @@ WlrLayershell {
         right: true
     }
 
-    // 3. IMPORTANT: Tell the compositor NOT to reserve space for this.
-    // If you don't do this, your wallpaper might push your windows aside!
-    exclusionMode: ExclusionMode.Ignore
+    // We need to accept the screen from Variants
+    property var screen
+    property var modelData
 
-    // 4. The actual content
-
-    Image {
-        id: actualWall
+    // 1. The StackView manages the images
+    StackView {
+        id: wallStack
         anchors.fill: parent
-        source: WallpaperStore.currentWall
+        implicitWidth: Screen.width
+        implicitHeight: Screen.height
+
+        // 2. Define what a "Wallpaper" looks like
+        Component {
+            id: wallComponent
+            Image {
+                fillMode: Image.PreserveAspectCrop
+                width: StackView.view.width
+                height: StackView.view.height
+                asynchronous: true // ⚡ VERY IMPORTANT: Prevents lag while loading!
+            }
+        }
+
+        // 3. Load the initial wallpaper immediately (No animation on boot)
+        initialItem: wallComponent.createObject(wallStack, {
+            "source": WallpaperStore.currentWall
+        })
+
+        // 4. THE ANIMATIONS 🎬
+        // When a new wall replaces the old one:
+
+        // New One: Fades In (0 -> 1)
+        replaceEnter: Transition {
+            NumberAnimation {
+                property: "x"
+                from: wallStack.width
+                to: 0
+                duration: 800 // Slower = Smoother
+                easing.type: Easing.OutQuad
+            }
+        }
+
+        // Old One: Fades Out (1 -> 0)
+        replaceExit: Transition {
+            NumberAnimation {
+                property: "x"
+                from: 0
+                to: -wallStack.width
+                duration: 800
+                easing.type: Easing.OutQuad
+            }
+        }
+    }
+
+    // 5. The Trigger 🔫
+    // We listen for the singleton to change, then tell the Stack to update
+    Connections {
+        target: WallpaperStore
+
+        function onCurrentWallChanged() {
+            // "Replace the current item with a new wallComponent using the new source"
+            wallStack.replace(wallComponent, {
+                "source": WallpaperStore.currentWall
+            });
+        }
     }
 }

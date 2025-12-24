@@ -6,7 +6,7 @@ Item {
     clip: true
 
     // This was already correct in your last file, but keep it this way!
-    implicitWidth: layout.implicitWidth + 10
+    implicitWidth: layout.implicitWidth
     implicitHeight: 30
 
     // Hide if empty so we don't have a 50px gap for nothing

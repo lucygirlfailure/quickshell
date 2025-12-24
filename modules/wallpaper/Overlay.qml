@@ -15,7 +15,7 @@ WlrLayershell {
     }
 
     // 2. Sit on top of EVERYTHING (even fullscreen apps if compositor allows)
-    layer: WlrLayer.Overlay
+    layer: WlrLayer.Top
 
     // 3. Invisible background
     color: "transparent"
