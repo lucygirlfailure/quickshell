@@ -1,7 +1,8 @@
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
-import "." // <--- Ensures we can find ScreenCorners.qml
+import "../../"
+import "."
 
 WlrLayershell {
     id: overlayRoot
@@ -29,7 +30,7 @@ WlrLayershell {
     ScreenCorners {
         // Adjust these to match your screen's aesthetic
         cornerRadius: 25
-        cornerColor: "black"
+        cornerColor: Colors.background
         shouldShow: true
 
         // Ensure it stays on top of any other items in this window

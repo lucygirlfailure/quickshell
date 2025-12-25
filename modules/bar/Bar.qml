@@ -8,7 +8,7 @@ PanelWindow {
     required property var modelData
     implicitHeight: 30
     //color: Colors.background
-    color: "black"
+    color: Colors.background
     anchors {
         top: true
         left: true
@@ -17,11 +17,13 @@ PanelWindow {
 
     RowLayout {
         id: leftLayout
+        spacing: 30
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         Clock {
             Layout.leftMargin: 30
         }
+        Mpris {}
     }
 
     RowLayout {
@@ -37,6 +39,7 @@ PanelWindow {
         anchors.verticalCenter: parent.verticalCenter
         Volume {}
         Battery {}
+        PowerProfiles {}
         SystemTray {
             Layout.rightMargin: 30
         }

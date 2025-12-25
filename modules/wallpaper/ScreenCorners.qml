@@ -1,8 +1,5 @@
 import QtQuick
 import QtQuick.Shapes
-import qs
-
-// removed "import qs.Commons" because you don't have it!
 
 Item {
     id: root
@@ -17,7 +14,7 @@ Item {
 
     // What color should the corners be? (Usually black to match the bezel)
     // You can change this to "transparent" or a theme color if you want.
-    property color cornerColor: Colors.background
+    property color cornerColor
 
     // Enable/Disable toggle
     property bool shouldShow: true
@@ -52,8 +49,7 @@ Item {
                 readonly property real screenHeight: cornersShape.height
 
                 strokeWidth: -1 // No outline
-                //fillColor: Colors.background
-                fillColor: "black"
+                fillColor: cornerColor
 
                 // Smooth fade if you toggle it
 

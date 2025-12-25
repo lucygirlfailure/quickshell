@@ -73,6 +73,8 @@ Item {
 
                 objects: Pipewire.defaultAudioSink
             }
+            anchors.verticalCenter: parent.verticalCenter
+            width: 20
             font.weight: 900
             color: Colors.foreground
             font.family: Appearance.font

@@ -59,7 +59,7 @@ WlrLayershell {
             required property var modelData
             Timer {
                 id: timout
-                interval: 5000
+                interval: 30000
                 running: true
                 onRunningChanged: notifyItem.modelData.dismiss()
             }
@@ -67,27 +67,30 @@ WlrLayershell {
             Rectangle {
                 anchors.fill: parent
                 color: Colors.background
-                radius: 20
+                radius: 10
                 border.color: Colors.color5
 
                 // 2. Use RowLayout to put Image | Text side-by-side
-                RowLayout {
-                    anchors.fill: parent
+                Row {
                     anchors.margins: 10
+                    anchors.fill: parent
+                    anchors.centerIn: parent
                     spacing: 15
 
                     // 🖼️ THE IMAGE ON THE LEFT
                     Image {
+
                         // Use the image if available, otherwise hide this space?
                         // Or you could use an icon fallback.
                         source: notifyItem.modelData.image
+                        anchors.verticalCenter: parent.verticalCenter
 
                         // Hide if no image exists so text takes full width
                         visible: notifyItem.modelData.image !== ""
 
                         // Fixed size for consistency
-                        Layout.preferredWidth: 48
-                        Layout.preferredHeight: 48
+                        width: 48
+                        height: 48
 
                         // Crop it nicely so it doesn't stretch
                         fillMode: Image.PreserveAspectCrop
@@ -100,7 +103,7 @@ WlrLayershell {
                     ColumnLayout {
                         // Take up all remaining width
                         Layout.fillWidth: true
-                        Layout.alignment: Qt.AlignVCenter // Center vertically
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignTop // Center vertically
                         spacing: 2
 
                         Text {
@@ -128,6 +131,8 @@ WlrLayershell {
                 // (Your MouseArea for closing can still go here covering the whole thing)
                 MouseArea {
                     anchors.fill: parent
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
                     acceptedButtons: Qt.LeftButton
                     onClicked: notifyItem.modelData.dismiss()
                 }

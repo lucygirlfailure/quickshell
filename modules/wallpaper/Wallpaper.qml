@@ -21,9 +21,8 @@ WlrLayershell {
     // 1. The StackView manages the images
     StackView {
         id: wallStack
-        anchors.fill: parent
-        implicitWidth: Screen.width
-        implicitHeight: Screen.height
+        width: parent.width
+        height: parent.height
 
         // 2. Define what a "Wallpaper" looks like
         Component {

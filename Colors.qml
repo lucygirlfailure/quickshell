@@ -5,7 +5,7 @@ import Quickshell
 Singleton {
     id: customColors
     // Core Backgrounds
-    readonly property color background: "#1A1B26"
+    readonly property color background: "#24283B"
     readonly property color foreground: "#C0CAF5"
     readonly property color cursor: "#C0CAF5"
 
@@ -17,7 +17,7 @@ Singleton {
     readonly property color color4: "#7AA2F7"
     readonly property color color5: "#BB9AF7"
     readonly property color color6: "#7DCFFF"
-    readonly property color color7: "#A9B1D6"
+    readonly property color color7: "#C0CAF5"
     readonly property color color8: "#414868"
     readonly property color color9: "#F7768E"
     readonly property color color10: "#9ECE6A"
