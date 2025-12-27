@@ -10,7 +10,7 @@ import qs
 FloatingWindow {
     id: root
     title: "quickshell-WallSwitcher"
-    visible: false
+    visible: true
     implicitWidth: 840
     implicitHeight: 640
 

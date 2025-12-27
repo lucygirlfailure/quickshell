@@ -34,11 +34,10 @@ PanelWindow {
 
     RowLayout {
         id: rightLayout
-        spacing: 20
+        spacing: 30
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         Volume {}
-        Battery {}
         PowerProfiles {}
         SystemTray {
             Layout.rightMargin: 30

@@ -96,14 +96,15 @@ WlrLayershell {
                         // Use the image if available, otherwise hide this space?
                         // Or you could use an icon fallback.
                         source: notifyItem.modelData.image
-                        anchors.verticalCenter: parent.verticalCenter
 
                         // Hide if no image exists so text takes full width
                         visible: notifyItem.modelData.image !== ""
 
                         // Fixed size for consistency
-                        width: 48
-                        height: 48
+                        sourceSize.width: 48
+                        sourceSize.height: 48
+                        Layout.preferredWidth: 48
+                        Layout.preferredHeight: 48
 
                         // Crop it nicely so it doesn't stretch
                         fillMode: Image.PreserveAspectCrop
