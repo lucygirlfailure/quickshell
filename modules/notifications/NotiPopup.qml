@@ -13,7 +13,6 @@ WlrLayershell {
         // Iterate through all connected Quickshell screens
         for (let i = 0; i < Quickshell.screens.length; i++) {
             let screenCandidate = Quickshell.screens[i];
-                console.log(Quickshell.screens[i])
             
             // Ask: "Is this screen the one Hyprland is currently focusing?"
             if (Hyprland.monitorFor(screenCandidate) === Hyprland.focusedMonitor) {
@@ -31,9 +30,10 @@ WlrLayershell {
     }
     margins {
         top: 30
+        right: 10
     }
 
-    implicitWidth: 400
+    implicitWidth: 300
     implicitHeight: notifList.contentHeight + 10
 
     // 2. Layer: Put it ABOVE normal windows
@@ -85,10 +85,9 @@ WlrLayershell {
                 border.color: Colors.color5
 
                 // 2. Use RowLayout to put Image | Text side-by-side
-                Row {
+                RowLayout {
                     anchors.margins: 10
                     anchors.fill: parent
-                    anchors.centerIn: parent
                     spacing: 15
 
                     // 🖼️ THE IMAGE ON THE LEFT
@@ -134,9 +133,8 @@ WlrLayershell {
 
                             // Limit to 2 lines
                             maximumLineCount: 2
-                            wrapMode: Text.WordWrap
+                            wrapMode: Text.WrapAnywhere
                             elide: Text.ElideRight
-
                             Layout.fillWidth: true
                         }
                     }

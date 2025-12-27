@@ -28,8 +28,8 @@ WlrLayershell {
             id: wallComponent
             Image {
                 fillMode: Image.PreserveAspectCrop
-                width: StackView.view.width
-                height: StackView.view.height
+                width: root.width
+                height: root.height
                 asynchronous: true // ⚡ VERY IMPORTANT: Prevents lag while loading!
             }
         }
