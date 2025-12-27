@@ -5,6 +5,7 @@ import "../../"
 import "."
 
 WlrLayershell {
+    required property var modelData
     id: overlayRoot
 
     // 1. Fill the entire screen

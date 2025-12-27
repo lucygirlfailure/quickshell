@@ -2,12 +2,26 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
+import Quickshell.Hyprland
 import qs
 import "."
 import QtQuick.Layouts
 
 WlrLayershell {
     id: root
+         screen: {
+        // Iterate through all connected Quickshell screens
+        for (let i = 0; i < Quickshell.screens.length; i++) {
+            let screenCandidate = Quickshell.screens[i];
+                console.log(Quickshell.screens[i])
+            
+            // Ask: "Is this screen the one Hyprland is currently focusing?"
+            if (Hyprland.monitorFor(screenCandidate) === Hyprland.focusedMonitor) {
+                return screenCandidate;
+            }
+        }
+        return null; // Fallback (should rarely happen)
+    }
 
     // 1. Position: Top Right Corner, covering the full height
     // We make it a fixed width (e.g., 400px) so it doesn't block the whole screen

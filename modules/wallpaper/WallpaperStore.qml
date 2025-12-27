@@ -21,7 +21,7 @@ QtObject {
         JsonAdapter {
             id: adapter
             // This property corresponds to a key in your JSON file!
-            property string lastWallpaper: "/home/lucy/.walls/frieren_river.jpg"
+            property string lastWallpaper: "/home/lucy/.walls/mooon.png"
         }
     }
 

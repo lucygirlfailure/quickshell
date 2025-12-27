@@ -15,8 +15,7 @@ WlrLayershell {
     }
 
     // We need to accept the screen from Variants
-    property var screen
-    property var modelData
+    required property var modelData
 
     // 1. The StackView manages the images
     StackView {
