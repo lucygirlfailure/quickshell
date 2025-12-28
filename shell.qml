@@ -4,6 +4,7 @@ import Quickshell
 import "./modules/bar/"
 import "./modules/wallpaper/"
 import "./modules/notifications/"
+import "./modules/settings/"
 
 ShellRoot {
     Variants {

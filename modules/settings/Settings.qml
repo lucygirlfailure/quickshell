@@ -5,22 +5,19 @@ import Quickshell
 import Quickshell.Io
 
 Singleton {
-    id: store
 
     FileView {
         path: "/home/lucy/.cache/quickshell_settings.json"
 
-        onAdapterUpdated: writeAdapter()
-
         watchChanges: true
-        onFileChanged: reload()
+        onAdapterChanged: writeAdapter()
 
         JsonAdapter {
             id: adapter
-            property string lastWallpaper: "file:///home/lucy/.walls/mooon.png"
-            property string wallDir: "file:///home/lucy/.walls/"
-            property string font: "CodeNewRoman  Nerd Font Propo"
-            property real fontSize: 14
+            property string lastWallpaper
+            property string wallDir
+            property string font
+            property real fontSize: 12
         }
     }
 

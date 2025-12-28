@@ -17,9 +17,11 @@ Item {
     // 1. Let Repeater loop through the ObjectModel for us
     Repeater {
         id: mprisRepeater
+        anchors.verticalCenter: parent.verticalCenter
         model: Mpris.players
 
         delegate: Item {
+
             required property var modelData
             implicitHeight: 34
             implicitWidth: delegateLayout.implicitWidth
