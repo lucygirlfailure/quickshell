@@ -1,30 +1,29 @@
 import QtQuick
 import Quickshell.Services.Pipewire
 import Quickshell.Widgets
+import QtQuick.Layouts
 import Quickshell.Io
 import "../../"
 import "../settings/"
 
 Item {
     id: root
-    implicitWidth: volRow.implicitWidth + 10
-    implicitHeight: volRow.implicitHeight
-    // grab the default speaker (Sink)
-    property var sink: Pipewire.defaultAudioSink
-    Process {
-        id: pavu
-        command: ["pavucontrol"] // The command and args list
-
-    }
     MouseArea {
+        anchors.fill: parent
         cursorShape: Qt.PointingHandCursor
         onClicked: mouse => {
             if (mouse.button === Qt.LeftButton) {
                 pavu.startDetached();
             }
         }
-        anchors.fill: parent
-        // Scroll to change volume (The fancy stuff!)
+    }
+    implicitWidth: styleLayout.implicitWidth + 10
+    implicitHeight: 34
+    property var sink: Pipewire.defaultAudioSink
+    Process {
+        id: pavu
+        command: ["pavucontrol"] // The command and args list
+
     }
     // Logic to pick the correct icon name
     function getVolumeIcon() {
@@ -50,29 +49,37 @@ Item {
         return "audio-volume-high";
     }
 
-    Row {
-        id: volRow
+    ColumnLayout {
+        id: styleLayout
         anchors.centerIn: parent
-        spacing: 5
-
-        IconImage {
-            anchors.verticalCenter: parent.verticalCenter
-            width: 12
-            height: 12
-
-            source: "root:/icons/" + root.getVolumeIcon() + "-symbolic.svg"
-        }
-
-        Text {
-            PwObjectTracker {
-                objects: Pipewire.ready ? Pipewire.defaultAudioSink : []
+        spacing: 0
+        Row {
+            spacing: 10
+            Text {
+                PwObjectTracker {
+                    objects: Pipewire.ready ? root.sink : []
+                }
+                font.weight: 900
+                color: Colors.foreground
+                font.family: Settings.font
+                font.pixelSize: Settings.fontSize
+                text: Pipewire.ready ? Math.round(root.sink.audio.volume * 100) + "%" : "0%"
             }
-            width: 20
+
+            IconImage {
+                anchors.verticalCenter: parent.verticalCenter
+                width: 12
+                height: 12
+                source: "root:/icons/" + root.getVolumeIcon() + "-symbolic.svg"
+            }
+        }
+        Text {
             font.weight: 900
             color: Colors.foreground
             font.family: Settings.font
-            font.pixelSize: Settings.fontSize
-            text: Pipewire.ready ? Math.round(Pipewire.defaultAudioSink.audio.volume * 100) + "%" : "0%"
+            font.pixelSize: Settings.fontSize - 2
+            opacity: 0.7
+            text: Pipewire.ready ? Pipewire.defaultAudioSink.nickname : "failure"
         }
     }
 }

@@ -1,14 +1,12 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import qs
 import "../../"
 
 PanelWindow {
     id: root
     required property var modelData
-    implicitHeight: 35
-    //color: Colors.background
+    implicitHeight: 34
     color: Colors.background
     anchors {
         top: true

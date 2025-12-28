@@ -6,6 +6,8 @@ import Quickshell.Hyprland
 import "."
 import "../../"
 import QtQuick.Layouts
+import Quickshell.Widgets
+import "../settings/"
 
 WlrLayershell {
     id: root
@@ -29,7 +31,7 @@ WlrLayershell {
         right: true
     }
     margins {
-        top: 30
+        top: 45
         right: 10
     }
 
@@ -52,7 +54,7 @@ WlrLayershell {
     ListView {
         id: notifList
         anchors.fill: parent
-        anchors.margins: 10
+        anchors.margins: 0
         // Use 'spacing' to put gaps between notifications
         spacing: 10
 
@@ -68,12 +70,12 @@ WlrLayershell {
         delegate: Item {
             id: notifyItem
             implicitWidth: ListView.view.width
-            implicitHeight: 80 // Fixed height is usually better for icon layouts
+            implicitHeight: 85 // Fixed height is usually better for icon layouts
 
             required property var modelData
             Timer {
                 id: timout
-                interval: 3000000
+                interval: 3000
                 running: true
                 onRunningChanged: notifyItem.modelData.dismiss()
             }
@@ -81,37 +83,40 @@ WlrLayershell {
             Rectangle {
                 anchors.fill: parent
                 color: Colors.background
-                radius: 10
+                radius: 20
                 border.color: Colors.color5
+                border.width: 2
 
                 // 2. Use RowLayout to put Image | Text side-by-side
                 RowLayout {
                     id: fullLayout
                     anchors.margins: 10
                     anchors.fill: parent
-                    spacing: 15
+                    spacing: 10
 
                     // 🖼️ THE IMAGE ON THE LEFT
-                    Image {
-
-                        // Use the image if available, otherwise hide this space?
-                        // Or you could use an icon fallback.
-                        source: notifyItem.modelData.image
-
-                        // Hide if no image exists so text takes full width
+                    ClippingWrapperRectangle {
+                        radius: 10
+                        implicitWidth: 64
+                        implicitHeight: 64
                         visible: notifyItem.modelData.image !== ""
+                        IconImage {
 
-                        // Fixed size for consistency
-                        sourceSize.width: 48
-                        sourceSize.height: 48
-                        Layout.preferredWidth: 48
-                        Layout.preferredHeight: 48
+                            // Use the image if available, otherwise hide this space?
+                            // Or you could use an icon fallback.
+                            source: notifyItem.modelData.image
 
-                        // Crop it nicely so it doesn't stretch
-                        fillMode: Image.PreserveAspectCrop
+                            // Hide if no image exists so text takes full width
+                            visible: notifyItem.modelData.image !== ""
 
-                        // Optional: Cache it for performance
-                        asynchronous: true
+                            // Fixed size for consistency
+                            implicitSize: 30
+
+                            // Crop it nicely so it doesn't stretch
+
+                            // Optional: Cache it for performance
+                            asynchronous: true
+                        }
                     }
 
                     // 📝 THE TEXT ON THE RIGHT
@@ -119,12 +124,14 @@ WlrLayershell {
                         id: textLayout
                         // Take up all remaining width
                         Layout.fillWidth: true
-                        Layout.alignment: Qt.AlignVCenter | Qt.AlignTop // Center vertically
+                        Layout.alignment: Qt.AlignVCenter  // Center vertically
                         spacing: 2
 
                         Text {
                             text: notifyItem.modelData.summary
                             color: Colors.foreground
+                            font.family: Settings.font
+                            font.pixelSize: Settings.fontSize
                             font.bold: true
                             elide: Text.ElideRight
                             Layout.fillWidth: true
@@ -135,7 +142,9 @@ WlrLayershell {
                             color: Colors.foreground
 
                             // Limit to 2 lines
-                            maximumLineCount: 2
+                            font.family: Settings.font
+                            font.pixelSize: Settings.fontSize - 2
+                            maximumLineCount: 3
                             wrapMode: Text.WordWrap
                             elide: Text.ElideRight
                             Layout.fillWidth: true
