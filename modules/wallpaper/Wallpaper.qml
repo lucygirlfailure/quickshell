@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls // <--- Needed for StackView
 import Quickshell
@@ -28,16 +29,11 @@ WlrLayershell {
             id: wallComponent
             Image {
                 fillMode: Image.PreserveAspectCrop
-                width: root.width
-                height: root.height
+                width: wallStack.width
+                height: wallStack.height
                 asynchronous: true // ⚡ VERY IMPORTANT: Prevents lag while loading!
             }
         }
-
-        // 3. Load the initial wallpaper immediately (No animation on boot)
-        initialItem: wallComponent.createObject(wallStack, {
-            "source": WallpaperStore.currentWall
-        })
 
         // 4. THE ANIMATIONS 🎬
         // When a new wall replaces the old one:

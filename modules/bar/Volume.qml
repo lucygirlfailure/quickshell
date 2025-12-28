@@ -2,7 +2,7 @@ import QtQuick
 import Quickshell.Services.Pipewire
 import Quickshell.Widgets
 import Quickshell.Io
-import qs
+import "../../"
 
 Item {
     id: root
@@ -16,11 +16,9 @@ Item {
 
     }
     MouseArea {
-        cursorShape: Qt.OpenHandCursor
+        cursorShape: Qt.PointingHandCursor
         onClicked: mouse => {
             if (mouse.button === Qt.LeftButton) {
-                // Left Click: Summon the Mixer!
-                console.log("Summoning Pavucontrol... Nya!");
                 pavu.startDetached();
             }
         }
@@ -61,27 +59,19 @@ Item {
             width: 12
             height: 12
 
-            // The magic: 'image://theme/' pulls from your system icon theme (Papirus, Adwaita, etc.)
             source: "root:/icons/" + root.getVolumeIcon() + "-symbolic.svg"
-
-            // Optional: Tint the icon if your theme needs it
-            // sourceSize: Qt.size(24, 24)
         }
 
         Text {
             PwObjectTracker {
-
-                objects: Pipewire.defaultAudioSink
+                objects: Pipewire.ready ? Pipewire.defaultAudioSink : []
             }
-            anchors.verticalCenter: parent.verticalCenter
             width: 20
             font.weight: 900
             color: Colors.foreground
             font.family: Appearance.font
             font.pixelSize: Appearance.fontSize
-            text: Math.round(Pipewire.defaultAudioSink.audio.volume * 100) + "%"
+            text: Pipewire.ready ? Math.round(Pipewire.defaultAudioSink.audio.volume * 100) + "%" : "0%"
         }
-
-        // Click to toggle mute! (Bonus feature)
     }
 }

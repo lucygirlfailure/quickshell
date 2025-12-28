@@ -1,11 +1,10 @@
+pragma ComponentBehavior: Bound
 import Quickshell.Hyprland
 import QtQuick
-import QtQuick.Layouts
-import qs
+import "../../"
 
 Item {
     id: root
-    property var modelData
     implicitWidth: workspaceRow.implicitWidth
     height: 30
     Row {
@@ -14,9 +13,12 @@ Item {
         spacing: 10 // Slightly increase spacing between workspace buttons
 
         Repeater {
+            id: wsRepeater
+            model: Hyprland.workspaces
             anchors.centerIn: parent
             Rectangle {
                 id: workspaceNumber
+                required property var modelData
                 width: 16
                 height: 16
                 radius: 20
@@ -27,11 +29,18 @@ Item {
                     font.family: Appearance.font
                     font.pixelSize: Appearance.fontSize
                     anchors.centerIn: workspaceNumber
-                    text: modelData.id
-                    color: modelData.active ? Colors.background : Colors.foreground // Set contrasting color for workspace number
+                    text: parent.modelData.id
+                    color: parent.modelData.active ? Colors.background : Colors.foreground // Set contrasting color for workspace number
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    acceptedButtons: Qt.LeftButton
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        parent.modelData.activate();
+                    }
                 }
             }
-            model: Hyprland.workspaces
         }
     }
 }

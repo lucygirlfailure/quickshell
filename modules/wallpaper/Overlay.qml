@@ -5,8 +5,8 @@ import "../../"
 import "."
 
 WlrLayershell {
-    required property var modelData
     id: overlayRoot
+    required property var modelData
 
     // 1. Fill the entire screen
     anchors {

@@ -1,16 +1,15 @@
+pragma ComponentBehavior: Bound
 import QtQuick
 import Qt.labs.folderlistmodel 2.15 // <--- The magic file scanner!
 import Quickshell
 import Quickshell.Hyprland
 import Quickshell.Io
-import "."
-import qs.modules.bar
-import qs
+import "../../"
 
 FloatingWindow {
     id: root
     title: "quickshell-WallSwitcher"
-    visible: true
+    visible: false
     implicitWidth: 840
     implicitHeight: 640
 
@@ -21,8 +20,6 @@ FloatingWindow {
         onPressed: {
             // Toggle visibility!
             root.visible = !root.visible;
-
-            console.log("Shortcut pressed! Switcher is now: " + (root.visible ? "Visible" : "Hidden"));
         }
     }
 
@@ -63,19 +60,20 @@ FloatingWindow {
         model: folderModel
 
         delegate: Item {
+            required property var modelData
             width: 200
             height: 100
 
             Image {
+                id: wallImage
                 width: 180
                 height: 90
                 anchors.centerIn: parent
                 // "fileUrl" is provided by FolderListModel
-                source: fileUrl
+                source: parent.modelData.fileUrl
 
                 // IMPORTANT: Downscale the image for the thumbnail!
                 // If you don't do this, loading 50 4K images will eat your RAM
-                // faster than Chrome eats memory! 🙀
                 sourceSize.width: 140
                 sourceSize.height: 90
 
@@ -83,18 +81,11 @@ FloatingWindow {
             }
 
             MouseArea {
-                Process {
-                    id: generateScheme
-                    property string cleanPath: fileUrl.toString().replace("file://", "")
-                    command: ["wallust", "run", cleanPath]
-                }
                 anchors.fill: parent
                 onClicked: {
-                    let cleanPath = fileUrl.toString().replace("file://", "");
+                    let cleanPath = parent.modelData.fileUrl.toString().replace("file://", "");
                     // Update the Singleton!
-                    WallpaperStore.currentWall = fileUrl.toString();
-                    //generateScheme.startDetached();
-                    console.log(generateScheme.stdout);
+                    WallpaperStore.currentWall = parent.modelData.fileUrl.toString();
                 }
             }
         }

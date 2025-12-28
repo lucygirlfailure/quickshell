@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Shapes
 
@@ -49,7 +50,7 @@ Item {
                 readonly property real screenHeight: cornersShape.height
 
                 strokeWidth: -1 // No outline
-                fillColor: cornerColor
+                fillColor: root.cornerColor
 
                 // Smooth fade if you toggle it
 

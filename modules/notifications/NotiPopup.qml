@@ -3,17 +3,17 @@ import QtQuick
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Hyprland
-import qs
 import "."
+import "../../"
 import QtQuick.Layouts
 
 WlrLayershell {
     id: root
-         screen: {
+    screen: {
         // Iterate through all connected Quickshell screens
         for (let i = 0; i < Quickshell.screens.length; i++) {
             let screenCandidate = Quickshell.screens[i];
-            
+
             // Ask: "Is this screen the one Hyprland is currently focusing?"
             if (Hyprland.monitorFor(screenCandidate) === Hyprland.focusedMonitor) {
                 return screenCandidate;
@@ -34,7 +34,7 @@ WlrLayershell {
     }
 
     implicitWidth: 300
-    implicitHeight: notifList.contentHeight + 10
+    implicitHeight: notifList.contentHeight + 20
 
     // 2. Layer: Put it ABOVE normal windows
     layer: WlrLayer.Overlay
@@ -68,12 +68,12 @@ WlrLayershell {
         delegate: Item {
             id: notifyItem
             implicitWidth: ListView.view.width
-            implicitHeight: 60 // Fixed height is usually better for icon layouts
+            implicitHeight: 80 // Fixed height is usually better for icon layouts
 
             required property var modelData
             Timer {
                 id: timout
-                interval: 30000
+                interval: 3000000
                 running: true
                 onRunningChanged: notifyItem.modelData.dismiss()
             }
@@ -86,6 +86,7 @@ WlrLayershell {
 
                 // 2. Use RowLayout to put Image | Text side-by-side
                 RowLayout {
+                    id: fullLayout
                     anchors.margins: 10
                     anchors.fill: parent
                     spacing: 15
@@ -115,6 +116,7 @@ WlrLayershell {
 
                     // 📝 THE TEXT ON THE RIGHT
                     ColumnLayout {
+                        id: textLayout
                         // Take up all remaining width
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignTop // Center vertically
@@ -134,7 +136,7 @@ WlrLayershell {
 
                             // Limit to 2 lines
                             maximumLineCount: 2
-                            wrapMode: Text.WrapAnywhere
+                            wrapMode: Text.WordWrap
                             elide: Text.ElideRight
                             Layout.fillWidth: true
                         }

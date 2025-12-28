@@ -11,23 +11,22 @@ ShellRoot {
         id: barVariants
         model: Quickshell.screens
         delegate: Bar {
-            screen: modelData 
+            screen: modelData
         }
     }
     Variants {
-      id: overlayVariants
-      model: Quickshell.screens
-      delegate: Overlay {
-        screen: modelData
-      }
+        id: overlayVariants
+        model: Quickshell.screens
+        delegate: Overlay {
+            screen: modelData
+        }
     }
     Variants {
-      model: Quickshell.screens
         id: wallVariants
+        model: Quickshell.screens
         delegate: Wallpaper {
-            screen: modelData 
+            screen: modelData
         }
     }
-    NotiPopup { }
-    
+    NotiPopup {}
 }

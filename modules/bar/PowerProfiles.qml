@@ -14,8 +14,8 @@ Item {
         font.pixelSize: Appearance.fontSize
         anchors.centerIn: parent
         MouseArea {
+        cursorShape: Qt.PointingHandCursor
             acceptedButtons: Qt.LeftButton | Qt.RightButton
-            cursorShape: Qt.OpenHandCursor
             anchors.fill: parent
             onClicked: mouse => {
                 const modes = [PowerProfile.PowerSaver, PowerProfile.Balanced, PowerProfile.Performance];
