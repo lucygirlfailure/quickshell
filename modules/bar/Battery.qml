@@ -1,8 +1,8 @@
 import Quickshell.Services.UPower
 import QtQuick
 import Quickshell.Widgets
-import "."
-import qs
+import "../../"
+import "../settings/"
 
 Item {
     id: root
@@ -22,8 +22,8 @@ Item {
             id: batteryText
             anchors.verticalCenter: parent.verticalCenter
             font.weight: 900
-            font.family: Appearance.font
-            font.pixelSize: Appearance.fontSize
+            font.family: Settings.font
+            font.pixelSize: Settings.fontSize
             color: Colors.foreground
             text: Math.round(UPower.displayDevice.percentage * 100) + "%"
         }

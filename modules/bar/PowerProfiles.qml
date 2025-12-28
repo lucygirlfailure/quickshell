@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell.Services.UPower
-import qs
+import "../settings/"
+import "../../"
 
 Item {
     id: root
@@ -10,11 +11,11 @@ Item {
         text: PowerProfile.toString(PowerProfiles.profile)
         font.weight: 900
         color: Colors.foreground
-        font.family: Appearance.font
-        font.pixelSize: Appearance.fontSize
+        font.family: Settings.font
+        font.pixelSize: Settings.fontSize
         anchors.centerIn: parent
         MouseArea {
-        cursorShape: Qt.PointingHandCursor
+            cursorShape: Qt.PointingHandCursor
             acceptedButtons: Qt.LeftButton | Qt.RightButton
             anchors.fill: parent
             onClicked: mouse => {

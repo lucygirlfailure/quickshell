@@ -1,26 +1,47 @@
 import QtQuick
 import Quickshell
-import qs
+import QtQuick.Layouts
+import "../settings/"
+import "../../"
 
 Item {
     id: root
-    // FIX: Real pixels please!
-    implicitWidth: clockText.implicitWidth
-    implicitHeight: 30
+    implicitWidth: clockLayout.implicitWidth
+    implicitHeight: 35
 
-    Text {
-        id: clockText
+    ColumnLayout {
+        id: clockLayout
         anchors.centerIn: parent
-        font.weight: 900
-        font.family: Appearance.font
-        font.pixelSize: Appearance.fontSize
-        color: Colors.foreground
+        spacing: 0
 
-        text: Qt.formatDateTime(clock.date, "hh:mm")
+        Text {
+            id: clockHoursText
+            font.weight: 900
+            font.family: Settings.font
+            font.pixelSize: Settings.fontSize
+            color: Colors.foreground
 
-        SystemClock {
-            id: clock
-            precision: SystemClock.Minutes
+            text: Qt.formatDateTime(clockHours.date, "hh:mm")
+
+            SystemClock {
+                id: clockHours
+                precision: SystemClock.Minutes
+            }
+        }
+        Text {
+            id: clockDateText
+            font.weight: 900
+            opacity: 0.7
+            font.family: Settings.font
+            font.pixelSize: Settings.fontSize - 2
+            color: Colors.foreground
+
+            text: Qt.formatDateTime(clockDate.date, "d.m.yy")
+
+            SystemClock {
+                id: clockDate
+                precision: SystemClock.Minutes
+            }
         }
     }
 }

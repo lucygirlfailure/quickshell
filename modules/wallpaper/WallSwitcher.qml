@@ -3,8 +3,8 @@ import QtQuick
 import Qt.labs.folderlistmodel 2.15 // <--- The magic file scanner!
 import Quickshell
 import Quickshell.Hyprland
-import Quickshell.Io
 import "../../"
+import "../settings/"
 
 FloatingWindow {
     id: root
@@ -26,13 +26,13 @@ FloatingWindow {
     // Make it float above everything else
     Text {
         id: titleText
-        text: "Wallpapers in " + WallpaperStore.wallDir
+        text: "Wallpapers in " + Settings.wallDir.replace("file://", "")
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         font.pixelSize: 20
         topPadding: 20
         bottomPadding: 10
-        font.family: Appearance.font
+        font.family: Settings.font
         color: Colors.foreground
     }
 
@@ -41,7 +41,7 @@ FloatingWindow {
     // 1. The File Scanner
     FolderListModel {
         id: folderModel
-        folder: "file:///home/lucy/.walls/" // <--- Your stash!
+        folder: Settings.wallDir // <--- Your stash!
         nameFilters: ["*.png", "*.jpg", "*.jpeg"]
         showDirs: false
     }
@@ -60,6 +60,7 @@ FloatingWindow {
         model: folderModel
 
         delegate: Item {
+            property string cleanPath: modelData.fileUrl.toString().replace("file://", "")
             required property var modelData
             width: 200
             height: 100
@@ -84,8 +85,7 @@ FloatingWindow {
                 anchors.fill: parent
                 onClicked: {
                     let cleanPath = parent.modelData.fileUrl.toString().replace("file://", "");
-                    // Update the Singleton!
-                    WallpaperStore.currentWall = parent.modelData.fileUrl.toString();
+                    Settings.currentWall = parent.modelData.fileUrl.toString();
                 }
             }
         }

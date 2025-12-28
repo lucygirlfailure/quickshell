@@ -1,4 +1,3 @@
-singleton WallpaperStore 1.0 WallpaperStore.qml
 Wallpaper 1.0 Wallpaper.qml
 WallSwitcher 1.0 WallSwitcher.qml
 Overlay 1.0 Overlay.qml

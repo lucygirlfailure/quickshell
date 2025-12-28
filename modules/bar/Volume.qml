@@ -3,6 +3,7 @@ import Quickshell.Services.Pipewire
 import Quickshell.Widgets
 import Quickshell.Io
 import "../../"
+import "../settings/"
 
 Item {
     id: root
@@ -69,8 +70,8 @@ Item {
             width: 20
             font.weight: 900
             color: Colors.foreground
-            font.family: Appearance.font
-            font.pixelSize: Appearance.fontSize
+            font.family: Settings.font
+            font.pixelSize: Settings.fontSize
             text: Pipewire.ready ? Math.round(Pipewire.defaultAudioSink.audio.volume * 100) + "%" : "0%"
         }
     }

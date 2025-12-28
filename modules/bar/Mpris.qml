@@ -5,7 +5,9 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Services.Mpris
-import qs
+import Quickshell.Widgets
+import "../settings/"
+import "../../"
 
 RowLayout {
     id: root
@@ -16,6 +18,7 @@ RowLayout {
         model: Mpris.players
 
         delegate: RowLayout {
+            id: delegateLayout
             required property var modelData
             // 2. 🕵️‍♀️ FILTER LOGIC
             // Check if this specific player is Spotify.
@@ -39,26 +42,18 @@ RowLayout {
             property string artUrl: modelData.trackArtUrl
             property bool isPlaying: modelData.isPlaying
 
-            spacing: 8
+            spacing: 10
 
             // 🖼️ ALBUM ART
-            Rectangle {
-                Layout.preferredHeight: parent.height * 0.8
-                Layout.preferredWidth: Layout.preferredHeight
+            ClippingWrapperRectangle {
                 Layout.alignment: Qt.AlignVCenter
 
-                radius: 4
-                color: Colors.background
-                clip: true
-                visible: parent.visible // Optimization
+                radius: 20
 
-                Image {
-                    anchors.fill: parent
-                    source: parent.parent.artUrl // Access property from delegate
-                    fillMode: Image.PreserveAspectCrop
+                IconImage {
+                    source: delegateLayout.artUrl // Access property from delegate
                     asynchronous: true
-                    sourceSize.width: 128
-                    sourceSize.height: 128
+                    implicitSize: 24
                 }
             }
 
@@ -69,66 +64,26 @@ RowLayout {
                 visible: parent.visible
 
                 Text {
-                    text: parent.parent.title
+                    text: delegateLayout.title
                     color: Colors.foreground
                     font.bold: true
-                    font.pixelSize: 12
+                    font.pixelSize: Settings.fontSize
+                    font.family: Settings.font
                     elide: Text.ElideRight
                     Layout.preferredWidth: implicitWidth
                 }
 
                 Text {
-                    text: parent.parent.artist
+                    font.pixelSize: Settings.fontSize - 2
+                    font.family: Settings.font
+                    text: delegateLayout.artist
                     color: Colors.foreground
                     opacity: 0.7
-                    font.pixelSize: 10
                     Layout.preferredWidth: implicitWidth
                 }
             }
 
             // ⏯️ CONTROLS
-            RowLayout {
-                Layout.alignment: Qt.AlignVCenter
-                spacing: 8
-                visible: parent.visible
-
-                // PREV
-                Text {
-                    text: "󰒮"
-                    color: Colors.foreground
-                    font.pixelSize: 24
-                    MouseArea {
-                        anchors.fill: parent
-                        // Use modelData to control THIS player
-                        onClicked: modelData.previous()
-                        cursorShape: Qt.PointingHandCursor
-                    }
-                }
-
-                // PLAY / PAUSE
-                Text {
-                    text: parent.parent.isPlaying ? "󰏤" : "󰐊"
-                    color: Colors.foreground
-                    font.pixelSize: 24
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: modelData.playPause()
-                        cursorShape: Qt.PointingHandCursor
-                    }
-                }
-
-                // NEXT
-                Text {
-                    text: "󰒭"
-                    color: Colors.foreground
-                    font.pixelSize: 24
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: modelData.next()
-                        cursorShape: Qt.PointingHandCursor
-                    }
-                }
-            }
         }
     }
 }

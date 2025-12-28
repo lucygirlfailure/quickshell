@@ -6,7 +6,6 @@ import "./modules/wallpaper/"
 import "./modules/notifications/"
 
 ShellRoot {
-    WallSwitcher {}
     Variants {
         id: barVariants
         model: Quickshell.screens
@@ -28,5 +27,6 @@ ShellRoot {
             screen: modelData
         }
     }
+    WallSwitcher {}
     NotiPopup {}
 }

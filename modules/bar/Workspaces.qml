@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 import Quickshell.Hyprland
 import QtQuick
 import "../../"
+import "../settings/"
 
 Item {
     id: root
@@ -26,8 +27,8 @@ Item {
 
                 Text {
                     font.weight: 900
-                    font.family: Appearance.font
-                    font.pixelSize: Appearance.fontSize
+                    font.family: Settings.font
+                    font.pixelSize: Settings.fontSize
                     anchors.centerIn: workspaceNumber
                     text: parent.modelData.id
                     color: parent.modelData.active ? Colors.background : Colors.foreground // Set contrasting color for workspace number

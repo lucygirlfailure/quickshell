@@ -1,8 +1,8 @@
 pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls // <--- Needed for StackView
-import Quickshell
 import Quickshell.Wayland
+import "../settings/"
 
 WlrLayershell {
     id: root
@@ -64,12 +64,11 @@ WlrLayershell {
     // 5. The Trigger 🔫
     // We listen for the singleton to change, then tell the Stack to update
     Connections {
-        target: WallpaperStore
+        target: Settings
 
         function onCurrentWallChanged() {
-            // "Replace the current item with a new wallComponent using the new source"
             wallStack.replace(wallComponent, {
-                "source": WallpaperStore.currentWall
+                "source": Settings.currentWall
             });
         }
     }
