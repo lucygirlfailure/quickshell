@@ -17,10 +17,10 @@ Item {
     // 1. Let Repeater loop through the ObjectModel for us
     Repeater {
         id: mprisRepeater
-        anchors.verticalCenter: parent.verticalCenter
         model: Mpris.players
 
         delegate: Item {
+            id: delegateItem
 
             required property var modelData
             implicitHeight: 34
@@ -46,10 +46,11 @@ Item {
             }
             RowLayout {
                 id: delegateLayout
+                anchors.centerIn: parent
                 // 2. 🕵️‍♀️ FILTER LOGIC
                 // Check if this specific player is Spotify.
                 // We verify 'modelData' exists and check the name.
-                property bool isSpotify: modelData && modelData.identity.toLowerCase().includes("spotify")
+                property bool isSpotify: delegateItem.modelData && delegateItem.modelData.identity.toLowerCase().includes("spotify")
 
                 // 3. 👻 HIDE NON-SPOTIFY PLAYERS
                 visible: isSpotify
@@ -58,10 +59,10 @@ Item {
                 Layout.preferredWidth: isSpotify ? Math.min(implicitWidth, 400) : 0
                 Layout.fillHeight: true
 
-                property string title: modelData.trackTitle
-                property string artist: modelData.trackArtist
-                property string artUrl: modelData.trackArtUrl
-                property bool isPlaying: modelData.isPlaying
+                property string title: delegateItem.modelData.trackTitle
+                property string artist: delegateItem.modelData.trackArtist
+                property string artUrl: delegateItem.modelData.trackArtUrl
+                property bool isPlaying: delegateItem.modelData.isPlaying
 
                 spacing: 10
 
@@ -81,7 +82,6 @@ Item {
 
                 // 📝 TEXT INFO
                 ColumnLayout {
-                    Layout.alignment: Qt.AlignVCenter
                     spacing: 0
                     visible: parent.visible
 
