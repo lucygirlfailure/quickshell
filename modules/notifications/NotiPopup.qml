@@ -31,19 +31,26 @@ WlrLayershell {
         right: true
     }
     margins {
-        top: 45
-        right: 10
+        top: 36
+        right: 00
     }
 
     implicitWidth: 300
     implicitHeight: notifList.contentHeight + 20
+    Behavior on implicitHeight {
+        NumberAnimation {
+            duration: 300
+            easing.type: Easing.OutQuad
+        }
+    }
 
     // 2. Layer: Put it ABOVE normal windows
     layer: WlrLayer.Overlay
     exclusionMode: ExclusionMode.Ignore
 
     // 3. CRITICAL: Make the window itself invisible!
-    // We only want to see the notifications, not the container.
+    // We only want to see the
+    // notifications, not the container.
     color: "transparent"
 
     // 4. Input: Let clicks pass through empty areas
@@ -53,39 +60,37 @@ WlrLayershell {
     // THE SPAWNER
     ListView {
         id: notifList
-        anchors.fill: parent
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.margins: 0
         // Use 'spacing' to put gaps between notifications
-        spacing: 10
+        spacing: 00
+        height: contentHeight
 
-        // Align to the bottom (like Windows) or Top (like GNOME)?
-        // verticalLayoutDirection: ListView.BottomToTop
-
-        // 🔗 CONNECT TO THE SERVER
-        // Assuming your NotificationServer is a singleton or globally accessible
-        // ... other imports
-
-        // Inside your ListView...
         model: NotifServer.trackedNotifications
         delegate: Item {
             id: notifyItem
+            required property var index
+            readonly property bool isLast: index === (ListView.view.count - 1)
             implicitWidth: ListView.view.width
             implicitHeight: 85 // Fixed height is usually better for icon layouts
+            height: implicitHeight
 
             required property var modelData
             Timer {
                 id: timout
                 interval: 3000
                 running: true
-                onRunningChanged: notifyItem.modelData.dismiss()
+                onTriggered: notifyItem.modelData.dismiss()
             }
 
             Rectangle {
                 anchors.fill: parent
                 color: Colors.background
-                radius: 20
+                bottomLeftRadius: notifyItem.isLast ? 20 : 0
                 border.color: Colors.color5
-                border.width: 2
+                border.width: 0
 
                 // 2. Use RowLayout to put Image | Text side-by-side
                 RowLayout {

@@ -6,7 +6,7 @@ import "../../"
 PanelWindow {
     id: root
     required property var modelData
-    implicitHeight: 34
+    implicitHeight: 36
     color: Colors.background
     anchors {
         top: true

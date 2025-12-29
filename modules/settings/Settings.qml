@@ -11,13 +11,14 @@ Singleton {
 
         watchChanges: true
         onAdapterChanged: writeAdapter()
+        onFileChanged: reload()
 
         JsonAdapter {
             id: adapter
             property string lastWallpaper
             property string wallDir
             property string font
-            property real fontSize: 12
+            property real fontSize: 14
         }
     }
 
