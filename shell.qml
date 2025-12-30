@@ -27,6 +27,13 @@ ShellRoot {
             screen: modelData
         }
     }
+    Variants {
+        id: notiVariants
+        model: Quickshell.screens
+        delegate: NotiPopup {
+            screen: modelData
+        }
+    }
+
     WallSwitcher {}
-    NotiPopup {}
 }
