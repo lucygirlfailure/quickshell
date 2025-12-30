@@ -7,6 +7,7 @@ import "."
 WlrLayershell {
     id: overlayRoot
     required property var modelData
+    property var padding: 10
 
     // 1. Fill the entire screen
     anchors {
@@ -28,13 +29,13 @@ WlrLayershell {
     mask: Region {}
 
     // 5. Load the corners!
+    ScreenPadding {
+        paddingWidth: overlayRoot.padding
+        paddingColor: Colors.background
+    }
     ScreenCorners {
         // Adjust these to match your screen's aesthetic
-        cornerRadius: 25
+        cornerRadius: 20
         cornerColor: Colors.background
-        shouldShow: true
-
-        // Ensure it stays on top of any other items in this window
-        z: 999
     }
 }

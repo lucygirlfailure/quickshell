@@ -2,3 +2,4 @@ Wallpaper 1.0 Wallpaper.qml
 WallSwitcher 1.0 WallSwitcher.qml
 Overlay 1.0 Overlay.qml
 ScreenCorners 1.0 ScreenCorners.qml
+ScreenPadding 1.0 ScreenPadding.qml
