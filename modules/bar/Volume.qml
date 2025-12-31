@@ -53,9 +53,11 @@ Loader {
         id: styleLayout
         anchors.centerIn: parent
         spacing: 0
+        implicitWidth: topText.width + icon.width
         Row {
             spacing: 2
             Text {
+                id: topText
                 PwObjectTracker {
                     objects: Pipewire.ready ? root.sink : []
                 }
@@ -66,6 +68,7 @@ Loader {
                 text: Pipewire.ready ? Math.round(root.sink.audio.volume * 100) + "%" : "0%"
             }
             Icons {
+                id: icon
                 text: root.getVolumeIcon()
             }
         }
