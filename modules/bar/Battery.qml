@@ -13,7 +13,6 @@ Loader {
     height: 34
     ColumnLayout {
         id: masterLayout
-        anchors.centerIn: parent
         spacing: 0
         Row {
             spacing: 5
