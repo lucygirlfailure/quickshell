@@ -17,7 +17,7 @@ Item {
             }
         }
     }
-    width: styleLayout.implicitWidth + 10
+    width: styleLayout.implicitWidth
     implicitHeight: 34
     property var sink: Pipewire.defaultAudioSink
     Process {
