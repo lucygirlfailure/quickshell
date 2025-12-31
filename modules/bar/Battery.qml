@@ -3,29 +3,42 @@ import QtQuick
 import Quickshell.Widgets
 import "../../"
 import "../settings/"
+import QtQuick.Layouts
 
-Item {
+Rectangle {
     id: root
-    implicitWidth: batRow.implicitWidth + 10
-    implicitHeight: batRow.implicitHeight
-    Row {
-        id: batRow
+    visible: UPower.displayDevice.isLaptopBattery
+    color: "transparent"
+    implicitWidth: masterLayout.implicitWidth + 10
+    implicitHeight: 34
+    ColumnLayout {
+        id: masterLayout
         anchors.centerIn: parent
-        spacing: 5
-        IconImage {
-            anchors.verticalCenter: parent.verticalCenter
-            source: "root:/icons/" + UPower.displayDevice.iconName + ".svg"
-            width: 12
-            height: 12
+        spacing: 0
+        Row {
+            spacing: 5
+            Text {
+                id: topText
+                font.weight: 900
+                font.family: Settings.font
+                font.pixelSize: Settings.fontSize
+                text: Math.round(UPower.displayDevice.percentage * 100) + "%"
+                color: Colors.foreground
+            }
+            IconImage {
+                anchors.verticalCenter: parent.verticalCenter
+                source: "root:/icons/" + UPower.displayDevice.iconName + ".svg"
+                width: 12
+                height: 12
+            }
         }
         Text {
-            id: batteryText
-            anchors.verticalCenter: parent.verticalCenter
+            id: botText
             font.weight: 900
             font.family: Settings.font
             font.pixelSize: Settings.fontSize
             color: Colors.foreground
-            text: Math.round(UPower.displayDevice.percentage * 100) + "%"
+            text: UPower.displayDevice.nativePath
         }
     }
 }
