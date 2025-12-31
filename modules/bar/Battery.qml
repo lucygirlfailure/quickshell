@@ -7,6 +7,7 @@ import QtQuick.Layouts
 
 Item {
     id: root
+    visible: UPower.displayDevice.isLaptopBattery
     implicitWidth: masterLayout.implicitWidth
     height: 34
     property bool isCharging: UPower.displayDevice.state === UPowerDeviceState.Charging
