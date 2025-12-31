@@ -6,10 +6,11 @@ Text {
     font.family: "Material Symbols Rounded"
     property int grade: 20
     color: Colors.foreground
+    font.pixelSize: 14
     font.variableAxes: ({
             FILL: fill.toFixed(1),
             GRAD: grade,
             opsz: Settings.fontSize,
-            wght: 700
+            wght: 500
         })
 }

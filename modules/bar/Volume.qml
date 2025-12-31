@@ -17,7 +17,7 @@ Item {
             }
         }
     }
-    implicitWidth: styleLayout.implicitWidth + 10
+    width: styleLayout.implicitWidth + 10
     implicitHeight: 34
     property var sink: Pipewire.defaultAudioSink
     Process {
@@ -54,7 +54,7 @@ Item {
         anchors.centerIn: parent
         spacing: 0
         Row {
-            spacing: 10
+            spacing: 2
             Text {
                 PwObjectTracker {
                     objects: Pipewire.ready ? root.sink : []
