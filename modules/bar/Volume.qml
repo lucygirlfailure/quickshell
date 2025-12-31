@@ -17,7 +17,7 @@ Loader {
             }
         }
     }
-    width: styleLayout.implicitWidth
+    width: 50
     height: 34
     property var sink: Pipewire.defaultAudioSink
     Process {
@@ -53,7 +53,7 @@ Loader {
         id: styleLayout
         anchors.centerIn: parent
         spacing: 0
-        implicitWidth: topText.width + icon.width
+        implicitWidth: botText.width
         Row {
             spacing: 2
             Text {
@@ -73,6 +73,7 @@ Loader {
             }
         }
         Text {
+            id: botText
             font.weight: 900
             color: Colors.foreground
             font.family: Settings.font

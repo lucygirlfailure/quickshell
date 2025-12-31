@@ -8,7 +8,7 @@ import QtQuick.Layouts
 Loader {
     id: root
     active: UPower.displayDevice.isLaptopBattery
-    width: masterLayout.implicitWidth
+    width: 50
     height: 34
     property bool isCharging: UPower.displayDevice.state === UPowerDeviceState.Charging
     function getBatteryIcon() {

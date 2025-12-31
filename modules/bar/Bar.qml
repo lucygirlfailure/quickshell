@@ -16,7 +16,7 @@ PanelWindow {
 
     RowLayout {
         id: leftLayout
-        spacing: 30
+        spacing: 40
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         Clock {
@@ -33,7 +33,7 @@ PanelWindow {
 
     RowLayout {
         id: rightLayout
-        spacing: 30
+        spacing: 40
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         Battery {}
