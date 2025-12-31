@@ -7,7 +7,7 @@ import "."
 WlrLayershell {
     id: overlayRoot
     required property var modelData
-    property var padding: 10
+    property var padding: 5
 
     // 1. Fill the entire screen
     anchors {
