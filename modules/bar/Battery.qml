@@ -35,12 +35,14 @@ Rectangle {
         Text {
             id: botText
             property var timeToEmpty: UPower.displayDevice.timeToEmpty / 60 / 60
+            property var timeToFull: UPower.displayDevice.timeToFull / 60 / 60
+            property bool isCharging: UPower.displayDevice.state === UPowerDeviceState.Charging
             font.weight: 600
             font.family: Settings.font
             font.pixelSize: Settings.fontSize - 2
             opacity: 0.7
             color: Colors.foreground
-            text: timeToEmpty.toFixed(1) + "h left"
+            text: isCharging ? timeToFull.toFixed(1) + "h to full" : timeToEmpty.toFixed(1) + "h left"
         }
     }
 }
