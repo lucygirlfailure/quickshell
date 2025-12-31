@@ -27,32 +27,37 @@ Rectangle {
                 color: Colors.foreground
             }
             Icons {
+                property bool isCharging: UPower.displayDevice.state === UPowerDeviceState.Charging
                 function getBatteryIcon() {
-                    if (UPower.displayDevice.percentage < 12) {
-                        return "battery_android_0";
+                    if (isCharging) {
+                        return "battery_android_frame_bolt";
                     }
-                    if (UPower.displayDevice.percentage < 24) {
-                        return "battery_android_1";
+                    if (UPower.displayDevice.percentage < 0.12) {
+                        return "battery_android_frame_0";
                     }
-                    if (UPower.displayDevice.percentage < 36) {
-                        return "battery_android_2";
+                    if (UPower.displayDevice.percentage < 0.24) {
+                        return "battery_android_frame_1";
                     }
-                    if (UPower.displayDevice.percentage < 48) {
-                        return "battery_android_3";
+                    if (UPower.displayDevice.percentage < 0.36) {
+                        return "battery_android_frame_2";
                     }
-                    if (UPower.displayDevice.percentage < 60) {
-                        return "battery_android_4";
+                    if (UPower.displayDevice.percentage < 0.48) {
+                        return "battery_android_frame_3";
                     }
-                    if (UPower.displayDevice.percentage < 72) {
-                        return "battery_android_5";
+                    if (UPower.displayDevice.percentage < 0.60) {
+                        return "battery_android_frame_4";
                     }
-                    if (UPower.displayDevice.percentage < 84) {
-                        return "battery_android_6";
+                    if (UPower.displayDevice.percentage < 0.72) {
+                        return "battery_android_frame_5";
                     }
-                    if (UPower.displayDevice.percentage > 84) {
+                    if (UPower.displayDevice.percentage < 0.84) {
+                        return "battery_android_frame_6";
+                    }
+                    if (UPower.displayDevice.percentage > 0.84) {
                         return "battery_android_full";
                     }
                 }
+                text: getBatteryIcon()
             }
         }
         Text {
@@ -66,6 +71,7 @@ Rectangle {
             opacity: 0.7
             color: Colors.foreground
             text: isCharging ? timeToFull.toFixed(1) + "h to full" : timeToEmpty.toFixed(1) + "h left"
+            onTextChanged: console.log(UPower.displayDevice.percentage)
         }
     }
 }
