@@ -6,8 +6,11 @@ import Quickshell.Io
 import "../../"
 import "../settings/"
 
-Loader {
+Item {
     id: root
+    implicitWidth: styleLayout.implicitWidth
+    height: 34
+    property var sink: Pipewire.defaultAudioSink
     MouseArea {
         anchors.fill: parent
         cursorShape: Qt.PointingHandCursor
@@ -17,9 +20,6 @@ Loader {
             }
         }
     }
-    width: 50
-    height: 34
-    property var sink: Pipewire.defaultAudioSink
     Process {
         id: pavu
         command: ["pavucontrol"] // The command and args list

@@ -5,10 +5,9 @@ import "../../"
 import "../settings/"
 import QtQuick.Layouts
 
-Loader {
+Item {
     id: root
-    active: UPower.displayDevice.isLaptopBattery
-    width: 50
+    implicitWidth: masterLayout.implicitWidth
     height: 34
     property bool isCharging: UPower.displayDevice.state === UPowerDeviceState.Charging
     function getBatteryIcon() {
