@@ -6,7 +6,7 @@ import Quickshell.Io
 import "../../"
 import "../settings/"
 
-Item {
+Loader {
     id: root
     MouseArea {
         anchors.fill: parent
@@ -18,7 +18,7 @@ Item {
         }
     }
     width: styleLayout.implicitWidth
-    implicitHeight: 34
+    height: 34
     property var sink: Pipewire.defaultAudioSink
     Process {
         id: pavu

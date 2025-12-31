@@ -37,7 +37,10 @@ PanelWindow {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         Battery {}
-        Volume {}
+        Loader {
+            sourceComponent: Volume {}
+        }
+
         PowerProfiles {}
         SystemTray {
             Layout.rightMargin: 30

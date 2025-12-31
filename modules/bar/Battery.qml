@@ -6,12 +6,11 @@ import "../../"
 import "../settings/"
 import QtQuick.Layouts
 
-Rectangle {
+Loader {
     id: root
     visible: UPower.displayDevice.isLaptopBattery
-    color: "transparent"
-    implicitWidth: masterLayout.implicitWidth + 10
-    implicitHeight: 34
+    width: masterLayout.implicitWidth
+    height: 34
     ColumnLayout {
         id: masterLayout
         anchors.centerIn: parent
