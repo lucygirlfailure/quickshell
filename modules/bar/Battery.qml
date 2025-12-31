@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import Quickshell.Services.UPower
 import QtQuick
 import Quickshell.Widgets
@@ -25,11 +26,33 @@ Rectangle {
                 text: Math.round(UPower.displayDevice.percentage * 100) + "%"
                 color: Colors.foreground
             }
-            IconImage {
-                anchors.verticalCenter: parent.verticalCenter
-                source: "root:/icons/" + UPower.displayDevice.iconName + ".svg"
-                width: 12
-                height: 12
+            Icons {
+                function getBatteryIcon() {
+                    if (UPower.displayDevice.percentage < 12) {
+                        return "battery_android_0";
+                    }
+                    if (UPower.displayDevice.percentage < 24) {
+                        return "battery_android_1";
+                    }
+                    if (UPower.displayDevice.percentage < 36) {
+                        return "battery_android_2";
+                    }
+                    if (UPower.displayDevice.percentage < 48) {
+                        return "battery_android_3";
+                    }
+                    if (UPower.displayDevice.percentage < 60) {
+                        return "battery_android_4";
+                    }
+                    if (UPower.displayDevice.percentage < 72) {
+                        return "battery_android_5";
+                    }
+                    if (UPower.displayDevice.percentage < 84) {
+                        return "battery_android_6";
+                    }
+                    if (UPower.displayDevice.percentage > 84) {
+                        return "battery_android_full";
+                    }
+                }
             }
         }
         Text {

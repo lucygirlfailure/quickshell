@@ -38,15 +38,15 @@ Item {
         // Volume is usually 0.0 to 1.0 (0% to 100%)
         const vol = sink.audio.volume;
 
-        if (vol <= 0.0)
-            return "audio-volume-low";
-        if (vol < 0.33)
-            return "audio-volume-low";
-        if (vol < 0.66)
-            return "audio-volume-medium";
+        if (vol <= 0.25)
+            return "volume_mute";
+        if (vol < 0.75)
+            return "volume_down";
+        if (vol < 1.00)
+            return "volume_up";
 
         // If it's loud, prepare the ears!
-        return "audio-volume-high";
+        return "volume_up";
     }
 
     ColumnLayout {
@@ -65,12 +65,8 @@ Item {
                 font.pixelSize: Settings.fontSize
                 text: Pipewire.ready ? Math.round(root.sink.audio.volume * 100) + "%" : "0%"
             }
-
-            IconImage {
-                anchors.verticalCenter: parent.verticalCenter
-                width: 12
-                height: 12
-                source: "root:/icons/" + root.getVolumeIcon() + "-symbolic.svg"
+            Icons {
+                text: root.getVolumeIcon()
             }
         }
         Text {
