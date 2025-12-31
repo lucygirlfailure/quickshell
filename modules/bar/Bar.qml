@@ -36,6 +36,7 @@ PanelWindow {
         spacing: 30
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
+        Battery {}
         Volume {}
         PowerProfiles {}
         SystemTray {

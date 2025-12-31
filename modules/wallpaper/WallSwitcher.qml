@@ -41,7 +41,7 @@ FloatingWindow {
     // 1. The File Scanner
     FolderListModel {
         id: folderModel
-        folder: Settings.wallDir // <--- Your stash!
+        folder: "file://" + Settings.wallDir // <--- Your stash!
         nameFilters: ["*.png", "*.jpg", "*.jpeg"]
         showDirs: false
     }
@@ -86,6 +86,7 @@ FloatingWindow {
                 onClicked: {
                     let cleanPath = parent.modelData.fileUrl.toString().replace("file://", "");
                     Settings.currentWall = parent.modelData.fileUrl.toString();
+                    console.log(Settings.currentWall);
                 }
             }
         }

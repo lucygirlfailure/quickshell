@@ -4,26 +4,27 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 
-Singleton {
+FileView {
+    id: settingsView
+    path: "/home/lucy/.cache/quickshell_settings.json"
 
-    FileView {
-        path: "/home/lucy/.cache/quickshell_settings.json"
+    watchChanges: true
+    onAdapterChanged: writeAdapter()
 
-        watchChanges: true
-        onAdapterChanged: writeAdapter()
-        onFileChanged: reload()
+    adapter: JsonAdapter {
+        id: jsonAdapter
+        property string currentWall: ""
+        property string wallDir: "/home/lucy/.walls/"
+        property string font: "SFMono Nerd Font Propo"
+        property real fontSize: 14
 
-        JsonAdapter {
-            id: adapter
-            property string lastWallpaper
-            property string wallDir
-            property string font
-            property real fontSize: 14
-        }
+        onCurrentWallChanged: settingsView.writeAdapter()
+        onWallDirChanged: settingsView.writeAdapter()
+        onFontChanged: settingsView.writeAdapter()
+        onFontSizeChanged: settingsView.writeAdapter()
     }
-
-    property alias currentWall: adapter.lastWallpaper
-    property alias font: adapter.font
-    property alias fontSize: adapter.fontSize
-    property alias wallDir: adapter.wallDir
+    property alias currentWall: jsonAdapter.currentWall
+    property alias font: jsonAdapter.font
+    property alias fontSize: jsonAdapter.fontSize
+    property alias wallDir: jsonAdapter.wallDir
 }

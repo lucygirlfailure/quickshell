@@ -11,6 +11,7 @@ import "../settings/"
 
 WlrLayershell {
     id: root
+    required property var modelData
     screen: {
         // Iterate through all connected Quickshell screens
         for (let i = 0; i < Quickshell.screens.length; i++) {
