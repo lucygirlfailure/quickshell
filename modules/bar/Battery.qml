@@ -34,11 +34,13 @@ Rectangle {
         }
         Text {
             id: botText
-            font.weight: 900
+            property var timeToEmpty: UPower.displayDevice.timeToEmpty / 60 / 60
+            font.weight: 600
             font.family: Settings.font
-            font.pixelSize: Settings.fontSize
+            font.pixelSize: Settings.fontSize - 2
+            opacity: 0.7
             color: Colors.foreground
-            text: UPower.displayDevice.nativePath
+            text: timeToEmpty.toFixed(1) + "h left"
         }
     }
 }
