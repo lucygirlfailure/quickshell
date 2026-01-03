@@ -69,7 +69,6 @@ Item {
             opacity: 0.7
             color: Colors.foreground
             text: isCharging ? timeToFull.toFixed(1) + "h to full" : timeToEmpty.toFixed(1) + "h left"
-            onTextChanged: console.log(UPower.displayDevice.percentage)
         }
     }
 }

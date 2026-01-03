@@ -36,7 +36,7 @@ Item {
             font.pixelSize: Settings.fontSize - 2
             color: Colors.foreground
 
-            text: Qt.formatDateTime(clockDate.date, "d.m.yy")
+            text: Qt.formatDateTime(clockDate.date, "dd.MM.yy")
 
             SystemClock {
                 id: clockDate

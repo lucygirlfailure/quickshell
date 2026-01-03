@@ -6,7 +6,7 @@ import "../../"
 
 Item {
     id: root
-    width: 50
+    width: powerLayout.implicitWidth
     implicitHeight: 34
     MouseArea {
         anchors.fill: parent
