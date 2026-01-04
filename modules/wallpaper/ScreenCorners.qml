@@ -19,6 +19,7 @@ Item {
 
     // Enable/Disable toggle
     property bool shouldShow: true
+    property real margin
 
     // ---------------------------------------------------------
 
@@ -42,9 +43,9 @@ Item {
 
                 // Margins (Leave 0 unless your bar overlaps)
                 readonly property real topMargin: 0
-                readonly property real bottomMargin: 5
-                readonly property real leftMargin: 5
-                readonly property real rightMargin: 5
+                readonly property real bottomMargin: root.margin
+                readonly property real leftMargin: root.margin
+                readonly property real rightMargin: root.margin
 
                 readonly property real screenWidth: cornersShape.width
                 readonly property real screenHeight: cornersShape.height

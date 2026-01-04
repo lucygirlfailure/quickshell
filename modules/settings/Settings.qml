@@ -1,8 +1,8 @@
 pragma ComponentBehavior: Bound
 pragma Singleton
 import QtQuick
-import Quickshell
 import Quickshell.Io
+import Quickshell
 
 FileView {
     id: settingsView
@@ -16,13 +16,13 @@ FileView {
         property string currentWall: ""
         property string wallDir: "/home/lucy/.walls/"
         property string font: "CommitMono Nerd Font Propo"
-        property real fontSize: 14
-
-        onCurrentWallChanged: settingsView.writeAdapter()
-        onWallDirChanged: settingsView.writeAdapter()
-        onFontChanged: settingsView.writeAdapter()
-        onFontSizeChanged: settingsView.writeAdapter()
+        property real fontSize: 12
     }
+    onCurrentWallChanged: writeAdapter()
+    onWallDirChanged: writeAdapter()
+    onFontChanged: writeAdapter()
+    onFontSizeChanged: writeAdapter()
+
     property alias currentWall: jsonAdapter.currentWall
     property alias font: jsonAdapter.font
     property alias fontSize: jsonAdapter.fontSize
