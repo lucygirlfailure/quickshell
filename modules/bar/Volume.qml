@@ -29,11 +29,11 @@ Item {
     function getVolumeIcon() {
         // Safety check: if Pipewire is dead or sink is missing
         if (!sink)
-            return "volume_mute";
+            return "volume_off";
 
         // If muted, show the hush icon
         if (sink.audio.muted)
-            return "volume_mute";
+            return "volume_off";
 
         // Volume is usually 0.0 to 1.0 (0% to 100%)
         const vol = sink.audio.volume;

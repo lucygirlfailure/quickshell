@@ -8,8 +8,9 @@ import "."
 WlrLayershell {
     id: overlayRoot
     required property var modelData
-    property var padding: 5
-    property var rounding: 20
+    property var padding: 2
+    property var rounding: 15
+    property var hyprgaps: 15
     onPaddingChanged: {
         hyprGaps.exec(hyprGaps.command);
         console.log(hyprGaps.command);
@@ -19,8 +20,8 @@ WlrLayershell {
         id: hyprGaps
         running: true
         property bool isZero: overlayRoot.padding === 0
-        property var top: isZero ? 10 : overlayRoot.padding * 2
-        property var sides: overlayRoot.padding + top
+        property var top: isZero ? 10 : overlayRoot.padding * 2 + overlayRoot.hyprgaps
+        property var sides: overlayRoot.padding + overlayRoot.hyprgaps
         property var gaps: top + "," + sides + "," + sides + "," + sides
         command: ["hyprctl", "keyword", "general:gaps_out", gaps]
         onStarted: console.log("set gaps to ", gaps)
