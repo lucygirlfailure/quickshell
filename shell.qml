@@ -1,11 +1,14 @@
 //@ pragma UseQApplication
 pragma ComponentBehavior: Bound
 import Quickshell
+import Quickshell.Io
 import "./modules/bar/"
 import "./modules/wallpaper/"
 import "./modules/notifications/"
 
 ShellRoot {
+    id: shellRoot
+
     Variants {
         id: barVariants
         model: Quickshell.screens

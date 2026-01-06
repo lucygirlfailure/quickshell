@@ -9,6 +9,14 @@ Singleton {
     property alias font: jsonAdapter.font
     property alias fontSize: jsonAdapter.fontSize
     property alias wallDir: jsonAdapter.wallDir
+    onCurrentWallChanged: settingsView.writeAdapter()
+    onWallDirChanged: settingsView.writeAdapter()
+    onFontChanged: {
+        Quickshell.reload();
+        settingsView.writeAdapter();
+    }
+    onFontSizeChanged: settingsView.writeAdapter()
+
     FileView {
         id: settingsView
         path: "/home/lucy/.config/quickshell/modules/settings/config.json"
@@ -21,12 +29,8 @@ Singleton {
             id: jsonAdapter
             property string currentWall: ""
             property string wallDir: "/home/lucy/.walls/"
-            property string font: "MonaSpiceXe Nerd Font Propo"
-            property real fontSize: 13
+            property string font: "Google Sans"
+            property real fontSize: 14
         }
     }
-    onCurrentWallChanged: settingsView.writeAdapter()
-    onWallDirChanged: settingsView.writeAdapter()
-    onFontChanged: settingsView.writeAdapter()
-    onFontSizeChanged: settingsView.writeAdapter()
 }

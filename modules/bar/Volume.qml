@@ -2,6 +2,7 @@ import QtQuick
 import Quickshell.Services.Pipewire
 import Quickshell.Widgets
 import QtQuick.Layouts
+import Quickshell
 import Quickshell.Io
 import "../../"
 import "../settings/"
@@ -25,28 +26,29 @@ Item {
         command: ["pavucontrol"] // The command and args list
 
     }
+
     // Logic to pick the correct icon name
     function getVolumeIcon() {
         // Safety check: if Pipewire is dead or sink is missing
         if (!sink)
-            return "volume_off";
+            return "audio-volume-muted-symbolic";
 
         // If muted, show the hush icon
         if (sink.audio.muted)
-            return "volume_off";
+            return "audio-volume-muted-symbolic";
 
         // Volume is usually 0.0 to 1.0 (0% to 100%)
         const vol = sink.audio.volume;
 
         if (vol <= 0.25)
-            return "volume_mute";
+            return "audio-volume-low-symbolic";
         if (vol < 0.75)
-            return "volume_down";
-        if (vol < 1.00)
-            return "volume_up";
+            return "audio-volume-medium-symbolic";
+        if (vol <= 1.00)
+            return "audio-volume-high-symbolic";
 
         // If it's loud, prepare the ears!
-        return "volume_up";
+        return "audio-volume-high-danger-symbolic";
     }
 
     ColumnLayout {
@@ -55,10 +57,13 @@ Item {
         spacing: 0
         implicitWidth: botText.width
         Row {
-            spacing: 2
+
+            spacing: 5
             Text {
                 id: topText
+                anchors.verticalCenter: parent.verticalCenter
                 PwObjectTracker {
+
                     objects: Pipewire.ready ? root.sink : []
                 }
                 font.weight: 900
@@ -66,10 +71,13 @@ Item {
                 font.family: Settings.font
                 font.pixelSize: Settings.fontSize
                 text: Pipewire.ready ? root.sink.audio.volume.toFixed(2) + "%" : "0%"
+                onTextChanged: console.log(Quickshell.iconPath)
             }
-            Icons {
+            IconImage {
                 id: icon
-                text: root.getVolumeIcon()
+                anchors.verticalCenter: parent.verticalCenter
+                implicitSize: 12
+                source: Quickshell.iconPath(root.getVolumeIcon())
             }
         }
         Text {
