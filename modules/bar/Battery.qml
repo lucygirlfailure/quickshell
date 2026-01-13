@@ -15,6 +15,7 @@ Item {
     property bool isCharging: UPower.displayDevice.state === UPowerDeviceState.Charging
     ColumnLayout {
         id: masterLayout
+        anchors.centerIn: parent
         implicitWidth: botText.width
         spacing: 0
         Row {

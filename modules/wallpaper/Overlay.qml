@@ -8,9 +8,9 @@ import "."
 WlrLayershell {
     id: overlayRoot
     required property var modelData
-    property var padding: 0
+    property var padding: 5
     property var rounding: 25
-    property var hyprgaps: 20
+    property var hyprgaps: 5
     onPaddingChanged: {
         hyprGaps.exec(hyprGaps.command);
         console.log(hyprGaps.command);
@@ -28,7 +28,7 @@ WlrLayershell {
     }
     Process {
         id: hyprRounding
-        property var rounding: overlayRoot.rounding
+        property var rounding: overlayRoot.rounding - 4
         running: true
         command: ["hyprctl", "keyword", "decoration:rounding", rounding]
         onStarted: console.log("set rounding to ", overlayRoot.rounding)

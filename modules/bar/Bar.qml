@@ -36,16 +36,9 @@ PanelWindow {
         spacing: 40
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        Loader {
-            sourceComponent: Battery {}
-        }
-        Loader {
-            sourceComponent: Volume {}
-        }
-
-        Loader {
-            sourceComponent: PowerProfiles {}
-        }
+        Battery {}
+        Volume {}
+        PowerProfiles {}
         SystemTray {
             Layout.rightMargin: 30
         }

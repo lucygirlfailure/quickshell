@@ -55,7 +55,7 @@ Item {
         id: styleLayout
         anchors.centerIn: parent
         spacing: 0
-        implicitWidth: botText.width
+        implicitWidth: topText.width
         Row {
 
             spacing: 5

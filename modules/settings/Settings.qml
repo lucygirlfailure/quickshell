@@ -29,7 +29,7 @@ Singleton {
             id: jsonAdapter
             property string currentWall: ""
             property string wallDir: "/home/lucy/.walls/"
-            property string font: "Google Sans"
+            property string font: "Google Sans Code"
             property real fontSize: 14
         }
     }
