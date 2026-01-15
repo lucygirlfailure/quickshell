@@ -7,8 +7,10 @@ Variants {
     id: root
     model: Quickshell.screens
     delegate: WlrLayershell {
-      required property var modelData
         id: wpShell
+
+        required property var modelData
+        screen: modelData
         anchors {
             left: true
             top: true
@@ -19,8 +21,8 @@ Variants {
         Image {
             fillMode: Image.Stretch
             source: Settings.config.currentWall
-            width: modelData.width
-            height: modelData.height
+            width: wpShell.modelData.width
+            height: wpShell.modelData.height
         }
     }
 }

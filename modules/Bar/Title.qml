@@ -13,6 +13,6 @@ Item {
         id: text
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        text: Hyprland.activeToplevel.activated ? Hyprland.activeToplevel.title : "sigma"
+        text: Hyprland.activeToplevel ? Hyprland.activeToplevel.title : "Desktop"
     }
 }

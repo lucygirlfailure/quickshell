@@ -7,6 +7,7 @@ import QtQuick.Layouts
 
 Variants {
     model: Quickshell.screens
+
     delegate: PanelWindow {
         id: root
         required property var modelData
@@ -23,7 +24,7 @@ Variants {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             Workspaces {
-                screen: root.screen
+                property var screen: modelData
             }
         }
 
@@ -36,8 +37,8 @@ Variants {
         }
 
         Row {
-          spacing: 10
             id: rightStuff
+            spacing: 10
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             Volume {}

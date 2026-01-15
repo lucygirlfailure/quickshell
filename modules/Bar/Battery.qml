@@ -6,31 +6,35 @@ import "../../reusables/"
 import "../../"
 import "../../settings/"
 
-Item {
-    id: root
-    implicitWidth: batRow.implicitWidth
-    implicitHeight: Settings.config.barHeight
-    Rectangle {
-        id: batRow
-        implicitWidth: batText.implicitWidth + batIcon.implicitWidth + 10
-        color: "transparent"
+Loader {
+    id: batLoader
+    active: UPower.displayDevice.isLaptopBattery
 
+    sourceComponent: Item {
+        id: root
+        implicitWidth: batRow.implicitWidth
         implicitHeight: Settings.config.barHeight
-        Row {
-          anchors.centerIn: batRow
-          anchors.verticalCenter: batRow.verticalCenter
-            CustomText {
-                id: batText
-                text: Math.round(UPower.displayDevice.percentage * 100) + "%"
-              }
+        Rectangle {
+            id: batRow
+            implicitWidth: batText.implicitWidth + batIcon.implicitWidth + 10
+            color: "transparent"
 
-              IconImage {
+            implicitHeight: Settings.config.barHeight
+            Row {
+                anchors.centerIn: batRow
                 anchors.verticalCenter: batRow.verticalCenter
-                id: batIcon
-                source: Quickshell.iconPath(UPower.displayDevice.iconName)
-                implicitSize:  14
-              }
-          
+                CustomText {
+                    id: batText
+                    text: Math.round(UPower.displayDevice.percentage * 100) + "%"
+                }
+
+                IconImage {
+                    id: batIcon
+                    anchors.verticalCenter: batRow.verticalCenter
+                    source: Quickshell.iconPath(UPower.displayDevice.iconName)
+                    implicitSize: 14
+                }
+            }
         }
     }
 }

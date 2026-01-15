@@ -10,7 +10,6 @@ Item {
     id: root
     implicitWidth: workspaceRow.implicitWidth
     height: 30
-    required property var screen
     Row {
         id: workspaceRow
         anchors.centerIn: parent
@@ -22,7 +21,18 @@ Item {
             anchors.centerIn: parent
             Rectangle {
                 id: workspaceNumber
-                property bool isOnMon: modelData.monitor == Hyprland.monitorFor(root.screen)
+                property bool isOnMon: {
+                    if (!modelData)
+                        return false;
+
+                    if (!modelData.monitor)
+                        return false;
+
+                    if (!root.screen)
+                        return false;
+                    return modelData.monitor.name === root.screen.name;
+                }
+
                 required property var modelData
                 width: isOnMon ? Settings.config.barHeight + 10 : 0
                 height: isOnMon ? Settings.config.barHeight : 0
