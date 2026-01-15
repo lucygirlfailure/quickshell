@@ -21,19 +21,20 @@ Variants {
         implicitHeight: Settings.config.barHeight
         Row {
             id: leftStuff
+            spacing: 10
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             Workspaces {
                 property var screen: modelData
+            }
+            Title {
+                anchors.verticalCenter: parent.verticalCenter
             }
         }
 
         Row {
             id: centerStuff
             anchors.centerIn: parent
-            Title {
-                anchors.verticalCenter: parent.verticalCenter
-            }
         }
 
         Row {
