@@ -21,6 +21,7 @@ Singleton {
 
         adapter: JsonAdapter {
             id: settingsAdapter
+            property var currentWall: "/home/lucy/.walls/faris.jpg"
             property var barHeight: 18
             property var font: "JetBrainsMono Nerd Font"
             property var fontSize: 12

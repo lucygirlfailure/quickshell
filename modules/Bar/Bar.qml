@@ -36,12 +36,12 @@ Variants {
         }
 
         Row {
+          spacing: 10
             id: rightStuff
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            CustomText {
-                text: "status shit goes here"
-            }
+            Volume {}
+            Battery {}
         }
     }
 }

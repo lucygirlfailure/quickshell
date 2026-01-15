@@ -1,5 +1,6 @@
 {
     "barHeight": 18,
+    "currentWall": "/home/lucy/.walls/faris.jpg",
     "floating": true,
     "font": "JetBrainsMono Nerd Font",
     "fontSize": 12,
