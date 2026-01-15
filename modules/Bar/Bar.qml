@@ -41,6 +41,7 @@ Variants {
             spacing: 10
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
+            Clock {}
             Volume {}
             Battery {}
         }
