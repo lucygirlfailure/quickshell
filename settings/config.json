@@ -1,7 +1,10 @@
 {
-    "barHeight": 28,
+    "barHeight": 18,
+    "floating": true,
     "font": "JetBrainsMono Nerd Font",
-    "fontSize": 14,
+    "fontSize": 12,
+    "paddingSides": 10,
+    "paddingTop": 10,
     "rounding": 10,
     "wallDir": "/home/lucy/.walls"
 }
