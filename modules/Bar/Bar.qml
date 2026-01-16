@@ -44,6 +44,7 @@ Variants {
             anchors.verticalCenter: parent.verticalCenter
             Clock {}
             Volume {}
+            SystemTray {}
             Battery {}
         }
     }
