@@ -13,7 +13,7 @@ Item {
     Row {
         id: workspaceRow
         anchors.centerIn: parent
-        spacing: 0 // Slightly increase spacing between workspace buttons
+        spacing: 10 // Slightly increase spacing between workspace buttons
 
         Repeater {
             id: wsRepeater
@@ -21,6 +21,7 @@ Item {
             anchors.centerIn: parent
             Rectangle {
                 id: workspaceNumber
+                radius: 20
                 property bool isOnMon: {
                     if (!modelData)
                         return false;
@@ -34,14 +35,15 @@ Item {
                 }
 
                 required property var modelData
-                width: isOnMon ? Settings.config.barHeight + 10 : 0
-                height: isOnMon ? Settings.config.barHeight : 0
-                color: modelData.active ? Colors.foreground : "transparent"
+                width: isOnMon ? Settings.config.barHeight - Settings.config.barHeight / 2 : 0
+                height: isOnMon ? Settings.config.barHeight - Settings.config.barHeight / 2 : 0
+                color: "transparent"
 
                 CustomText {
                     anchors.centerIn: workspaceNumber
                     text: parent.modelData.id
-                    color: parent.modelData.active ? Colors.background : Colors.foreground // Set contrasting color for workspace number
+                    color: Colors.foreground // Set contrasting color for workspace number
+                    opacity: workspaceNumber.modelData.focused ? 1 : 0.5
                 }
                 MouseArea {
                     anchors.fill: parent
