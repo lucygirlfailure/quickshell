@@ -7,6 +7,8 @@ import "../../"
 
 Item {
     id: root
+    implicitWidth: textRow.width
+    implicitHeight: Settings.config.barHeight
     property var sink: Pipewire.defaultAudioSink
     function getVolumeIcon() {
         // Safety check: if Pipewire is dead or sink is missing
@@ -30,11 +32,9 @@ Item {
         // If it's loud, prepare the ears!
         return "volume_up";
     }
-    implicitWidth: textRow.implicitWidth + 10
-    implicitHeight: Settings.config.barHeight
     Row {
         id: textRow
-        anchors.centerIn: parent
+        anchors.verticalCenter: parent.verticalCenter
         spacing: 5
         CustomText {
             id: volumeText
@@ -42,12 +42,12 @@ Item {
                 objects: Pipewire.ready ? Pipewire.defaultAudioSink : []
             }
             text: Pipewire.ready ? Math.round(root.sink.audio.volume * 100) + "%" : "failure"
-            opacity: root.sink.audio.muted ? 0.5 : 1
+            opacity: Pipewire.ready ? root.sink.audio.muted ? 0.5 : 1 : 0
         }
         CustomIcon {
             id: volumeIcon
-            opacity: root.sink.audio.muted ? 0.5 : 1
-            text: root.getVolumeIcon()
+            opacity: Pipewire.ready ? root.sink.audio.muted ? 0.5 : 1 : 0
+            text: Pipewire.ready ? root.getVolumeIcon() : null
         }
     }
 }

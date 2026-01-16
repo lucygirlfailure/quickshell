@@ -7,6 +7,7 @@ Item {
     id: root
     implicitWidth: trayRow.implicitWidth
     implicitHeight: Settings.config.barHeight
+    visible: trayRepeater.count > 0
 
     Row {
         id: trayRow

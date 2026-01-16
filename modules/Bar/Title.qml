@@ -1,8 +1,6 @@
-import Quickshell
 import QtQuick
 import "../../reusables/"
 import "../../settings/"
-import "../../"
 import Quickshell.Hyprland
 
 Item {
@@ -14,6 +12,6 @@ Item {
         id: text
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        text: root.activeWindow?.activated ? Hyprland.activeToplevel.title : "Desktop"
+        text: root.activeWindow ? Hyprland.activeToplevel.title : "Desktop"
     }
 }

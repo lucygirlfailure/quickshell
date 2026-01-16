@@ -44,7 +44,7 @@ Loader {
             }
         }
 
-        implicitWidth: batRow.implicitWidth
+        implicitWidth: batRow.width
         implicitHeight: Settings.config.barHeight
 
         Row {

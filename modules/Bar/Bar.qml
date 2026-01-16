@@ -18,15 +18,18 @@ Variants {
             left: true
             right: true
         }
+        margins {
+          left: 10
+          right: 10
+        }
         implicitHeight: Settings.config.barHeight
         RowLayout {
             id: leftStuff
-            spacing: 10
+            spacing: 20
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             Workspaces {
                 property var screen: root.modelData
-                Layout.leftMargin: 10
             }
             Title {}
         }
@@ -44,9 +47,7 @@ Variants {
             anchors.verticalCenter: parent.verticalCenter
             Volume {}
             Battery {}
-            SystemTray {
-                Layout.rightMargin: 10
-            }
+            SystemTray {}
         }
     }
 }
