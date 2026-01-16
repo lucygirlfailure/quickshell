@@ -28,9 +28,7 @@ Variants {
                 property var screen: root.modelData
                 Layout.leftMargin: 10
             }
-            Title {
-                anchors.verticalCenter: parent.verticalCenter
-            }
+            Title {}
         }
 
         Row {
@@ -47,7 +45,7 @@ Variants {
             Volume {}
             Battery {}
             SystemTray {
-              Layout.rightMargin: 10
+                Layout.rightMargin: 10
             }
         }
     }

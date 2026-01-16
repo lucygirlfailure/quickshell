@@ -19,11 +19,10 @@ Loader {
         property bool frame4: UPower.displayDevice.percentage < 0.74
         property bool frame5: UPower.displayDevice.percentage < 0.90
         property bool frame6: UPower.displayDevice.percentage <= 1
-        property bool charging: UPower.displayDevice.Charging
 
         function getBatteryIcon() {
-            if (charging) {
-                return "battery_android_frame_bolt"
+            if (UPower.displayDevice.state == UPowerDeviceState.Charging) {
+                return "battery_android_frame_bolt";
             }
             if (frame1) {
                 return "battery_android_frame_1";
@@ -48,19 +47,18 @@ Loader {
         implicitWidth: batRow.implicitWidth
         implicitHeight: Settings.config.barHeight
 
-            Row {
-                anchors.centerIn: parent
-                id: batRow
-                spacing: 5
-                CustomText {
-                    id: batText
-                    text: Math.round(UPower.displayDevice.percentage * 100) + "%"
-                }
-                CustomIcon {
-                  id: batIcon
-                  text: root.getBatteryIcon()
-                }
-
+        Row {
+            id: batRow
+            anchors.verticalCenter: parent.verticalCenter
+            spacing: 5
+            CustomText {
+                id: batText
+                text: Math.round(UPower.displayDevice.percentage * 100) + "%"
+            }
+            CustomIcon {
+                id: batIcon
+                text: root.getBatteryIcon()
             }
         }
+    }
 }

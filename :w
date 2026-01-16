@@ -7,9 +7,9 @@ Text {
     font.family: "Material Symbols Rounded"
     color: Colors.foreground
     font.pixelSize: Settings.config.fontSize + 2
-    font.variableAxes: ({
-            FILL: fill.toFixed(1),
-            GRAD: 200,
-            wght: 400
-        })
+    font.variableAxes: {
+      wght: 700,
+
+    }
+
 }

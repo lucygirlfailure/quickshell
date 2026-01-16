@@ -33,19 +33,21 @@ Item {
     implicitWidth: textRow.implicitWidth + 10
     implicitHeight: Settings.config.barHeight
     Row {
+        id: textRow
         anchors.centerIn: parent
         spacing: 5
-        id: textRow
         CustomText {
             id: volumeText
             PwObjectTracker {
                 objects: Pipewire.ready ? Pipewire.defaultAudioSink : []
             }
             text: Pipewire.ready ? Math.round(root.sink.audio.volume * 100) + "%" : "failure"
+            opacity: root.sink.audio.muted ? 0.5 : 1
         }
         CustomIcon {
-          id: volumeIcon
-          text: root.getVolumeIcon()
+            id: volumeIcon
+            opacity: root.sink.audio.muted ? 0.5 : 1
+            text: root.getVolumeIcon()
         }
     }
 }
