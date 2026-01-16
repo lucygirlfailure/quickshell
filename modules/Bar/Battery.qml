@@ -22,7 +22,6 @@ Loader {
             implicitHeight: Settings.config.barHeight
             Row {
                 anchors.centerIn: batRow
-                anchors.verticalCenter: batRow.verticalCenter
                 CustomText {
                     id: batText
                     text: Math.round(UPower.displayDevice.percentage * 100) + "%"
@@ -30,9 +29,9 @@ Loader {
 
                 IconImage {
                     id: batIcon
-                    anchors.verticalCenter: batRow.verticalCenter
+                    anchors.verticalCenter: parent.verticalCenter
                     source: Quickshell.iconPath(UPower.displayDevice.iconName)
-                    implicitSize: 14
+                    implicitSize: 12
                 }
             }
         }
