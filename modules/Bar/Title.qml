@@ -14,6 +14,6 @@ Item {
         id: text
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        text: root.activeWindow?.activated ?Hyprland.activeToplevel.title : "Desktop"
+        text: root.activeWindow?.activated ? Hyprland.activeToplevel.title : "Desktop"
     }
 }

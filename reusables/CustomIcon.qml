@@ -3,12 +3,10 @@ import "../settings/"
 import "../"
 
 Text {
-    property real fill
     font.family: "Material Symbols Rounded"
     color: Colors.foreground
-    font.pixelSize: Settings.config.fontSize + 2
+    font.pixelSize: Settings.config.fontSize + 1
     font.variableAxes: ({
-            FILL: fill.toFixed(1),
             GRAD: 200,
             wght: 400
         })
