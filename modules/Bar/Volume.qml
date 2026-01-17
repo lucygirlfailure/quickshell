@@ -1,4 +1,5 @@
 import Quickshell
+import Quickshell.Io
 import QtQuick
 import Quickshell.Services.Pipewire
 import "../../reusables/"
@@ -49,5 +50,16 @@ Item {
             opacity: Pipewire.ready ? root.sink.audio.muted ? 0.5 : 1 : 0
             text: Pipewire.ready ? root.getVolumeIcon() : null
         }
+    }
+    MouseArea {
+        id: pavuArea
+        Process {
+            id: pavuLauncher
+            command: ["sh", "-c", "pavucontrol"]
+        }
+        anchors.fill: root
+        onClicked: pavuLauncher.exec(pavuLauncher.command)
+        acceptedButtons: Qt.LeftButton
+        cursorShape: Qt.PointingHandCursor
     }
 }
