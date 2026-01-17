@@ -1,9 +1,9 @@
 {
-    "barHeight": 18,
-    "currentWall": "/home/lucy/.walls/faris.jpg",
+    "barHeight": 28,
+    "currentWall": "/home/lucy/.walls/frierensuff.png",
     "floating": true,
-    "font": "JetBrainsMono Nerd Font",
-    "fontSize": 12,
+    "font": "Google Sans Code",
+    "fontSize": 14,
     "paddingSides": 10,
     "paddingTop": 10,
     "rounding": 10,

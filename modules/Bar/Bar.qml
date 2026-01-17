@@ -18,33 +18,36 @@ Variants {
             left: true
             right: true
         }
+        margins {
+          left: 10
+          right: 10
+        }
         implicitHeight: Settings.config.barHeight
-        Row {
+        RowLayout {
             id: leftStuff
-            spacing: 10
+            spacing: 20
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             Workspaces {
-                property var screen: modelData
+                property var screen: root.modelData
             }
-            Title {
-                anchors.verticalCenter: parent.verticalCenter
-            }
+            Title {}
         }
 
         Row {
             id: centerStuff
             anchors.centerIn: parent
+            Clock {}
         }
 
-        Row {
+        RowLayout {
             id: rightStuff
-            spacing: 10
+            spacing: 20
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            Clock {}
             Volume {}
             Battery {}
+            SystemTray {}
         }
     }
 }

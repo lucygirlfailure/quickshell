@@ -21,10 +21,10 @@ Singleton {
 
         adapter: JsonAdapter {
             id: settingsAdapter
-            property var currentWall: "/home/lucy/.walls/faris.jpg"
-            property var barHeight: 18
-            property var font: "JetBrainsMono Nerd Font"
-            property var fontSize: 12
+            property var currentWall: "/home/lucy/.walls/frierensuff.png"
+            property var barHeight: 28
+            property var font: "Google Sans Code"
+            property var fontSize: 14
             property var rounding: 10
             property var wallDir: "/home/lucy/.walls"
             property bool floating: true
