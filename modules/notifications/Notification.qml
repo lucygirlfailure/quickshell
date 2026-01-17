@@ -27,7 +27,9 @@ Variants {
             left: 10
         }
 
-        mask: Region { item: notifList }
+        mask: Region {
+            item: notifList
+        }
         implicitHeight: notifList.contentHeight + 20
         implicitWidth: modelData.width / 8
 
@@ -46,12 +48,18 @@ Variants {
 
             model: NotiServer.trackedNotifications
             delegate: Item {
-                anchors.right: parent ? parent.right : root.right
                 id: notifyItem
                 required property var index
+                required property var modelData
+                anchors.right: parent ? parent.right : root.anchors.right
                 implicitWidth: root.modelData.width / 8
                 implicitHeight: notiIcon.implicitHeight + 20
-                required property var modelData
+                Timer {
+                    id: dismissTimer
+                    interval: 5000
+                    running: true
+                    onTriggered: parent.modelData.dismiss()
+                }
 
                 Rectangle {
                     anchors.fill: parent
@@ -93,6 +101,7 @@ Variants {
                                 font.bold: true
                                 elide: Text.ElideRight
                                 Layout.fillWidth: true
+                                onTextChanged: dismissTimer.restart()
                             }
 
                             Text {
