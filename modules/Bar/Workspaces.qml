@@ -46,7 +46,6 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     acceptedButtons: Qt.LeftButton
-                    cursorShape: Qt.PointingHandCursor
                     onClicked: {
                         parent.modelData.activate();
                     }
