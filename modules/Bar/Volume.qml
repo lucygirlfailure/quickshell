@@ -35,7 +35,7 @@ Item {
     Row {
         id: textRow
         anchors.verticalCenter: parent.verticalCenter
-        spacing: 5
+        spacing: 0
         CustomText {
             id: volumeText
             PwObjectTracker {

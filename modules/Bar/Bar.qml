@@ -2,7 +2,6 @@ import Quickshell
 import QtQuick
 import "../../settings/"
 import "../../"
-import "../../reusables/"
 import QtQuick.Layouts
 
 Variants {
@@ -18,12 +17,10 @@ Variants {
             left: true
             right: true
         }
-        margins {
-          left: 10
-          right: 10
-        }
+
         implicitHeight: Settings.config.barHeight
-        RowLayout {
+        Row {
+            leftPadding: 10
             id: leftStuff
             spacing: 20
             anchors.left: parent.left
@@ -40,9 +37,10 @@ Variants {
             Clock {}
         }
 
-        RowLayout {
+        Row {
+            rightPadding: 10
             id: rightStuff
-            spacing: 20
+            spacing: 10
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             Volume {}
