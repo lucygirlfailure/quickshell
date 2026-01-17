@@ -1,0 +1,2 @@
+singleton NotiServer 1.0 NotiServer.qml
+Notification 1.0 Notification.qml
