@@ -19,7 +19,7 @@ Rectangle {
         CustomText {
             id: titleText
             anchors.horizontalCenter: parent.horizontalCenter
-            text: root.activeWindow ? root.activeWindow.activated ? root.activeWindow.appId : "Desktop" : "fail"
+            text: root.activeWindow ? root.activeWindow.activated ? root.activeWindow.appId : "Desktop" : "Desktop"
             elide: Text.ElideRight
         }
     }

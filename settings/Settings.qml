@@ -31,6 +31,7 @@ Singleton {
             property bool floating: true
             property int paddingTop: 10
             property int paddingSides: 10
+            property var generateScheme: true
         }
     }
 }
