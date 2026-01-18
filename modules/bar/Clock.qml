@@ -2,18 +2,28 @@ import Quickshell
 import QtQuick
 import "../../reusables/"
 import "../../settings/"
+import "../../"
 
-Item {
-    id: root
-    implicitWidth: clockText.implicitWidth
-    implicitHeight: Settings.config.barHeight
-    SystemClock {
-        id: clock
-        precision: SystemClock.Minutes
-    }
-    CustomText {
-        id: clockText
+Rectangle {
+    id: container
+    radius: implicitHeight / 2
+    color: Colors.color0
+    anchors.verticalCenter: parent.verticalCenter
+    implicitHeight: Settings.config.barHeight - 10
+    implicitWidth: root.implicitWidth + 20
+    Item {
+        id: root
         anchors.centerIn: parent
-        text: Qt.formatDateTime(clock.date, "hh:mm")
+        implicitWidth: clockText.implicitWidth
+        implicitHeight: Settings.config.barHeight
+        SystemClock {
+            id: clock
+            precision: SystemClock.Minutes
+        }
+        CustomText {
+            id: clockText
+            anchors.centerIn: parent
+            text: Qt.formatDateTime(clock.date, "hh:mm")
+        }
     }
 }

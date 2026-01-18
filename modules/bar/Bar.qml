@@ -8,43 +8,57 @@ Variants {
 
     delegate: PanelWindow {
         id: root
+        required property var modelData
         implicitHeight: Settings.config.barHeight
         aboveWindows: true
-        required property var modelData
-        color: Qt.rgba(Colors.background.r, Colors.background.g, Colors.background.b, 0.6)
         screen: modelData
+        margins {
+          top: Settings.config.margins
+          left: Settings.config.margins
+          right: Settings.config.margins
+        }
+
         anchors {
             top: true
             left: true
             right: true
         }
-        Row {
-            id: leftStuff
-            leftPadding: 10
-            spacing: 20
-            anchors.left: parent.left
-            anchors.verticalCenter: parent.verticalCenter
-            Workspaces {
-                property var screen: root.modelData
+        color: "transparent"
+        Rectangle {
+            id: container
+            implicitHeight: Settings.config.barHeight
+            anchors.fill: parent
+            color: Colors.background
+            radius: implicitHeight / 2
+
+            Row {
+                id: leftStuff
+                leftPadding: 10
+                spacing: 20
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                Workspaces {
+                    property var screen: root.modelData
+                }
+                Title {}
             }
-            Title {}
-        }
 
-        Row {
-            id: centerStuff
-            anchors.centerIn: parent
-            Clock {}
-        }
+            Row {
+                id: centerStuff
+                anchors.centerIn: parent
+                Clock {}
+            }
 
-        Row {
-            id: rightStuff
-            rightPadding: 10
-            spacing: 10
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-            Volume {}
-            Battery {}
-            SystemTray {}
+            Row {
+                id: rightStuff
+                rightPadding: 10
+                spacing: 10
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                Volume {}
+                Battery {}
+                SystemTray {}
+            }
         }
     }
 }

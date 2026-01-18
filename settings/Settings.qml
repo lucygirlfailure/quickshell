@@ -21,6 +21,7 @@ Singleton {
 
         adapter: JsonAdapter {
             id: settingsAdapter
+            property var margins: 10
             property var currentWall: ""
             property var barHeight: 28
             property var font: "Google Sans"
