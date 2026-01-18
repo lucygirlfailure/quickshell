@@ -1,5 +1,8 @@
 import Quickshell.Services.UPower
 import QtQuick
+import Quickshell.Widgets
+import Qt5Compat.GraphicalEffects
+import Quickshell
 import "../../reusables/"
 import "../../settings/"
 import "../../"
@@ -17,8 +20,8 @@ Loader {
         implicitWidth: root.implicitWidth + 20
         implicitHeight: Settings.config.barHeight - 10
         Item {
-                anchors.centerIn: parent
             id: root
+            anchors.centerIn: parent
 
             property bool frame1: UPower.displayDevice.percentage <= 0.16
             property bool frame2: UPower.displayDevice.percentage < 0.32
@@ -50,6 +53,17 @@ Loader {
                     return "battery_android_frame_full";
                 }
             }
+            function getProfileIcon() {
+                if (PowerProfiles.profile.toString() == "2") {
+                    return "power-profile-performance-symbolic";
+                }
+                if (PowerProfiles.profile.toString() == "1") {
+                    return "power-profile-balanced-symbolic";
+                }
+                if (PowerProfiles.profile.toString() == "0") {
+                    return "power-profile-power-saver-symbolic";
+                }
+            }
 
             implicitWidth: batRow.width
             implicitHeight: Settings.config.barHeight
@@ -65,6 +79,40 @@ Loader {
                 CustomIcon {
                     id: batIcon
                     text: root.getBatteryIcon()
+                }
+                Item {
+                    anchors.verticalCenter: parent.verticalCenter
+                    implicitWidth: 12
+                    implicitHeight: 12
+
+                    IconImage {
+                        id: rawProfileIcon
+                        anchors.fill: parent
+                        source: Quickshell.iconPath(root.getProfileIcon())
+                        visible: false // 🤫 Shh! Hide the dark original
+                    }
+
+                    ColorOverlay {
+                        anchors.fill: parent
+                        source: rawProfileIcon
+                        color: "white" // ✨ The magic dye!
+                    }
+                }
+            }
+            MouseArea {
+                anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
+                acceptedButtons: Qt.LeftButton | Qt.RightButton
+                onClicked: mouse => {
+                    const modes = [PowerProfile.PowerSaver, PowerProfile.Balanced, PowerProfile.Performance];
+                    let current = PowerProfiles.profile;
+                    let currentIndex = modes.indexOf(current);
+                    let nextIndex = (currentIndex + 1) % modes.length;
+                    let prevIndex = (currentIndex - 1) % modes.length;
+                    if (mouse.button == Qt.LeftButton)
+                        PowerProfiles.profile = modes[nextIndex];
+                    if (mouse.button == Qt.RightButton)
+                        PowerProfiles.profile = modes[prevIndex];
                 }
             }
         }
