@@ -8,6 +8,7 @@ import "../../"
 import QtQuick.Layouts
 import Quickshell.Widgets
 import "../../settings/"
+import "../../reusables/"
 
 Variants {
     model: Quickshell.screens
@@ -93,23 +94,17 @@ Variants {
                             Layout.alignment: Qt.AlignTop
                             spacing: 2
 
-                            Text {
+                            CustomText {
                                 text: notifyItem.modelData.summary
-                                color: Colors.foreground
-                                font.family: Settings.config.font
-                                font.pixelSize: Settings.config.fontSize
                                 font.bold: true
                                 elide: Text.ElideRight
                                 Layout.fillWidth: true
                                 onTextChanged: dismissTimer.restart()
                             }
 
-                            Text {
+                            CustomText {
                                 text: notifyItem.modelData.body
-                                color: Colors.foreground
 
-                                font.family: Settings.config.font
-                                font.pixelSize: Settings.config.fontSize - 2
                                 maximumLineCount: 3
                                 wrapMode: Text.WordWrap
                                 elide: Text.ElideRight

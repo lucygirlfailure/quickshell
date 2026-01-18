@@ -18,4 +18,8 @@ Item {
         command: ["sh", "-c", cmd]
         onStarted: console.log("started wallust runner" + command)
     }
+    Process {
+        id: kittyKiller
+        command: ["sh", "-c", "pkill", "-SIGUSR1", "kitty"]
+    }
 }

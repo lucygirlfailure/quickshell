@@ -6,12 +6,14 @@ import Quickshell.Hyprland
 Item {
     id: root
     readonly property var activeWindow: Hyprland.activeToplevel
-    implicitWidth: text.implicitWidth
+    implicitWidth: Math.min(text.implicitWidth, 500)
     implicitHeight: Settings.config.barHeight
     CustomText {
+        anchors.left: parent.left
+        anchors.right: parent.right
         id: text
-        anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         text: root.activeWindow ? Hyprland.activeToplevel.title : "Desktop"
+        elide: Text.ElideRight
     }
 }
