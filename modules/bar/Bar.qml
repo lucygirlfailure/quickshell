@@ -2,26 +2,25 @@ import Quickshell
 import QtQuick
 import "../../settings/"
 import "../../"
-import QtQuick.Layouts
 
 Variants {
     model: Quickshell.screens
 
     delegate: PanelWindow {
         id: root
+        implicitHeight: Settings.config.barHeight
+        aboveWindows: true
         required property var modelData
+        color: Qt.rgba(Colors.background.r, Colors.background.g, Colors.background.b, 0.6)
         screen: modelData
-        color: Colors.background
         anchors {
             top: true
             left: true
             right: true
         }
-
-        implicitHeight: Settings.config.barHeight
         Row {
-            leftPadding: 10
             id: leftStuff
+            leftPadding: 10
             spacing: 20
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
@@ -38,8 +37,8 @@ Variants {
         }
 
         Row {
-            rightPadding: 10
             id: rightStuff
+            rightPadding: 10
             spacing: 10
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter

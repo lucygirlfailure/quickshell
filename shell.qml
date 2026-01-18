@@ -9,8 +9,8 @@ import "./modules/notifications/"
 
 ShellRoot {
     id: root
-    Bar {}
-    Wallpaper {}
     Ipc {}
+    Bar {}
     Notification {}
+    Wallpaper {}
 }

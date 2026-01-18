@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import Quickshell
 import QtQuick
 import Quickshell.Wayland
@@ -8,6 +9,8 @@ Variants {
     model: Quickshell.screens
     delegate: WlrLayershell {
         id: wpShell
+    aboveWindows: false
+exclusionMode:  ExclusionMode.Ignore
 
         required property var modelData
         screen: modelData
@@ -18,11 +21,11 @@ Variants {
             right: true
         }
         layer: WlrLayer.Background
+
         Image {
+            anchors.fill: parent
             fillMode: Image.Stretch
             source: Settings.config.currentWall
-            width: wpShell.modelData.width
-            height: wpShell.modelData.height
         }
     }
 }
