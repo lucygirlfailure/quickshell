@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import qs
+import qs.modules.bar
 import qs.reusables
 import Quickshell.Widgets
 
@@ -11,7 +12,7 @@ Rectangle {
     implicitHeight: fullLayout.implicitHeight + 20
     color: Colors.background
     border.color: dismissArea.containsMouse ? Colors.foreground : Colors.color8
-    radius: 24
+    radius: 22
     Timer {
         id: dismissTimer
         interval: 5000

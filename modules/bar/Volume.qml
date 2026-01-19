@@ -8,7 +8,7 @@ import qs
 
 Rectangle {
     id: container
-    border.color: Colors.color7
+    border.color: pavuArea.containsMouse ? Colors.color8 : Colors.color7
     border.width: 1
     radius: implicitHeight / 2
     color: Colors.color0
@@ -71,6 +71,7 @@ Rectangle {
             onClicked: pavuLauncher.exec(pavuLauncher.command)
             acceptedButtons: Qt.LeftButton
             cursorShape: Qt.PointingHandCursor
+            hoverEnabled: true
         }
     }
 }

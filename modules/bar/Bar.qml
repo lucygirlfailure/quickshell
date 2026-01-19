@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import Quickshell
 import QtQuick
 import qs
@@ -5,6 +6,7 @@ import qs.settings
 
 Variants {
     model: Quickshell.screens
+    property var radius: root.container.radius
 
     delegate: PanelWindow {
         id: root

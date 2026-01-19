@@ -1,5 +1,6 @@
 import Quickshell
 import QtQuick
+import QtQuick.Controls
 import qs
 import qs.settings
 import qs.reusables
@@ -24,8 +25,17 @@ Rectangle {
         }
         CustomText {
             id: clockText
+            property bool showFull
             anchors.centerIn: parent
-            text: Qt.formatDateTime(clock.date, "hh:mm")
+            text: showFull ? Qt.formatDateTime(clock.date, "hh:mm  /  dd.mm.yy") : Qt.formatDateTime(clock.date, "hh:mm")
         }
+    }
+    MouseArea {
+        id: formatSwitch
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
+        anchors.fill: parent
+        cursorShape: Qt.PointingHandCursor
+        hoverEnabled: true
+        onClicked: clockText.showFull = !clockText.showFull
     }
 }
