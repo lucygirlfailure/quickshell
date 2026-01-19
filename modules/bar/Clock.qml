@@ -1,8 +1,8 @@
 import Quickshell
 import QtQuick
-import "../../reusables/"
-import "../../settings/"
-import "../../"
+import qs
+import qs.settings
+import qs.reusables
 
 Rectangle {
     id: container

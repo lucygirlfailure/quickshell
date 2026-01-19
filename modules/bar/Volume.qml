@@ -2,9 +2,9 @@ import Quickshell
 import Quickshell.Io
 import QtQuick
 import Quickshell.Services.Pipewire
-import "../../reusables/"
-import "../../settings/"
-import "../../"
+import qs.settings
+import qs.reusables
+import qs
 
 Rectangle {
     id: container

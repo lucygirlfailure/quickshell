@@ -3,9 +3,9 @@ import QtQuick
 import Quickshell.Widgets
 import Qt5Compat.GraphicalEffects
 import Quickshell
-import "../../reusables/"
-import "../../settings/"
-import "../../"
+import qs
+import qs.reusables
+import qs.settings
 
 Loader {
     id: batLoader

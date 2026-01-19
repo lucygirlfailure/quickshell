@@ -2,7 +2,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
-import "../../settings/"
+import qs.settings
 
 Variants {
     model: Quickshell.screens

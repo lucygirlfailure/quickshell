@@ -1,7 +1,7 @@
 import Quickshell
 import QtQuick
-import "../../settings/"
-import "../../"
+import qs
+import qs.settings
 
 Variants {
     model: Quickshell.screens

@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
-import "../../"
-import "../../reusables"
+import qs
+import qs.reusables
 import Quickshell.Widgets
 
 Rectangle {

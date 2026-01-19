@@ -1,6 +1,6 @@
 import QtQuick
-import "../settings/"
-import "../"
+import qs
+import qs.settings
 
 Text {
     color: Colors.foreground

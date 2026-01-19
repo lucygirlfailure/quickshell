@@ -1,6 +1,6 @@
 import QtQuick
-import "../settings/"
-import "../"
+import qs.settings
+import qs
 
 Text {
     font.family: "Material Symbols Rounded"

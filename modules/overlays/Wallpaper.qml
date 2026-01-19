@@ -2,15 +2,15 @@ pragma ComponentBehavior: Bound
 import Quickshell
 import QtQuick
 import Quickshell.Wayland
-import "../../settings/"
+import qs.settings
 
 Variants {
     id: root
     model: Quickshell.screens
     delegate: WlrLayershell {
         id: wpShell
-    aboveWindows: false
-exclusionMode:  ExclusionMode.Ignore
+        aboveWindows: false
+        exclusionMode: ExclusionMode.Ignore
 
         required property var modelData
         screen: modelData

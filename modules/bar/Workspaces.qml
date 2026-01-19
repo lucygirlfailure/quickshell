@@ -1,10 +1,10 @@
 pragma ComponentBehavior: Bound
-import "../../reusables/"
 import Quickshell.Hyprland
 import Quickshell
 import QtQuick
-import "../../"
-import "../../settings/"
+import qs
+import qs.settings
+import qs.reusables
 
 Item {
     id: root

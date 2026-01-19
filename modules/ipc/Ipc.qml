@@ -1,6 +1,6 @@
 import QtQuick
 import Quickshell.Io
-import "../../settings/"
+import qs.settings
 
 Item {
     IpcHandler {

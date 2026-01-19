@@ -1,7 +1,6 @@
 import Quickshell.Services.SystemTray
 import QtQuick
-import "."
-import "../../settings/"
+import qs.settings
 
 Item {
     id: root
