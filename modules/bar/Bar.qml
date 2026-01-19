@@ -34,13 +34,14 @@ Variants {
             Row {
                 id: leftStuff
                 leftPadding: 10
-                spacing: 20
+                spacing: 10
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
                 Workspaces {
                     property var screen: root.modelData
                 }
                 Title {}
+                Mpris {}
             }
 
             Row {

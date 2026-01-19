@@ -8,7 +8,7 @@ Text {
     color: Colors.foreground
     font.pixelSize: Settings.config.fontSize + 1
     font.variableAxes: ({
-            FILL: 1,
+            FILL: 0,
             GRAD: 100,
             wght: 400
         })

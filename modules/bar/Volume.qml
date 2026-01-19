@@ -8,6 +8,8 @@ import qs
 
 Rectangle {
     id: container
+    border.color: Colors.color7
+    border.width: 1
     radius: implicitHeight / 2
     color: Colors.color0
     anchors.verticalCenter: parent.verticalCenter

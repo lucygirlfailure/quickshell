@@ -11,6 +11,8 @@ Rectangle {
     anchors.verticalCenter: parent.verticalCenter
     implicitWidth: root.implicitWidth
     implicitHeight: Settings.config.barHeight - 10
+    border.color: Colors.color7
+    border.width: 1
     Item {
         id: root
         readonly property var activeWindow: ToplevelManager.activeToplevel

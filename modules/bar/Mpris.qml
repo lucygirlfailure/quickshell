@@ -1,0 +1,52 @@
+import QtQuick
+import Quickshell.Services.Mpris
+import qs
+import qs.settings
+import qs.reusables
+
+Rectangle {
+    id: container
+    visible: root.getSpotify() != null
+    radius: implicitHeight / 2
+    color: Colors.color0
+    anchors.verticalCenter: parent.verticalCenter
+    implicitWidth: root.implicitWidth + 20
+    implicitHeight: Settings.config.barHeight - 10
+    border.color: clickHandler.containsMouse ? Colors.color8 : Colors.color7
+    border.width: 1
+    Item {
+        id: root
+        property var spotify: root.getSpotify()
+        function getSpotify() {
+            for (let i = 0; i < Mpris.players.values.length; i++) {
+                if (Mpris.players.values[i].identity === "Spotify") {
+                    return Mpris.players.values[i];
+                }
+            }
+            return null;
+        }
+        anchors.horizontalCenter: parent.horizontalCenter
+        implicitWidth: mprisText.implicitWidth
+        CustomText {
+            id: mprisText
+            text: root.spotify != null ? root.spotify.trackArtist + " - " + root.spotify.trackTitle : ""
+        }
+    }
+    MouseArea {
+        id: clickHandler
+        anchors.fill: parent
+        hoverEnabled: true
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
+        cursorShape: Qt.PointingHandCursor
+        onDoubleClicked: mouse => {
+            if (mouse.button == Qt.LeftButton) {
+                root.spotify.next();
+            }
+        }
+        onClicked: mouse => {
+            if (mouse.button == Qt.RightButton) {
+                root.spotify.togglePlaying();
+            }
+        }
+    }
+}
