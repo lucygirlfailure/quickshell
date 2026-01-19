@@ -3,6 +3,7 @@ import qs.settings
 import qs
 
 Text {
+    anchors.verticalCenter: parent.verticalCenter
     font.family: "Material Symbols Rounded"
     color: Colors.foreground
     font.pixelSize: Settings.config.fontSize + 1
