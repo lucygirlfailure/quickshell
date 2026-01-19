@@ -6,7 +6,7 @@ import qs.reusables
 
 Rectangle {
     id: container
-    visible: root.getSpotify() != null
+    visible: root.spotify != null
     radius: implicitHeight / 2
     color: Colors.color0
     anchors.verticalCenter: parent.verticalCenter
@@ -19,7 +19,7 @@ Rectangle {
         property var spotify: root.getSpotify()
         function getSpotify() {
             for (let i = 0; i < Mpris.players.values.length; i++) {
-                if (Mpris.players.values[i].identity === "Spotify") {
+                if (Mpris.players.values[i].identity.toLowerCase() === "spotify") {
                     return Mpris.players.values[i];
                 }
             }
