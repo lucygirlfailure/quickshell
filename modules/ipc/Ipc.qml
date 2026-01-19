@@ -6,13 +6,16 @@ Item {
     IpcHandler {
         id: ipcHandler
         target: "settings"
-        property bool generate: Settings.config.generateScheme
         function setWall(newWall: string): void {
+            console.log(Settings.config.generateScheme);
             Settings.config.currentWall = newWall;
-            kittyKiller.exec(kittyKiller.command);
-            if (generate) {
-                wallustRunner.exec(wallustRunner.command);
+            kittyKiller.startDetached();
+            if (Settings.config.generateScheme === true) {
+                wallustRunner.startDetached();
             }
+        }
+        function setFont(newFont: string): void {
+          Settings.config.font = newFont
         }
     }
     Process {
