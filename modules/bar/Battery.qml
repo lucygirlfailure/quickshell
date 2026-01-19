@@ -14,7 +14,7 @@ Loader {
 
     sourceComponent: Rectangle {
         id: container
-        border.color: Colors.color7
+        border.color: clickHandler.containsMouse ? Colors.color8 : Colors.color7
         border.width: 1
         radius: implicitHeight / 2
         color: Colors.color0
@@ -102,9 +102,11 @@ Loader {
                 }
             }
             MouseArea {
+                id: clickHandler
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
                 acceptedButtons: Qt.LeftButton | Qt.RightButton
+                hoverEnabled: true
                 onClicked: mouse => {
                     const modes = [PowerProfile.PowerSaver, PowerProfile.Balanced, PowerProfile.Performance];
                     let current = PowerProfiles.profile;
