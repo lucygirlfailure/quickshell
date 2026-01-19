@@ -13,9 +13,9 @@ Variants {
         aboveWindows: true
         screen: modelData
         margins {
-          top: Settings.config.margins
-          left: Settings.config.margins
-          right: Settings.config.margins
+            top: Settings.config.margins
+            left: Settings.config.margins
+            right: Settings.config.margins
         }
 
         anchors {
@@ -51,13 +51,13 @@ Variants {
 
             Row {
                 id: rightStuff
-                rightPadding: 10
+                rightPadding: 5
                 spacing: 10
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 Volume {}
                 Battery {}
-                SystemTray {}
+                SysTray {}
             }
         }
     }

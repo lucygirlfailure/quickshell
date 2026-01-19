@@ -89,13 +89,13 @@ Loader {
                         id: rawProfileIcon
                         anchors.fill: parent
                         source: Quickshell.iconPath(root.getProfileIcon())
-                        visible: false // 🤫 Shh! Hide the dark original
+                        visible: false
                     }
 
                     ColorOverlay {
                         anchors.fill: parent
                         source: rawProfileIcon
-                        color: "white" // ✨ The magic dye!
+                        color: Colors.foreground
                     }
                 }
             }

@@ -5,8 +5,9 @@ import "../../settings/"
 
 Item {
     id: root
-    implicitWidth: trayRow.implicitWidth
+    implicitWidth: trayRow.implicitWidth + 5
     implicitHeight: Settings.config.barHeight
+    readonly property var count: trayRepeater.count
     visible: trayRepeater.count > 0
 
     Row {
