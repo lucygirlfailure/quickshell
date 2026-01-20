@@ -14,10 +14,8 @@ Loader {
 
     sourceComponent: Rectangle {
         id: container
-        border.color: clickHandler.containsMouse ? Colors.color8 : Colors.color7
-        border.width: 1
         radius: implicitHeight / 2
-        color: Colors.color0
+        color: clickHandler.containsMouse ? Colors.color5 : Colors.color6
         anchors.verticalCenter: parent.verticalCenter
         implicitWidth: root.implicitWidth + 20
         implicitHeight: Settings.config.barHeight - 10

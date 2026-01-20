@@ -8,12 +8,10 @@ Rectangle {
     id: container
     visible: root.spotify != null
     radius: implicitHeight / 2
-    color: Colors.color0
+    color: Colors.color8
     anchors.verticalCenter: parent.verticalCenter
     implicitWidth: root.implicitWidth + 20
     implicitHeight: Settings.config.barHeight - 10
-    border.color: clickHandler.containsMouse ? Colors.color8 : Colors.color7
-    border.width: 1
     Item {
         id: root
         property var spotify: root.getSpotify()
