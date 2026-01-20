@@ -10,8 +10,7 @@ Rectangle {
     required property var modelData
     implicitWidth: ListView.view ? ListView.view.width : 300
     implicitHeight: fullLayout.implicitHeight + 20
-    color: Colors.background
-    border.color: dismissArea.containsMouse ? Colors.foreground : Colors.color8
+    color: dismissArea.containsMouse ? Colors.color5 : Colors.color6
     radius: 22
     Timer {
         id: dismissTimer
