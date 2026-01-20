@@ -24,10 +24,21 @@ Rectangle {
             return null;
         }
         anchors.horizontalCenter: parent.horizontalCenter
-        implicitWidth: mprisText.implicitWidth
+        implicitWidth: statusRow.implicitWidth
+    
+        Row {
+          id: statusRow
+            property var combinedText: root.spotify.trackArtist + " - " + root.spotify.trackTitle + " "
+            property var status: !root.spotify.isPlaying ? "play_arrow" : "pause"
         CustomText {
             id: mprisText
-            text: root.spotify != null ? root.spotify.trackArtist + " - " + root.spotify.trackTitle : ""
+            text: root.spotify != null ? parent.combinedText   : ""
+          }
+          CustomIcon {
+            id: mprisStatus
+            text: parent.status
+          }
+
         }
     }
     MouseArea {
