@@ -13,9 +13,10 @@ Rectangle {
     implicitHeight: Settings.config.barHeight - 10
     Item {
         id: root
+        anchors.centerIn: parent
         readonly property var activeWindow: ToplevelManager.activeToplevel
         implicitWidth: titleText.implicitWidth + 20
-        implicitHeight: Settings.config.barHeight
+        implicitHeight: titleText.implicitHeight
         CustomText {
             id: titleText
             anchors.horizontalCenter: parent.horizontalCenter

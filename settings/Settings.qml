@@ -5,13 +5,12 @@ import Quickshell
 import Quickshell.Io
 
 Singleton {
-  
     id: settings
     property alias config: settingsAdapter
     onConfigChanged: {
         console.log('config change detected, writing adapter');
         settingsView.writeAdapter();
-      }
+    }
     FileView {
         id: settingsView
 

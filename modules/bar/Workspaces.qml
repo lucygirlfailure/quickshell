@@ -9,7 +9,8 @@ import qs.reusables
 Item {
     id: root
     implicitWidth: workspaceRow.implicitWidth
-    height: 30
+    implicitHeight: workspaceRow.implicitHeight
+    anchors.verticalCenter: parent.verticalCenter
     Row {
         id: workspaceRow
         anchors.centerIn: parent
@@ -18,9 +19,9 @@ Item {
         Repeater {
             id: wsRepeater
             model: Hyprland.workspaces
-            anchors.centerIn: parent
             Rectangle {
                 id: workspaceNumber
+                anchors.verticalCenter: parent.verticalCenter
                 radius: 20
                 property bool isOnMon: {
                     if (!modelData)

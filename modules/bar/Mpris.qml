@@ -9,11 +9,11 @@ Rectangle {
     visible: root.spotify != null
     radius: implicitHeight / 2
     color: clickHandler.containsMouse ? Colors.color5 : Colors.color6
-    anchors.verticalCenter: parent.verticalCenter
     implicitWidth: root.implicitWidth + 20
     implicitHeight: Settings.config.barHeight - 10
     Item {
         id: root
+        anchors.centerIn: parent
         property var spotify: root.getSpotify()
         function getSpotify() {
             for (let i = 0; i < Mpris.players.values.length; i++) {
@@ -23,11 +23,12 @@ Rectangle {
             }
             return null;
         }
-        anchors.horizontalCenter: parent.horizontalCenter
         implicitWidth: statusRow.implicitWidth
+        implicitHeight: statusRow.implicitHeight
 
         Row {
             id: statusRow
+            anchors.verticalCenter: parent.verticalCenter
             property var combinedText: root.spotify != null ? root.spotify.trackArtist + " - " + root.spotify.trackTitle + " " : ""
             property var status: root.spotify != null ? !root.spotify.isPlaying ? "play_arrow" : "pause" : ""
             CustomText {
