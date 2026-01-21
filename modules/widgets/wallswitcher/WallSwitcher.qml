@@ -12,6 +12,9 @@ import Quickshell.Hyprland
 FloatingWindow {
     id: root
     visible: Settings.config.wallSwitcherShown
+    onClosed: {
+        Settings.config.wallSwitcherShown = false;
+    }
 
     Process {
         id: wallustRunner
