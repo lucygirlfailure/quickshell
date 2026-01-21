@@ -22,7 +22,7 @@ Item {
     }
     Process {
         id: wallustRunner
-        property string cmd: "matugen image " + Settings.config.currentWall
+        property string cmd: "matugen image " + Settings.config.currentWall + " -t scheme-fidelity"
         command: ["sh", "-c", cmd]
     }
 }
