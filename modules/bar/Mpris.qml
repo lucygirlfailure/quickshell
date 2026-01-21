@@ -28,8 +28,9 @@ Rectangle {
 
         Row {
             id: statusRow
+            spacing: 5
             anchors.verticalCenter: parent.verticalCenter
-            property var combinedText: root.spotify != null ? root.spotify.trackArtist + " - " + root.spotify.trackTitle + " " : ""
+            property var combinedText: root.spotify != null ? root.spotify.trackArtist + " - " + root.spotify.trackTitle : ""
             property var status: root.spotify != null ? !root.spotify.isPlaying ? "play_arrow" : "pause" : ""
             CustomText {
                 id: mprisText

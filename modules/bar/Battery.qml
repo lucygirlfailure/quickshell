@@ -35,22 +35,22 @@ Loader {
                     return "battery_android_frame_bolt";
                 }
                 if (frame1) {
-                    return "battery_android_frame_1";
+                    return "battery_1_bar";
                 }
                 if (frame2) {
-                    return "battery_android_frame_2";
+                    return "battery_2_bar";
                 }
                 if (frame3) {
-                    return "battery_android_frame_3";
+                    return "battery_3_bar";
                 }
                 if (frame4) {
-                    return "battery_android_frame_4";
+                    return "battery_4_bar";
                 }
                 if (frame5) {
-                    return "battery_android_frame_5";
+                    return "battery_5_bar";
                 }
                 if (frame6) {
-                    return "battery_android_frame_full";
+                    return "battery_full";
                 }
             }
             function getProfileIcon() {

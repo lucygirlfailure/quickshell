@@ -5,7 +5,7 @@ import qs
 Text {
     property real fill: 1
     anchors.verticalCenter: parent.verticalCenter
-    font.family: "Material Icons Round"
+    font.family: "Material Icons Sharp"
     color: Colors.foreground
     font.variableAxes: ({
             FILL: fill.toFixed(1),
