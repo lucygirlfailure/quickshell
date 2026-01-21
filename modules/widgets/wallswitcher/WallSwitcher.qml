@@ -59,7 +59,9 @@ FloatingWindow {
                             cursorShape: Qt.PointingHandCursor
                             onClicked: {
                                 Settings.config.currentWall = parent.filePath;
-                                wallustRunner.startDetached();
+                                if (Settings.config.generateScheme) {
+                                    wallustRunner.startDetached();
+                                }
                             }
                         }
                     }
