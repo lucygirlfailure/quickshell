@@ -6,7 +6,6 @@ import qs.settings
 
 Variants {
     model: Quickshell.screens
-    property var radius: root.container.radius
 
     delegate: PanelWindow {
         id: root

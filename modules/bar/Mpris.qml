@@ -25,20 +25,19 @@ Rectangle {
         }
         anchors.horizontalCenter: parent.horizontalCenter
         implicitWidth: statusRow.implicitWidth
-    
-        Row {
-          id: statusRow
-            property var combinedText: root.spotify.trackArtist + " - " + root.spotify.trackTitle + " "
-            property var status: !root.spotify.isPlaying ? "play_arrow" : "pause"
-        CustomText {
-            id: mprisText
-            text: root.spotify != null ? parent.combinedText   : ""
-          }
-          CustomIcon {
-            id: mprisStatus
-            text: parent.status
-          }
 
+        Row {
+            id: statusRow
+            property var combinedText: root.spotify != null ? root.spotify.trackArtist + " - " + root.spotify.trackTitle + " " : ""
+            property var status: root.spotify != null ? !root.spotify.isPlaying ? "play_arrow" : "pause" : ""
+            CustomText {
+                id: mprisText
+                text: root.spotify != null ? parent.combinedText : ""
+            }
+            CustomIcon {
+                id: mprisStatus
+                text: root.spotify != null ? parent.status : ""
+            }
         }
     }
     MouseArea {
