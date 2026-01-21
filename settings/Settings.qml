@@ -34,6 +34,7 @@ Singleton {
             property int paddingSides: 10
             property var generateScheme: true
             property bool wallSwitcherShown: false
+            property int fontWeight: 500
         }
     }
 }

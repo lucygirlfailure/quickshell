@@ -3,13 +3,14 @@ import qs.settings
 import qs
 
 Text {
+    property real fill: 1
     anchors.verticalCenter: parent.verticalCenter
-    font.family: "Material Symbols Rounded"
+    font.family: "Material Icons Round"
     color: Colors.foreground
-    font.pixelSize: Settings.config.fontSize + 1
     font.variableAxes: ({
-            FILL: 0,
-            GRAD: 100,
-            wght: 400
+            FILL: fill.toFixed(1),
+            GRAD: -25,
+            opsz: Settings.config.fontSize,
+            wght: Settings.config.fontWeight
         })
 }

@@ -44,7 +44,7 @@ Rectangle {
         Row {
             id: textRow
             anchors.verticalCenter: parent.verticalCenter
-            spacing: 0
+            spacing: 5
             CustomText {
                 id: volumeText
                 PwObjectTracker {
