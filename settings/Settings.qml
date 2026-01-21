@@ -33,6 +33,7 @@ Singleton {
             property int paddingTop: 10
             property int paddingSides: 10
             property var generateScheme: true
+            property bool wallSwitcherShown: false
         }
     }
 }

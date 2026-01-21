@@ -6,13 +6,29 @@ import Quickshell.Widgets
 import qs.reusables
 import Qt.labs.folderlistmodel 2.10
 import Quickshell.Io
+import qs
+import Quickshell.Hyprland
 
 FloatingWindow {
-    id: wallswitcherWindow
-    implicitHeight: 1200
-    implicitWidth: 1800
+    id: root
+    visible: Settings.config.wallSwitcherShown
+
+    Process {
+        id: wallustRunner
+        property string cmd: "matugen image " + Settings.config.currentWall + " -t scheme-fidelity"
+        command: ["sh", "-c", cmd]
+    }
+    GlobalShortcut {
+        name: "showWallSwitcher"
+        onPressed: {
+            Settings.config.wallSwitcherShown = true;
+        }
+    }
+
+    implicitHeight: 600
+    implicitWidth: 900
     title: "qs-wallswitcher"
-    color: "green"
+    color: Colors.background
     WrapperItem {
         id: innerWindowWrapper
         anchors.centerIn: parent
@@ -31,7 +47,7 @@ FloatingWindow {
                 topMargin: innerWindowText.implicitHeight + innerWindowText.topPadding
                 anchors.fill: parent
                 anchors.horizontalCenter: parent.horizontalCenter
-                leftMargin: 20
+                leftMargin: 40
                 rightMargin: 20
 
                 FolderListModel {
@@ -43,17 +59,16 @@ FloatingWindow {
                 Component {
                     id: fileDelegate
                     Image {
+                        asynchronous: true
+                        cache: true
                         required property string filePath
                         source: filePath
                         width: 120
                         height: 80
+                        sourceSize.width: 120
+                        sourceSize.height: 80
                         MouseArea {
                             id: wallpaperSetter
-                            Process {
-                                id: wallustRunner
-                                property string cmd: "matugen image " + Settings.config.currentWall + " -t scheme-fidelity"
-                                command: ["sh", "-c", cmd]
-                            }
                             acceptedButtons: Qt.LeftButton
                             anchors.fill: parent
                             cursorShape: Qt.PointingHandCursor
@@ -72,11 +87,11 @@ FloatingWindow {
             }
 
             radius: 24
-            color: "black"
+            color: Colors.background
             CustomText {
                 id: innerWindowText
                 topPadding: 10
-                text: "Hello, world!"
+                text: "Wallpapers in " + Settings.config.wallDir
                 anchors.horizontalCenter: parent.horizontalCenter
             }
         }
