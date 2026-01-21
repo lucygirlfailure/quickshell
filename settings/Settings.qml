@@ -5,20 +5,20 @@ import Quickshell
 import Quickshell.Io
 
 Singleton {
-    id: settings
+    id: root
     property alias config: settingsAdapter
+    property alias currentWall: settingsAdapter.currentWall
     onConfigChanged: {
         console.log('config change detected, writing adapter');
         settingsView.writeAdapter();
     }
+
     FileView {
         id: settingsView
 
         onAdapterUpdated: writeAdapter()
-        onFileChanged: reload()
-
         path: "/home/lucy/.config/quickshell/settings/config.json"
-        watchChanges: true
+        watchChanges: false
 
         adapter: JsonAdapter {
             id: settingsAdapter
@@ -28,7 +28,7 @@ Singleton {
             property var font: "Google Sans"
             property var fontSize: 14
             property var rounding: 10
-            property var wallDir: "/home/lucy/.walls"
+            property var wallDir: "file:///home/lucy/.walls/"
             property bool floating: true
             property int paddingTop: 10
             property int paddingSides: 10

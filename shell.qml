@@ -5,6 +5,7 @@ import qs.modules.ipc
 import qs.modules.bar
 import qs.modules.overlays
 import qs.modules.notifications
+import qs.modules.widgets.wallswitcher
 
 ShellRoot {
     id: root
@@ -12,4 +13,5 @@ ShellRoot {
     Bar {}
     Notification {}
     Wallpaper {}
+    WallSwitcher {}
 }
