@@ -74,6 +74,7 @@ Loader {
                 spacing: 5
                 CustomText {
                     id: batText
+                    anchors.verticalCenter: parent.verticalCenter
                     text: Math.round(UPower.displayDevice.percentage * 100) + "%"
                 }
                 CustomIcon {
