@@ -3,7 +3,7 @@ import qs
 import qs.settings
 
 Text {
-    color: Colors.foreground
+    color: Colors.onSurfaceColor
     font.family: Settings.config.font
     font.pixelSize: Settings.config.fontSize
     font.variableAxes: ({

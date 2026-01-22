@@ -43,7 +43,7 @@ Item {
                 CustomText {
                     anchors.centerIn: workspaceNumber
                     text: parent.modelData.id
-                    color: Colors.color2 // Set contrasting color for workspace number
+                    color: Colors.primary // Set contrasting color for workspace number
                     opacity: workspaceNumber.modelData.focused ? 1 : 0.5
                 }
                 MouseArea {

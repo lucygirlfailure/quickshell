@@ -34,13 +34,15 @@ FloatingWindow {
 
     ColumnLayout {
         id: windowLayout
+        spacing: 10
         anchors.fill: parent
 
         Rectangle {
             id: textWrapper
             Layout.fillWidth: true
-            Layout.margins: 20
+            Layout.margins: 10
             Layout.alignment: Qt.AlignCenter
+            Layout.bottomMargin: 0
             radius: 14
             implicitHeight: 30
             color: Colors.color6
@@ -53,9 +55,10 @@ FloatingWindow {
 
         Rectangle {
             id: innerWindow
+            Layout.topMargin: 0
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.margins: 20
+            Layout.margins: 10
             radius: 14
             color: Colors.color8
             GridView {

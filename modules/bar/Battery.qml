@@ -97,7 +97,7 @@ Loader {
                     ColorOverlay {
                         anchors.fill: parent
                         source: rawProfileIcon
-                        color: Colors.foreground
+                        color: Colors.onSurfaceColor
                     }
                 }
             }

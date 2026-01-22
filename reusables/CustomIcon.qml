@@ -6,7 +6,7 @@ Text {
     property real fill: 1
     anchors.verticalCenter: parent.verticalCenter
     font.family: "Material Icons Sharp"
-    color: Colors.foreground
+    color: Colors.onSurfaceColor
     font.variableAxes: ({
             FILL: fill.toFixed(1),
             GRAD: -25,
