@@ -74,6 +74,7 @@ FloatingWindow {
                 anchors.fill: innerWindow
                 anchors.centerIn: innerWindow
                 leftMargin: emptySpace / 2
+                rightMargin: emptySpace / 2
                 anchors.margins: 20
                 model: folderModel
                 delegate: fileDelegate
