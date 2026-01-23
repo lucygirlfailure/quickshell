@@ -8,14 +8,18 @@ import Qt.labs.folderlistmodel 2.10
 import Quickshell.Io
 import qs
 import Quickshell.Hyprland
+import QtQuick.Layouts
 
 FloatingWindow {
     id: root
+    implicitHeight: 600
+    implicitWidth: 900
+    title: "qs-wallswitcher"
     visible: Settings.config.wallSwitcherShown
+    color: Colors.background
     onClosed: {
         Settings.config.wallSwitcherShown = false;
     }
-
     Process {
         id: wallustRunner
         property string cmd: "matugen image " + Settings.config.currentWall
@@ -28,31 +32,55 @@ FloatingWindow {
         }
     }
 
-    implicitHeight: 600
-    implicitWidth: 900
-    title: "qs-wallswitcher"
-    color: Colors.background
-    WrapperItem {
-        id: innerWindowWrapper
-        anchors.centerIn: parent
+    ColumnLayout {
+        id: windowLayout
+        spacing: 10
         anchors.fill: parent
-        margin: 20
-        child: Rectangle {
+
+        Rectangle {
+            id: textWrapper
+            Layout.fillWidth: true
+            Layout.margins: 10
+            Layout.alignment: Qt.AlignCenter
+            Layout.bottomMargin: 0
+            radius: 14
+            implicitHeight: 30
+            color: Colors.color6
+            CustomText {
+                id: titleText
+                anchors.centerIn: textWrapper
+                text: "Wallpapers in " + Settings.config.wallDir
+            }
+        }
+
+        Rectangle {
             id: innerWindow
-            anchors.fill: parent
-            anchors.centerIn: parent
-            implicitWidth: parent.implicitWidth
-            implicitHeight: parent.implicitHeight
+            Layout.topMargin: 0
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Layout.margins: 10
+            radius: 14
+            color: Colors.color8
             GridView {
                 id: gridRoot
+                property var columns: Math.floor(gridRoot.width / cellWidth)
+                property var usedWidth: columns * cellWidth
+                property var emptySpace: width - usedWidth
+                property var rows: Math.floor(gridRoot.height / cellHeight)
+                property var usedHeight: rows * cellHeight
+                property var emptyHeight: height - usedHeight
+                clip: true
+                boundsBehavior: Flickable.StopAtBounds
+                snapMode: GridView.SnapToRow
                 cellWidth: 140
                 cellHeight: 100
-                topMargin: innerWindowText.implicitHeight + innerWindowText.topPadding
-                anchors.fill: parent
-                anchors.horizontalCenter: parent.horizontalCenter
-                leftMargin: 40
-                rightMargin: 20
-
+                anchors.fill: innerWindow
+                anchors.centerIn: innerWindow
+                leftMargin: emptySpace / 2
+                rightMargin: emptySpace / 2
+                anchors.margins: 20
+                model: folderModel
+                delegate: fileDelegate
                 FolderListModel {
                     id: folderModel
                     folder: Settings.config.wallDir
@@ -84,18 +112,6 @@ FloatingWindow {
                         }
                     }
                 }
-
-                model: folderModel
-                delegate: fileDelegate
-            }
-
-            radius: 24
-            color: Colors.background
-            CustomText {
-                id: innerWindowText
-                topPadding: 10
-                text: "Wallpapers in " + Settings.config.wallDir
-                anchors.horizontalCenter: parent.horizontalCenter
             }
         }
     }

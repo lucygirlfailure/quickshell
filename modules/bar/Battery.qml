@@ -35,22 +35,22 @@ Loader {
                     return "battery_android_frame_bolt";
                 }
                 if (frame1) {
-                    return "battery_1_bar";
+                    return "battery_android_frame_1";
                 }
                 if (frame2) {
-                    return "battery_2_bar";
+                    return "battery_android_frame_2";
                 }
                 if (frame3) {
-                    return "battery_3_bar";
+                    return "battery_android_frame_3";
                 }
                 if (frame4) {
-                    return "battery_4_bar";
+                    return "battery_android_frame_4";
                 }
                 if (frame5) {
-                    return "battery_5_bar";
+                    return "battery_android_frame_5";
                 }
                 if (frame6) {
-                    return "battery_full";
+                    return "battery_android_frame_full";
                 }
             }
             function getProfileIcon() {
@@ -74,10 +74,12 @@ Loader {
                 spacing: 5
                 CustomText {
                     id: batText
+                    anchors.verticalCenter: parent.verticalCenter
                     text: Math.round(UPower.displayDevice.percentage * 100) + "%"
                 }
                 CustomIcon {
                     id: batIcon
+                    font.family: "Material Symbols Rounded"
                     text: root.getBatteryIcon()
                 }
                 Item {
@@ -95,7 +97,7 @@ Loader {
                     ColorOverlay {
                         anchors.fill: parent
                         source: rawProfileIcon
-                        color: Colors.foreground
+                        color: Colors.onSurfaceColor
                     }
                 }
             }
