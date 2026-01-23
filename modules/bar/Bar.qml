@@ -29,7 +29,7 @@ Variants {
             id: container
             implicitHeight: Settings.config.barHeight
             anchors.fill: parent
-            color: Colors.background
+            color: Colors.surface
             radius: implicitHeight / 2
 
             Row {

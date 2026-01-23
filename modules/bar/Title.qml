@@ -7,7 +7,7 @@ import qs.reusables
 Rectangle {
     id: container
     radius: implicitHeight / 2
-    color: Colors.color6
+    color: Colors.primaryContainer
     anchors.verticalCenter: parent.verticalCenter
     implicitWidth: root.implicitWidth
     implicitHeight: Settings.config.barHeight - 10

@@ -11,6 +11,7 @@ Item {
     implicitWidth: workspaceRow.implicitWidth
     implicitHeight: workspaceRow.implicitHeight
     anchors.verticalCenter: parent.verticalCenter
+    property var screen: screen
     Row {
         id: workspaceRow
         anchors.centerIn: parent
@@ -43,8 +44,7 @@ Item {
                 CustomText {
                     anchors.centerIn: workspaceNumber
                     text: parent.modelData.id
-                    color: Colors.color2 // Set contrasting color for workspace number
-                    opacity: workspaceNumber.modelData.focused ? 1 : 0.5
+                    color: workspaceNumber.modelData.focused ? Colors.onSecondaryContainerColor : Colors.surfaceVariant
                 }
                 MouseArea {
                     anchors.fill: parent
