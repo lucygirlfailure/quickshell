@@ -1,8 +1,8 @@
 pragma ComponentBehavior: Bound
 import Quickshell
 import qs.settings
-import QtQuick
 import Quickshell.Widgets
+import QtQuick
 import qs.reusables
 import Qt.labs.folderlistmodel 2.10
 import Quickshell.Io
@@ -16,13 +16,13 @@ FloatingWindow {
     implicitWidth: 900
     title: "qs-wallswitcher"
     visible: Settings.config.wallSwitcherShown
-    color: Colors.background
+    color: Colors.surface
     onClosed: {
         Settings.config.wallSwitcherShown = false;
     }
     Process {
         id: wallustRunner
-        property string cmd: "matugen image " + Settings.config.currentWall
+        property string cmd: "matugen image " + Settings.config.currentWall + " -t scheme-neutral"
         command: ["sh", "-c", cmd]
     }
     GlobalShortcut {
@@ -45,7 +45,7 @@ FloatingWindow {
             Layout.bottomMargin: 0
             radius: 14
             implicitHeight: 30
-            color: Colors.color6
+            color: Colors.onPrimaryColor
             CustomText {
                 id: titleText
                 anchors.centerIn: textWrapper
@@ -60,7 +60,7 @@ FloatingWindow {
             Layout.fillHeight: true
             Layout.margins: 10
             radius: 14
-            color: Colors.color8
+            color: Colors.surfaceContainerLow
             GridView {
                 id: gridRoot
                 property var columns: Math.floor(gridRoot.width / cellWidth)
@@ -72,13 +72,12 @@ FloatingWindow {
                 clip: true
                 boundsBehavior: Flickable.StopAtBounds
                 snapMode: GridView.SnapToRow
-                cellWidth: 140
-                cellHeight: 100
+                cellWidth: 130
+                cellHeight: 90
                 anchors.fill: innerWindow
                 anchors.centerIn: innerWindow
                 leftMargin: emptySpace / 2
-                rightMargin: emptySpace / 2
-                anchors.margins: 20
+                topMargin: 20
                 model: folderModel
                 delegate: fileDelegate
                 FolderListModel {
@@ -89,24 +88,28 @@ FloatingWindow {
 
                 Component {
                     id: fileDelegate
-                    Image {
-                        asynchronous: true
-                        cache: true
+                    ClippingWrapperRectangle {
+                        id: imageRounder
+                        implicitHeight: 80
+                        implicitWidth: 120
                         required property string filePath
-                        source: filePath
-                        width: 120
-                        height: 80
-                        sourceSize.width: 120
-                        sourceSize.height: 80
-                        MouseArea {
-                            id: wallpaperSetter
-                            acceptedButtons: Qt.LeftButton
-                            anchors.fill: parent
-                            cursorShape: Qt.PointingHandCursor
-                            onClicked: {
-                                Settings.config.currentWall = parent.filePath;
-                                if (Settings.config.generateScheme) {
-                                    wallustRunner.startDetached();
+                        radius: 12
+                        child: Image {
+                            id: wallPreview
+                            asynchronous: true
+                            source: imageRounder.filePath
+                            sourceSize.width: 120
+                            sourceSize.height: 80
+                            MouseArea {
+                                id: wallpaperSetter
+                                acceptedButtons: Qt.LeftButton
+                                anchors.fill: parent
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: {
+                                    Settings.config.currentWall = imageRounder.filePath;
+                                    if (Settings.config.generateScheme) {
+                                        wallustRunner.startDetached();
+                                    }
                                 }
                             }
                         }

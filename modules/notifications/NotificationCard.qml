@@ -1,4 +1,5 @@
 import QtQuick
+import qs.settings
 import QtQuick.Layouts
 import qs
 import qs.modules.bar
@@ -59,6 +60,7 @@ Rectangle {
 
             CustomText {
                 text: notifyItem.modelData.body
+                font.pixelSize: Settings.config.fontSize - 2
                 maximumLineCount: 2
                 wrapMode: Text.WordWrap
                 elide: Text.ElideRight
