@@ -6,7 +6,7 @@ import qs.modules.bar
 import qs.modules.overlays
 import qs.modules.notifications
 import qs.modules.widgets.wallswitcher
-import QtQuick.Dialogs
+import qs.modules.widgets.SettingsApp
 
 ShellRoot {
     id: root
@@ -15,4 +15,5 @@ ShellRoot {
     Notification {}
     Wallpaper {}
     WallSwitcher {}
+    MainWindow {}
 }

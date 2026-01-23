@@ -29,8 +29,13 @@ Rectangle {
             FontDialog {
                 id: fontPicker
                 title: "qs-fontpicker"
-                flags: FontDialog.NoButtons
+                flags: FontDialog.NoButtons | FontDialog.MonospacedFonts
+
                 onAccepted: {
+                    Settings.config.font = selectedFont.family;
+                    Settings.config.fontSize = selectedFont.pointSize;
+                }
+                onSelectedFontChanged: {
                     Settings.config.font = selectedFont.family;
                     Settings.config.fontSize = selectedFont.pointSize;
                 }
