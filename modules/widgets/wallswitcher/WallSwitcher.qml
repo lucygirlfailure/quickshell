@@ -1,4 +1,5 @@
 pragma ComponentBehavior: Bound
+import QtQuick.Dialogs
 import Quickshell
 import qs.settings
 import Quickshell.Widgets
@@ -84,6 +85,9 @@ FloatingWindow {
                     id: folderModel
                     folder: Settings.config.wallDir
                     nameFilters: ["*.png", "*.jpg"]
+                }
+                FontDialog {
+                    id: fontPicker
                 }
 
                 Component {

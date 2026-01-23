@@ -1,8 +1,14 @@
 import QtQuick
 import Quickshell.Io
 import qs.settings
+import QtQuick.Dialogs
 
 Item {
+    FontDialog {
+        id: fontPicker
+        flags: FontDialog.NoButtons
+    }
+
     IpcHandler {
         id: ipcHandler
         target: "settings"

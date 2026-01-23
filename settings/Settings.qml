@@ -25,7 +25,7 @@ Singleton {
             property var margins: 10
             property var currentWall: ""
             property var barHeight: 28
-            property var font: "Google Sans"
+            property var font: ""
             property var fontSize: 14
             property var rounding: 10
             property var wallDir: "file:///home/lucy/.walls/"

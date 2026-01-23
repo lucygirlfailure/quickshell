@@ -6,6 +6,7 @@ import qs.modules.bar
 import qs.modules.overlays
 import qs.modules.notifications
 import qs.modules.widgets.wallswitcher
+import QtQuick.Dialogs
 
 ShellRoot {
     id: root
