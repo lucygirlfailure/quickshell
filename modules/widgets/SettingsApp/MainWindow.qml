@@ -11,6 +11,7 @@ import qs.reusables
 FloatingWindow {
     id: root
     color: Colors.surface
+    title: "qs-settings"
     implicitWidth: 800
     implicitHeight: 600
     ListModel {
@@ -35,7 +36,6 @@ FloatingWindow {
     RowLayout {
         id: windowLayout
         anchors.fill: parent
-        spacing: 50
 
         ClippingWrapperRectangle {
             id: pageWrapper
@@ -82,7 +82,6 @@ FloatingWindow {
         }
         Loader {
             id: contentLoader
-            Layout.alignment: Qt.AlignCenter
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.margins: 20

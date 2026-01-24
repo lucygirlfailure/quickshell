@@ -17,7 +17,9 @@ Rectangle {
         id: dismissTimer
         interval: 5000
         running: true
-        onTriggered: notifyItem.modelData.dismiss()
+        onTriggered: {
+            parent.modelData.expire();
+        }
     }
 
     RowLayout {

@@ -1,12 +1,33 @@
 import QtQuick
 import qs
 import qs.reusables
+import Quickshell.Widgets
+import QtQuick.Layouts
 
-Item {
+ClippingWrapperRectangle {
     id: root
-    implicitWidth: 300
-    implicitHeight: 300
-    CustomText {
-        text: "I am the welcome page"
+    anchors.centerIn: parent
+    clip: true
+    color: Colors.surfaceContainerHighest
+    radius: 12
+    margin: 20
+    ColumnLayout {
+        id: pageLayout
+        spacing: 0
+        anchors.top: parent.top
+        CustomText {
+
+            text: "Welcome!"
+            font.pixelSize: 24
+            font.bold: true
+        }
+        CustomText {
+
+            text: "we love women here"
+        }
+        Item {
+            id: sping
+            Layout.fillHeight: true
+        }
     }
 }
