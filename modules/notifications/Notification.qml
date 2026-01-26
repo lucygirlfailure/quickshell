@@ -17,7 +17,7 @@ Variants {
             bottom: true
         }
         margins {
-            top: Settings.config.barHeight + Settings.config.margins + 10
+            top: Settings.config.floating ? Settings.config.barHeight + Settings.config.margins + 10 : Settings.config.barHeight + 10
             right: 10
             left: 10
         }
