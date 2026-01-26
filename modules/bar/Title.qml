@@ -3,7 +3,6 @@ import Quickshell.Wayland
 import qs
 import qs.settings
 import qs.reusables
-import QtQuick.Dialogs
 
 Rectangle {
     id: container
@@ -26,20 +25,6 @@ Rectangle {
         }
         MouseArea {
             id: fontOpener
-            FontDialog {
-                id: fontPicker
-                title: "qs-fontpicker"
-                flags: FontDialog.NoButtons | FontDialog.MonospacedFonts
-
-                onAccepted: {
-                    Settings.config.font = selectedFont.family;
-                    Settings.config.fontSize = selectedFont.pointSize;
-                }
-                onSelectedFontChanged: {
-                    Settings.config.font = selectedFont.family;
-                    Settings.config.fontSize = selectedFont.pointSize;
-                }
-            }
             anchors.fill: parent
             acceptedButtons: Qt.LeftButton
             cursorShape: Qt.PointingHandCursor
