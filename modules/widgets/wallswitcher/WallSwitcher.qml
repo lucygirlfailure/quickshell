@@ -23,7 +23,7 @@ FloatingWindow {
     }
     Process {
         id: wallustRunner
-        property string cmd: "matugen image " + Settings.config.currentWall + " -t scheme-neutral"
+        property string cmd: "matugen image " + Settings.config.currentWall
         command: ["sh", "-c", cmd]
     }
     GlobalShortcut {
@@ -112,7 +112,7 @@ FloatingWindow {
                                 onClicked: {
                                     Settings.config.currentWall = imageRounder.filePath;
                                     if (Settings.config.generateScheme) {
-                                        wallustRunner.startDetached();
+                                        wallustRunner.running = true;
                                     }
                                 }
                             }
