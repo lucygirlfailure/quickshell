@@ -7,7 +7,7 @@ import qs.reusables
 Rectangle {
     id: container
     radius: implicitHeight / 2
-    color: Colors.primaryContainer
+    color: Colors.surfaceContainer
     anchors.verticalCenter: parent.verticalCenter
     implicitWidth: root.implicitWidth
     implicitHeight: Settings.config.barHeight - 10
@@ -22,16 +22,6 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             text: root.activeWindow ? root.activeWindow.activated ? root.activeWindow.appId : "Desktop" : "Desktop"
             elide: Text.ElideRight
-        }
-        MouseArea {
-            id: fontOpener
-            anchors.fill: parent
-            acceptedButtons: Qt.LeftButton
-            cursorShape: Qt.PointingHandCursor
-            onClicked: {
-                fontPicker.open();
-                console.log(fontPicker.selectedFont.family);
-            }
         }
     }
 }

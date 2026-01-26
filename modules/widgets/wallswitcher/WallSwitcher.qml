@@ -46,9 +46,10 @@ FloatingWindow {
             Layout.bottomMargin: 0
             radius: 14
             implicitHeight: 30
-            color: Colors.onPrimaryColor
+            color: Colors.surfaceContainerLow
             CustomText {
                 id: titleText
+                font.bold: true
                 anchors.centerIn: textWrapper
                 text: "Wallpapers in " + Settings.config.wallDir
             }
@@ -96,6 +97,7 @@ FloatingWindow {
                         id: imageRounder
                         implicitHeight: 80
                         implicitWidth: 120
+                        color: "transparent"
                         required property string filePath
                         radius: 12
                         child: Image {

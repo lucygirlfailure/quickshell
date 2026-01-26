@@ -9,7 +9,7 @@ import qs
 Rectangle {
     id: container
     radius: implicitHeight / 2
-    color: pavuArea.containsMouse ? Colors.secondaryContainer : Colors.primaryContainer
+    color: pavuArea.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
     anchors.verticalCenter: parent.verticalCenter
     implicitWidth: root.implicitWidth + 20
     implicitHeight: Settings.config.barHeight - 10

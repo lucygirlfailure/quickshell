@@ -27,5 +27,6 @@ Variants {
             fillMode: Image.Stretch
             source: Settings.config.currentWall
         }
+        ScreenCorners {}
     }
 }

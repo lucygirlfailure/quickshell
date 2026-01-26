@@ -10,10 +10,9 @@ import qs.modules.widgets.settingsapp
 
 ShellRoot {
     id: root
-    Ipc {}
+    Wallpaper {}
     Bar {}
     Notification {}
-    Wallpaper {}
     WallSwitcher {}
-    MainWindow {}
+    Ipc {}
 }
