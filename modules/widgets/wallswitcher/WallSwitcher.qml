@@ -65,6 +65,7 @@ FloatingWindow {
             color: Colors.surfaceContainerLow
             GridView {
                 id: gridRoot
+                anchors.margins: 20
                 property var columns: Math.floor(gridRoot.width / cellWidth)
                 property var usedWidth: columns * cellWidth
                 property var emptySpace: width - usedWidth
@@ -79,7 +80,6 @@ FloatingWindow {
                 anchors.fill: innerWindow
                 anchors.centerIn: innerWindow
                 leftMargin: emptySpace / 2
-                topMargin: 20
                 model: folderModel
                 delegate: fileDelegate
                 FolderListModel {

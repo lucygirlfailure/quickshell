@@ -10,6 +10,10 @@ import qs.reusables
 
 FloatingWindow {
     id: root
+    visible: Settings.config.settingsShown
+    onClosed: {
+        Settings.config.settingsShown = false;
+    }
     color: Colors.surface
     title: "qs-settings"
     implicitWidth: 800

@@ -15,4 +15,5 @@ ShellRoot {
     Notification {}
     WallSwitcher {}
     Ipc {}
+    MainWindow {}
 }

@@ -60,6 +60,7 @@ Variants {
                 Volume {}
                 Battery {}
                 SysTray {}
+                SettingsIcon {}
             }
         }
     }

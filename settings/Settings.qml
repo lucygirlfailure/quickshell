@@ -34,6 +34,7 @@ Singleton {
             property int screenCornerRadius: 10
             property double translucency: 1
             property bool blackScreenCorners: true
+            property bool settingsShown: true
         }
     }
 }
