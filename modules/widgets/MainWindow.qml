@@ -79,7 +79,6 @@ FloatingWindow {
                             acceptedButtons: Qt.LeftButton
                             onClicked: {
                                 contentLoader.source = parent.modelData.source;
-                                console.log(parent.index);
                                 pageView.currentIndex = parent.index;
                             }
                         }
