@@ -15,5 +15,4 @@ ShellRoot {
     Notification {}
     Wallpaper {}
     WallSwitcher {}
-    MainWindow {}
 }
