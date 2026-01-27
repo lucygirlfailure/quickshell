@@ -35,39 +35,50 @@ ClippingWrapperRectangle {
             id: fontWrapper
             radius: 14
             color: Colors.surfaceContainerHigh
-            implicitHeight: fontLayout.implicitHeight + 10
-            implicitWidth: fontLayout.implicitWidth + 10
+            implicitHeight: 30
+            implicitWidth: 300
             RowLayout {
                 id: fontLayout
-                anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
+                anchors.fill: parent
                 clip: true
                 spacing: 10
                 CustomText {
                     id: fontText
+                    Layout.leftMargin: 20
+                    Layout.alignment: Qt.AlignLeft
                     font.bold: true
                     text: "current font: " + Settings.config.font
                 }
-                Rectangle {
-                    id: fontSelector
-                    Layout.rightMargin: 5
-                    implicitWidth: fontSelectorText.implicitWidth + 20
-                    implicitHeight: 20
-                    color: Colors.surfaceContainerHigh
-                    border.width: 2
-                    border.color: Colors.outline
-                    radius: 12
-                    CustomText {
-                        id: fontSelectorText
-                        anchors.centerIn: parent
-                        text: "Pick Font"
-                    }
-                    MouseArea {
-                        id: fontPickerOpener
-                        anchors.fill: parent
-                        acceptedButtons: Qt.LeftButton
-                        cursorShape: Qt.PointingHandCursor
-                        onClicked: fontPicker.open()
+            }
+        }
+        Rectangle {
+            id: floatingWrapper
+            radius: 14
+            color: Colors.surfaceContainerHigh
+            implicitHeight: 30
+            implicitWidth: 300
+            RowLayout {
+                id: floatingToggleLayout
+                anchors.fill: parent
+                anchors.verticalCenter: parent.verticalCenter
+                clip: true
+                spacing: 10
+                CustomText {
+                    id: floatingToggleText
+                    Layout.leftMargin: 20
+                    Layout.alignment: Qt.AlignLeft
+                    font.bold: true
+                    text: "top bar floating"
+                }
+                CustomSwitch {
+                    Layout.alignment: Qt.AlignRight
+                    Layout.rightMargin: 20
+                    implicitHeight: 15
+                    implicitWidth: 30
+
+                    onToggled: {
+                        Settings.config.floating = !Settings.config.floating;
                     }
                 }
             }
