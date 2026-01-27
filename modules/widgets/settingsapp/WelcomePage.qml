@@ -8,7 +8,7 @@ ClippingWrapperRectangle {
     id: root
     anchors.centerIn: parent
     clip: true
-    color: Colors.surfaceContainerHighest
+    color: Colors.surfaceContainerLow
     radius: 12
     margin: 20
     ColumnLayout {
@@ -16,7 +16,7 @@ ClippingWrapperRectangle {
         spacing: 0
         anchors.top: parent.top
         CustomText {
-
+            topPadding: 10
             text: "Welcome!"
             font.pixelSize: 24
             font.bold: true

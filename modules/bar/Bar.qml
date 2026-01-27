@@ -14,9 +14,9 @@ Variants {
         aboveWindows: true
         screen: modelData
         margins {
-            top: Settings.config.margins
-            left: Settings.config.margins
-            right: Settings.config.margins
+            top: Settings.config.floating ? Settings.config.margins : 0
+            left: Settings.config.floating ? Settings.config.margins : 0
+            right: Settings.config.floating ? Settings.config.margins : 0
         }
 
         anchors {
@@ -29,8 +29,8 @@ Variants {
             id: container
             implicitHeight: Settings.config.barHeight
             anchors.fill: parent
-            color: Colors.surface
-            radius: implicitHeight / 2
+            color: Qt.rgba(Colors.surface.r, Colors.surface.g, Colors.surface.b, Settings.config.translucency)
+            radius: Settings.config.floating ? Settings.config.barHeight / 2 : 0
 
             Row {
                 id: leftStuff
@@ -60,6 +60,7 @@ Variants {
                 Volume {}
                 Battery {}
                 SysTray {}
+                SettingsIcon {}
             }
         }
     }

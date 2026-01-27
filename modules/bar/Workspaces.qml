@@ -5,10 +5,13 @@ import qs
 import qs.settings
 import qs.reusables
 
-Item {
+Rectangle {
     id: root
-    implicitWidth: workspaceRow.implicitWidth
-    implicitHeight: workspaceRow.implicitHeight
+    color: Colors.surfaceContainer
+
+    implicitWidth: workspaceRow.implicitWidth + 10
+    implicitHeight: Settings.config.barHeight - 10
+    radius: Settings.config.barHeight / 2
     anchors.verticalCenter: parent.verticalCenter
     property var screen: screen
     Row {
@@ -43,7 +46,8 @@ Item {
                 CustomText {
                     anchors.centerIn: workspaceNumber
                     text: parent.modelData.id
-                    color: workspaceNumber.modelData.focused ? Colors.onSecondaryContainerColor : Colors.surfaceVariant
+                    color: Colors.onSurfaceColor
+                    opacity: workspaceNumber.modelData.focused ? 1 : 0.5
                 }
                 MouseArea {
                     anchors.fill: parent

@@ -23,7 +23,7 @@ FloatingWindow {
     }
     Process {
         id: wallustRunner
-        property string cmd: "matugen image " + Settings.config.currentWall + " -t scheme-neutral"
+        property string cmd: "matugen image " + Settings.config.currentWall
         command: ["sh", "-c", cmd]
     }
     GlobalShortcut {
@@ -46,9 +46,10 @@ FloatingWindow {
             Layout.bottomMargin: 0
             radius: 14
             implicitHeight: 30
-            color: Colors.onPrimaryColor
+            color: Colors.surfaceContainerLow
             CustomText {
                 id: titleText
+                font.bold: true
                 anchors.centerIn: textWrapper
                 text: "Wallpapers in " + Settings.config.wallDir
             }
@@ -64,6 +65,7 @@ FloatingWindow {
             color: Colors.surfaceContainerLow
             GridView {
                 id: gridRoot
+                anchors.margins: 20
                 property var columns: Math.floor(gridRoot.width / cellWidth)
                 property var usedWidth: columns * cellWidth
                 property var emptySpace: width - usedWidth
@@ -78,7 +80,6 @@ FloatingWindow {
                 anchors.fill: innerWindow
                 anchors.centerIn: innerWindow
                 leftMargin: emptySpace / 2
-                topMargin: 20
                 model: folderModel
                 delegate: fileDelegate
                 FolderListModel {
@@ -96,6 +97,7 @@ FloatingWindow {
                         id: imageRounder
                         implicitHeight: 80
                         implicitWidth: 120
+                        color: "transparent"
                         required property string filePath
                         radius: 12
                         child: Image {
@@ -112,7 +114,7 @@ FloatingWindow {
                                 onClicked: {
                                     Settings.config.currentWall = imageRounder.filePath;
                                     if (Settings.config.generateScheme) {
-                                        wallustRunner.startDetached();
+                                        wallustRunner.running = true;
                                     }
                                 }
                             }

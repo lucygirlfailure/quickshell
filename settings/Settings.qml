@@ -7,34 +7,34 @@ import Quickshell.Io
 Singleton {
     id: root
     property alias config: settingsAdapter
-    property alias currentWall: settingsAdapter.currentWall
-    onConfigChanged: {
-        console.log('config change detected, writing adapter');
-        settingsView.writeAdapter();
-    }
-
+    onConfigChanged: settingsView.writeAdapter()
     FileView {
         id: settingsView
 
+        path: "/home/lucy/.config/qs.json"
+        watchChanges: true
         onAdapterUpdated: writeAdapter()
-        path: "/home/lucy/.config/quickshell/settings/config.json"
-        watchChanges: false
-
+        onFileChanged: reload()
         adapter: JsonAdapter {
             id: settingsAdapter
-            property var margins: 10
+            property var margins: 20
             property var currentWall: ""
-            property var barHeight: 28
+            property var barHeight: 30
             property var font: ""
             property var fontSize: 14
             property var rounding: 10
             property var wallDir: "file:///home/lucy/.walls/"
-            property bool floating: true
+            property bool floating: false
             property int paddingTop: 10
             property int paddingSides: 10
             property var generateScheme: true
             property bool wallSwitcherShown: false
-            property int fontWeight: 500
+            property int fontWeight: 600
+            property bool showScreenCorners: true
+            property int screenCornerRadius: 10
+            property double translucency: 1
+            property bool blackScreenCorners: true
+            property bool settingsShown: true
         }
     }
 }

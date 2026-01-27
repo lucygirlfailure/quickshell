@@ -6,13 +6,14 @@ import qs.modules.bar
 import qs.modules.overlays
 import qs.modules.notifications
 import qs.modules.widgets.wallswitcher
-import qs.modules.widgets.SettingsApp
+import qs.modules.widgets.settingsapp
 
 ShellRoot {
     id: root
-    Ipc {}
+    Wallpaper {}
     Bar {}
     Notification {}
-    Wallpaper {}
     WallSwitcher {}
+    Ipc {}
+    MainWindow {}
 }
