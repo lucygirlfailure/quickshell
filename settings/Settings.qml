@@ -7,14 +7,13 @@ import Quickshell.Io
 Singleton {
     id: root
     property alias config: settingsAdapter
-    onConfigChanged: {
-        settingsView.writeAdapter();
-    }
+    onConfigChanged: settingsView.writeAdapter()
     FileView {
         id: settingsView
 
-        path: "/home/lucy/.config/quickshell/settings/config.json"
+        path: "/home/lucy/.config/qs.json"
         watchChanges: true
+        onAdapterUpdated: writeAdapter()
         onFileChanged: reload()
         adapter: JsonAdapter {
             id: settingsAdapter
@@ -25,7 +24,7 @@ Singleton {
             property var fontSize: 14
             property var rounding: 10
             property var wallDir: "file:///home/lucy/.walls/"
-            property bool floating: true
+            property bool floating: false
             property int paddingTop: 10
             property int paddingSides: 10
             property var generateScheme: true
