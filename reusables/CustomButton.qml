@@ -18,6 +18,6 @@ Button {
         border.color: control.down ? Colors.primaryFixed : Colors.primary
         border.width: 1
         radius: parent.implicitHeight / 2
-        color: "transparent"
+        color: Colors.surfaceContainerLow
     }
 }
