@@ -32,7 +32,7 @@ Item {
                 id: cornersPath
 
                 // Corner configuration
-                readonly property color cornerColor: Qt.rgba(Colors.surface.r, Colors.surface.g, Colors.surface.b, Settings.config.translucency)
+                readonly property color cornerColor: Settings.config.floating ? "black" : Qt.rgba(Colors.surface.r, Colors.surface.g, Colors.surface.b, Settings.config.translucency)
                 readonly property real cornerRadius: Settings.config.screenCornerRadius
                 readonly property real cornerSize: Settings.config.screenCornerRadius
 

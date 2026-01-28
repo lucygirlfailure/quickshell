@@ -53,7 +53,7 @@ Variants {
 
             Row {
                 id: rightStuff
-                rightPadding: 5
+                rightPadding: 10
                 spacing: 10
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter

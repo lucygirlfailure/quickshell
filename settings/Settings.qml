@@ -22,11 +22,8 @@ Singleton {
             property var barHeight: 30
             property var font: ""
             property var fontSize: 14
-            property var rounding: 10
             property var wallDir: "file:///home/lucy/.walls/"
             property bool floating: false
-            property int paddingTop: 10
-            property int paddingSides: 10
             property var generateScheme: true
             property bool wallSwitcherShown: false
             property int fontWeight: 600
