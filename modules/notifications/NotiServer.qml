@@ -2,7 +2,6 @@ pragma ComponentBehavior: Bound
 pragma Singleton
 import Quickshell.Services.Notifications
 import QtQuick
-import Quickshell.Io
 
 NotificationServer {
     bodyMarkupSupported: true

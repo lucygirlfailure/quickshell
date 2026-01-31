@@ -44,9 +44,10 @@ Rectangle {
         Row {
             id: textRow
             anchors.verticalCenter: parent.verticalCenter
-            spacing: 5
+            spacing: 0
             CustomText {
                 id: volumeText
+                anchors.verticalCenter: parent.verticalCenter
                 PwObjectTracker {
                     objects: Pipewire.ready ? Pipewire.defaultAudioSink : []
                 }

@@ -16,10 +16,12 @@ ClippingWrapperRectangle {
         onAccepted: {
             Settings.config.font = selectedFont.family;
             Settings.config.fontSize = selectedFont.pointSize;
+            Settings.config.fontWeight = selectedFont.weight;
         }
         onSelectedFontChanged: {
             Settings.config.font = selectedFont.family;
             Settings.config.fontSize = selectedFont.pointSize;
+            Settings.config.fontWeight = selectedFont.weight;
         }
     }
     anchors.centerIn: parent
