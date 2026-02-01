@@ -3,6 +3,7 @@ import qs
 import qs.settings
 
 Text {
+    verticalAlignment: Text.AlignVCenter
     color: Colors.onSurfaceColor
     font.family: Settings.config.font
     font.pixelSize: Settings.config.fontSize

@@ -1,4 +1,5 @@
 import Quickshell.Io
+import QtQuick.Layouts
 import QtQuick
 import Quickshell.Services.Pipewire
 import qs.settings
@@ -6,71 +7,65 @@ import qs.reusables
 import qs
 
 Rectangle {
-    id: container
+    id: root
     radius: implicitHeight / 2
     color: pavuArea.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
     anchors.verticalCenter: parent.verticalCenter
-    implicitWidth: root.implicitWidth + 20
-    implicitHeight: Settings.config.barHeight - 10
-    Item {
-        id: root
-        anchors.centerIn: parent
-        implicitWidth: textRow.width
-        implicitHeight: Settings.config.barHeight
-        property var sink: Pipewire.defaultAudioSink
-        function getVolumeIcon() {
-            // Safety check: if Pipewire is dead or sink is missing
-            if (!sink)
-                return "volume_off";
+    implicitWidth: textRow.implicitWidth + 20
+    implicitHeight: Settings.config.barHeight - 8
+    property var sink: Pipewire.defaultAudioSink
+    function getVolumeIcon() {
+        // Safety check: if Pipewire is dead or sink is missing
+        if (!sink)
+            return "volume_off";
 
-            // If muted, show the hush icon
-            if (sink.audio.muted)
-                return "volume_off";
+        // If muted, show the hush icon
+        if (sink.audio.muted)
+            return "volume_off";
 
-            // Volume is usually 0.0 to 1.0 (0% to 100%)
-            const vol = sink.audio.volume;
+        // Volume is usually 0.0 to 1.0 (0% to 100%)
+        const vol = sink.audio.volume;
 
-            if (vol <= 0.25)
-                return "volume_mute";
-            if (vol < 0.75)
-                return "volume_down";
-            if (vol <= 1.00)
-                return "volume_up";
-
-            // If it's loud, prepare the ears!
+        if (vol <= 0.25)
+            return "volume_mute";
+        if (vol < 0.75)
+            return "volume_down";
+        if (vol <= 1.00)
             return "volume_up";
-        }
-        Row {
-            id: textRow
-            anchors.centerIn: root
-            spacing: 5
-            CustomText {
-                id: volumeText
-                anchors.verticalCenter: parent.verticalCenter
-                PwObjectTracker {
-                    objects: Pipewire.ready ? Pipewire.defaultAudioSink : []
-                }
-                text: Pipewire.ready ? Math.round(root.sink.audio.volume * 100) + "%" : "failure"
-                opacity: Pipewire.ready ? root.sink.audio.muted ? 0.5 : 1 : 0
+
+        // If it's loud, prepare the ears!
+        return "volume_up";
+    }
+    RowLayout {
+        id: textRow
+        spacing: 2
+        anchors.centerIn: parent
+        CustomText {
+            id: volumeText
+
+            PwObjectTracker {
+                objects: Pipewire.ready ? Pipewire.defaultAudioSink : []
             }
-            CustomIcon {
-                id: volumeIcon
-                anchors.verticalCenter: parent.verticalCenter
-                opacity: Pipewire.ready ? root.sink.audio.muted ? 0.5 : 1 : 0
-                text: Pipewire.ready ? root.getVolumeIcon() : null
-            }
+            text: Pipewire.ready ? Math.round(root.sink.audio.volume * 100) + "%" : "failure"
+            opacity: Pipewire.ready ? root.sink.audio.muted ? 0.5 : 1 : 0
         }
-        MouseArea {
-            id: pavuArea
-            Process {
-                id: pavuLauncher
-                command: ["sh", "-c", "pavucontrol"]
-            }
-            anchors.fill: parent
-            onClicked: pavuLauncher.exec(pavuLauncher.command)
-            acceptedButtons: Qt.LeftButton
-            cursorShape: Qt.PointingHandCursor
-            hoverEnabled: true
+        CustomIcon {
+            id: volumeIcon
+            Layout.alignment: Qt.AlignVCenter
+            opacity: Pipewire.ready ? root.sink.audio.muted ? 0.5 : 1 : 0
+            text: Pipewire.ready ? root.getVolumeIcon() : null
         }
+    }
+    MouseArea {
+        id: pavuArea
+        Process {
+            id: pavuLauncher
+            command: ["sh", "-c", "pavucontrol"]
+        }
+        anchors.fill: parent
+        onClicked: pavuLauncher.exec(pavuLauncher.command)
+        acceptedButtons: Qt.LeftButton
+        cursorShape: Qt.PointingHandCursor
+        hoverEnabled: true
     }
 }
