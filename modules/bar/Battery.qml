@@ -1,4 +1,5 @@
 import Quickshell.Services.UPower
+import QtQuick.Layouts
 import QtQuick
 import Quickshell.Widgets
 import Qt5Compat.GraphicalEffects
@@ -68,17 +69,20 @@ Loader {
             implicitWidth: batRow.width
             implicitHeight: Settings.config.barHeight
 
-            Row {
+            RowLayout {
                 id: batRow
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: 5
                 CustomText {
                     id: batText
+
+                    Layout.topMargin: 2
                     anchors.verticalCenter: parent.verticalCenter
                     text: Math.round(UPower.displayDevice.percentage * 100) + "%"
                 }
                 CustomIcon {
                     id: batIcon
+                    Layout.topMargin: 2
                     font.family: "Material Symbols Rounded"
                     text: root.getBatteryIcon()
                 }

@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Layouts
 import Quickshell.Services.Mpris
 import qs
 import qs.settings
@@ -26,7 +27,7 @@ Rectangle {
         implicitWidth: statusRow.implicitWidth
         implicitHeight: statusRow.implicitHeight
 
-        Row {
+        RowLayout {
             id: statusRow
             spacing: 5
             anchors.verticalCenter: parent.verticalCenter
@@ -34,10 +35,12 @@ Rectangle {
             property var status: root.spotify != null ? !root.spotify.isPlaying ? "play_arrow" : "pause" : ""
             CustomText {
                 id: mprisText
+                Layout.topMargin: 2
                 text: root.spotify != null ? parent.combinedText : ""
             }
             CustomIcon {
                 id: mprisStatus
+                Layout.topMargin: 2
                 text: root.spotify != null ? parent.status : ""
             }
         }

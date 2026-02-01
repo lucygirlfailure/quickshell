@@ -35,8 +35,9 @@ FloatingWindow {
 
     ColumnLayout {
         id: windowLayout
-        spacing: 10
+        spacing: 5
         anchors.fill: parent
+        anchors.margins: 5
 
         Rectangle {
             id: textWrapper
@@ -44,7 +45,10 @@ FloatingWindow {
             Layout.margins: 10
             Layout.alignment: Qt.AlignCenter
             Layout.bottomMargin: 0
-            radius: 14
+            topLeftRadius: 12
+            topRightRadius: 12
+            bottomLeftRadius: 4
+            bottomRightRadius: 4
             implicitHeight: 30
             color: Colors.surfaceContainerLow
             CustomText {
@@ -61,7 +65,10 @@ FloatingWindow {
             Layout.fillWidth: true
             Layout.fillHeight: true
             Layout.margins: 10
-            radius: 14
+            topLeftRadius: 4
+            topRightRadius: 4
+            bottomLeftRadius: 12
+            bottomRightRadius: 12
             color: Colors.surfaceContainerLow
             GridView {
                 id: gridRoot
