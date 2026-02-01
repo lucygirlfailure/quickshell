@@ -1,4 +1,3 @@
-import Quickshell
 import Quickshell.Io
 import QtQuick
 import Quickshell.Services.Pipewire
@@ -43,8 +42,8 @@ Rectangle {
         }
         Row {
             id: textRow
-            anchors.verticalCenter: parent.verticalCenter
-            spacing: 0
+            anchors.centerIn: root
+            spacing: 5
             CustomText {
                 id: volumeText
                 anchors.verticalCenter: parent.verticalCenter
@@ -56,6 +55,7 @@ Rectangle {
             }
             CustomIcon {
                 id: volumeIcon
+                anchors.verticalCenter: parent.verticalCenter
                 opacity: Pipewire.ready ? root.sink.audio.muted ? 0.5 : 1 : 0
                 text: Pipewire.ready ? root.getVolumeIcon() : null
             }
@@ -66,7 +66,7 @@ Rectangle {
                 id: pavuLauncher
                 command: ["sh", "-c", "pavucontrol"]
             }
-            anchors.fill: root
+            anchors.fill: parent
             onClicked: pavuLauncher.exec(pavuLauncher.command)
             acceptedButtons: Qt.LeftButton
             cursorShape: Qt.PointingHandCursor
