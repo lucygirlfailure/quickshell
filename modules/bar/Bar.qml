@@ -34,7 +34,7 @@ Variants {
 
             Row {
                 id: leftStuff
-                leftPadding: 5
+                leftPadding: Settings.config.barHeight / 4
                 spacing: 10
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
@@ -53,7 +53,7 @@ Variants {
 
             Row {
                 id: rightStuff
-                rightPadding: 5
+                rightPadding: Settings.config.barHeight / 4
                 spacing: 10
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
