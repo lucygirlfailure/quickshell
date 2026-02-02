@@ -10,14 +10,14 @@ Rectangle {
     color: Colors.surfaceContainer
 
     implicitWidth: workspaceRow.implicitWidth + 10
-    implicitHeight: Settings.config.barHeight - 10
+    implicitHeight: Settings.config.barHeight - 10 
     radius: Settings.config.barHeight / 2
     anchors.verticalCenter: parent.verticalCenter
     property var screen: screen
     Row {
         id: workspaceRow
         anchors.centerIn: parent
-        spacing: 10 // Slightly increase spacing between workspace buttons
+        spacing: 5 // Slightly increase spacing between workspace buttons
 
         Repeater {
             id: wsRepeater
