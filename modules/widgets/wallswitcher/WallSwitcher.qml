@@ -23,7 +23,7 @@ FloatingWindow {
     }
     Process {
         id: wallustRunner
-        property string cmd: "matugen image " + Settings.config.currentWall
+        property string cmd: Settings.config.schemeGenerator === "matugen" ? "matugen image " + Settings.config.currentWall : "wallust run " + Settings.config.currentWall
         command: ["sh", "-c", cmd]
     }
     GlobalShortcut {

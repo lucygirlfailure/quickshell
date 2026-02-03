@@ -278,6 +278,38 @@ ClippingWrapperRectangle {
                 }
             }
         }
+        ClippingWrapperRectangle {
+            id: schemeGeneratorWrapper
+            Layout.fillWidth: true
+            leftMargin: 10
+            rightMargin: 15
+            implicitHeight: 30
+            bottomLeftRadius: 12
+            bottomRightRadius: 12
+            topRightRadius: 4
+            topLeftRadius: 4
+            color: Colors.surfaceContainerHigh
+            child: RowLayout {
+                id: schemeGeneratorLayout
+                spacing: 5
+                CustomText {
+                    id: schemeGeneratorText
+                    text: "Scheme generator"
+                    Layout.fillWidth: true
+                }
+                CustomButton {
+                    implicitHeight: schemeGeneratorWrapper.implicitHeight - 10
+                    onClicked: {
+                        if (Settings.config.schemeGenerator === "matugen") {
+                            Settings.config.schemeGenerator = "wallust";
+                        } else {
+                            Settings.config.schemeGenerator = "matugen";
+                        }
+                    }
+                    customText: Settings.config.schemeGenerator
+                }
+            }
+        }
         Item {
             id: spring
             Layout.fillHeight: true
