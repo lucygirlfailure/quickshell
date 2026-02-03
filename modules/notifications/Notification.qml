@@ -43,6 +43,23 @@ Variants {
 
             model: NotiServer.trackedNotifications
             delegate: NotificationCard {}
+            add: Transition {
+                NumberAnimation {
+                    property: "x"
+                    from: notifList.width
+                    to: 0
+                    duration: 400
+                    easing.type: Easing.OutExpo
+                }
+            }
+
+            // Optional: Animate items moving up when one is dismissed
+            move: Transition {
+                NumberAnimation {
+                    properties: "y"
+                    duration: 300
+                }
+            }
         }
     }
 }
