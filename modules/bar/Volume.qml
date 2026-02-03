@@ -38,10 +38,12 @@ Rectangle {
     }
     RowLayout {
         id: textRow
-        spacing: 2
+        spacing: 0
         anchors.centerIn: parent
+        height: parent.height
         CustomText {
             id: volumeText
+            Layout.alignment: Qt.AlignVCenter
             PwObjectTracker {
                 objects: Pipewire.ready ? Pipewire.defaultAudioSink : []
             }
