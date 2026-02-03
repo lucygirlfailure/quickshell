@@ -77,7 +77,6 @@ Loader {
                     id: batText
 
                     Layout.topMargin: 2
-                    anchors.verticalCenter: parent.verticalCenter
                     text: Math.round(UPower.displayDevice.percentage * 100) + "%"
                 }
                 CustomIcon {
@@ -87,7 +86,6 @@ Loader {
                     text: root.getBatteryIcon()
                 }
                 Item {
-                    anchors.verticalCenter: parent.verticalCenter
                     implicitWidth: 12
                     implicitHeight: 12
 

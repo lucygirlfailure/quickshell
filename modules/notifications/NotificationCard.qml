@@ -8,6 +8,12 @@ import Quickshell.Widgets
 
 Rectangle {
     id: notifyItem
+    Behavior on implicitWidth {
+        NumberAnimation {
+            duration: 100
+            easing: Easing.OutBack
+        }
+    }
     required property var modelData
     implicitWidth: ListView.view ? ListView.view.width : 300
     implicitHeight: fullLayout.implicitHeight + 20
