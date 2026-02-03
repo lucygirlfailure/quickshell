@@ -16,7 +16,7 @@ Item {
             console.log(Settings.config.generateScheme);
             Settings.config.currentWall = newWall;
             if (Settings.config.generateScheme === true) {
-                wallustRunner.startDetached();
+                wallustRunner.running = true;
             }
         }
         function setFont(newFont: string): void {
