@@ -32,6 +32,7 @@ Singleton {
             property double translucency: 1
             property bool blackScreenCorners: true
             property bool settingsShown: true
+            property string schemeGenerator: "matugen"
         }
     }
 }
