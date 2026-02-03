@@ -42,8 +42,6 @@ Rectangle {
         anchors.centerIn: parent
         CustomText {
             id: volumeText
-            Layout.topMargin: 2
-
             PwObjectTracker {
                 objects: Pipewire.ready ? Pipewire.defaultAudioSink : []
             }
@@ -52,7 +50,6 @@ Rectangle {
         }
         CustomIcon {
             id: volumeIcon
-            Layout.topMargin: 2
             Layout.alignment: Qt.AlignVCenter
             opacity: Pipewire.ready ? root.sink.audio.muted ? 0.5 : 1 : 0
             text: Pipewire.ready ? root.getVolumeIcon() : null
