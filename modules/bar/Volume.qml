@@ -10,7 +10,6 @@ Rectangle {
     id: root
     radius: implicitHeight / 2
     color: pavuArea.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
-    anchors.verticalCenter: parent.verticalCenter
     implicitWidth: textRow.implicitWidth + 20
     implicitHeight: Settings.config.barHeight - 8
     property var sink: Pipewire.defaultAudioSink

@@ -11,7 +11,6 @@ import qs.settings
 Loader {
     id: batLoader
     active: UPower.displayDevice.isLaptopBattery
-    anchors.verticalCenter: parent.verticalCenter
 
     sourceComponent: Rectangle {
         id: container

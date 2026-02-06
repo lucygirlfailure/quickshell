@@ -8,7 +8,6 @@ Rectangle {
     id: container
     radius: implicitHeight / 2
     color: Colors.surfaceContainer
-    anchors.verticalCenter: parent.verticalCenter
     implicitWidth: root.implicitWidth
     implicitHeight: Settings.config.barHeight - 10
     Item {

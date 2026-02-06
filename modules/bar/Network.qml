@@ -13,7 +13,6 @@ Rectangle {
     color: "transparent"
     implicitHeight: Settings.config.barHeight - 10
     implicitWidth: mainLayout.implicitWidth
-    anchors.verticalCenter: parent.verticalCenter
 
     // --- Logic Functions ---
     function getIcon(device) {
