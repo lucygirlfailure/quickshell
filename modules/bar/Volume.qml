@@ -10,9 +10,8 @@ Rectangle {
     id: root
     radius: implicitHeight / 2
     color: pavuArea.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
-    anchors.verticalCenter: parent.verticalCenter
     implicitWidth: textRow.implicitWidth + 20
-    implicitHeight: Settings.config.barHeight - 8
+    implicitHeight: Settings.config.barHeight - 10
     property var sink: Pipewire.defaultAudioSink
     function getVolumeIcon() {
         // Safety check: if Pipewire is dead or sink is missing
@@ -40,8 +39,10 @@ Rectangle {
         id: textRow
         spacing: 2
         anchors.centerIn: parent
+        height: parent.height
         CustomText {
             id: volumeText
+            Layout.topMargin: 1
             PwObjectTracker {
                 objects: Pipewire.ready ? Pipewire.defaultAudioSink : []
             }
@@ -50,7 +51,6 @@ Rectangle {
         }
         CustomIcon {
             id: volumeIcon
-            Layout.alignment: Qt.AlignVCenter
             opacity: Pipewire.ready ? root.sink.audio.muted ? 0.5 : 1 : 0
             text: Pipewire.ready ? root.getVolumeIcon() : null
         }

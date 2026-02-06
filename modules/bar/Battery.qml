@@ -11,14 +11,13 @@ import qs.settings
 Loader {
     id: batLoader
     active: UPower.displayDevice.isLaptopBattery
-    anchors.verticalCenter: parent.verticalCenter
 
     sourceComponent: Rectangle {
         id: container
         radius: implicitHeight / 2
         color: clickHandler.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
         anchors.verticalCenter: parent.verticalCenter
-        implicitWidth: root.implicitWidth + 20
+        implicitWidth: UPower.displayDevice.isLaptopBattery ? root.implicitWidth + 20 : 0
         implicitHeight: Settings.config.barHeight - 10
         Item {
             id: root

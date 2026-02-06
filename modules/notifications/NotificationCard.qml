@@ -11,7 +11,7 @@ Rectangle {
     required property var modelData
     implicitWidth: ListView.view ? ListView.view.width : 300
     implicitHeight: fullLayout.implicitHeight + 20
-    color: dismissArea.containsMouse ? Colors.color5 : Colors.color6
+    color: dismissArea.containsMouse ? Colors.surfaceContainerLow : Colors.surfaceContainerHigh
     radius: 22
     Timer {
         id: dismissTimer
@@ -32,7 +32,7 @@ Rectangle {
             id: notiIcon
             radius: notifyItem.radius - notifyItem.radius / 3
             implicitWidth: 64
-            color: Colors.color8
+            color: "transparent"
             implicitHeight: 64
             visible: notifyItem.modelData.image !== ""
             IconImage {
