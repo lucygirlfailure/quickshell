@@ -9,8 +9,8 @@ Text {
     font.pixelSize: Settings.config.fontSize
     font.variableAxes: ({
             FILL: fill,
-            GRAD: 0,
-            opsz: 24,
+            GRAD: 200,
+            opsz: 36,
             wght: 400
         })
 }

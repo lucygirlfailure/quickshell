@@ -10,9 +10,10 @@ Rectangle {
     id: root
     // This is the background of the entire bar/module
     // You might want to make this transparent if you only want the "pills" to show
-    color: "transparent"
     implicitHeight: Settings.config.barHeight - 10
-    implicitWidth: mainLayout.implicitWidth
+    implicitWidth: mainLayout.implicitWidth + 20
+    color: Colors.surfaceContainer
+    radius: implicitHeight / 2
 
     // --- Logic Functions ---
     function getIcon(device) {
@@ -54,43 +55,33 @@ Rectangle {
     // --- Main Layout ---
     RowLayout {
         id: mainLayout
+        anchors.centerIn: parent
         spacing: 10 // Space between multiple device pills (if you have ethernet + wifi)
 
         Repeater {
             id: netRepeater
             model: Networking.devices
 
-            delegate: Rectangle {
-                id: devicePill
+            delegate: RowLayout {
+                id: innerContent
+                required property var modelData
+                // THIS fixes the centering issue:
+                anchors.centerIn: parent
+                spacing: 8
 
-                // Style settings for the "Pill"
-                color: Colors.surfaceContainer // Or use a specific grey: "#333333"
-                height: root.implicitHeight
-                radius: height / 2
+                CustomIcon {
+                    id: netIcon
+                    Layout.alignment: Qt.AlignVCenter
+                    text: root.getIcon(innerContent.modelData)
+                }
 
-                // Calculate width: Content width + Padding (12px on each side)
-                width: innerContent.implicitWidth + 24
-
-                RowLayout {
-                    id: innerContent
-                    // THIS fixes the centering issue:
-                    anchors.centerIn: parent
-                    spacing: 8
-
-                    CustomIcon {
-                        id: netIcon
-                        Layout.alignment: Qt.AlignVCenter
-                        text: root.getIcon(modelData)
-                    }
-
-                    CustomText {
-                        id: netText
-                        Layout.topMargin: 2
-                        Layout.alignment: Qt.AlignVCenter
-                        text: root.getStatus(modelData)
-                        // Ensures the text font aligns vertically within its own line-height
-                        verticalAlignment: Text.AlignVCenter
-                    }
+                CustomText {
+                    id: netText
+                    Layout.topMargin: 1
+                    Layout.alignment: Qt.AlignVCenter
+                    text: root.getStatus(innerContent.modelData)
+                    // Ensures the text font aligns vertically within its own line-height
+                    verticalAlignment: Text.AlignVCenter
                 }
             }
         }

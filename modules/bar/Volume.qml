@@ -37,12 +37,12 @@ Rectangle {
     }
     RowLayout {
         id: textRow
-        spacing: 0
+        spacing: 2
         anchors.centerIn: parent
         height: parent.height
         CustomText {
             id: volumeText
-            Layout.alignment: Qt.AlignVCenter
+            Layout.topMargin: 1
             PwObjectTracker {
                 objects: Pipewire.ready ? Pipewire.defaultAudioSink : []
             }
@@ -51,7 +51,6 @@ Rectangle {
         }
         CustomIcon {
             id: volumeIcon
-            Layout.alignment: Qt.AlignVCenter
             opacity: Pipewire.ready ? root.sink.audio.muted ? 0.5 : 1 : 0
             text: Pipewire.ready ? root.getVolumeIcon() : null
         }
