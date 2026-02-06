@@ -42,7 +42,6 @@ Rectangle {
         height: parent.height
         CustomText {
             id: volumeText
-            Layout.topMargin: 1
             PwObjectTracker {
                 objects: Pipewire.ready ? Pipewire.defaultAudioSink : []
             }

@@ -15,7 +15,7 @@ Loader {
     sourceComponent: Rectangle {
         id: container
         radius: implicitHeight / 2
-        color: clickHandler.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
+        color: Colors.surfaceContainer
         anchors.verticalCenter: parent.verticalCenter
         implicitWidth: UPower.displayDevice.isLaptopBattery ? root.implicitWidth + 20 : 0
         implicitHeight: Settings.config.barHeight - 10
@@ -75,49 +75,11 @@ Loader {
                 CustomText {
                     id: batText
 
-                    Layout.topMargin: 2
                     text: Math.round(UPower.displayDevice.percentage * 100) + "%"
                 }
                 CustomIcon {
                     id: batIcon
-                    Layout.topMargin: 2
-                    font.family: "Material Symbols Rounded"
                     text: root.getBatteryIcon()
-                }
-                Item {
-                    implicitWidth: 12
-                    implicitHeight: 12
-
-                    IconImage {
-                        id: rawProfileIcon
-                        anchors.fill: parent
-                        source: Quickshell.iconPath(root.getProfileIcon())
-                        visible: false
-                    }
-
-                    ColorOverlay {
-                        anchors.fill: parent
-                        source: rawProfileIcon
-                        color: Colors.onSurfaceColor
-                    }
-                }
-            }
-            MouseArea {
-                id: clickHandler
-                anchors.fill: parent
-                cursorShape: Qt.PointingHandCursor
-                acceptedButtons: Qt.LeftButton | Qt.RightButton
-                hoverEnabled: true
-                onClicked: mouse => {
-                    const modes = [PowerProfile.PowerSaver, PowerProfile.Balanced, PowerProfile.Performance];
-                    let current = PowerProfiles.profile;
-                    let currentIndex = modes.indexOf(current);
-                    let nextIndex = (currentIndex + 1) % modes.length;
-                    let prevIndex = (currentIndex - 1) % modes.length;
-                    if (mouse.button == Qt.LeftButton)
-                        PowerProfiles.profile = modes[nextIndex];
-                    if (mouse.button == Qt.RightButton)
-                        PowerProfiles.profile = modes[prevIndex];
                 }
             }
         }

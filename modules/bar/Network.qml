@@ -66,7 +66,6 @@ Rectangle {
                 id: innerContent
                 required property var modelData
                 // THIS fixes the centering issue:
-                anchors.centerIn: parent
                 spacing: 8
 
                 CustomIcon {
