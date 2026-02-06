@@ -54,7 +54,6 @@ Rectangle {
     // --- Main Layout ---
     RowLayout {
         id: mainLayout
-        anchors.centerIn: parent
         spacing: 10 // Space between multiple device pills (if you have ethernet + wifi)
 
         Repeater {

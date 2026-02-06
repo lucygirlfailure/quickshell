@@ -56,6 +56,7 @@ Variants {
                 id: rightStuff
                 anchors.margins: Settings.config.barHeight / 4
                 spacing: 10
+                clip: true
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 Network {}
