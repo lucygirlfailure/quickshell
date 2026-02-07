@@ -14,7 +14,7 @@ Rectangle {
     implicitHeight: Settings.config.barHeight - 10
     radius: Settings.config.barHeight / 2
     property var screen: screen
-    RowLayout {
+    Row {
         id: workspaceRow
         anchors.centerIn: parent
         spacing: 5 // Slightly increase spacing between workspace buttons
