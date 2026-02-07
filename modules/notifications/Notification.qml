@@ -52,6 +52,15 @@ Variants {
                     easing.type: Easing.OutExpo
                 }
             }
+            remove: Transition {
+                NumberAnimation {
+                    property: "x"
+                    from: 0
+                    to: notifList.width
+                    duration: 400
+                    easing.type: Easing.OutExpo
+                }
+            }
 
             // Optional: Animate items moving up when one is dismissed
             move: Transition {
