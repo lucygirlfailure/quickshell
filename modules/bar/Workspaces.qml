@@ -10,7 +10,7 @@ Rectangle {
     id: root
     color: Colors.surfaceContainer
 
-    implicitWidth: workspaceRow.implicitWidth + 10
+    implicitWidth: workspaceRow.implicitWidth + 20
     implicitHeight: Settings.config.barHeight - 10
     radius: Settings.config.barHeight / 2
     property var screen: screen

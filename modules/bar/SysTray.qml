@@ -1,18 +1,21 @@
 import Quickshell.Services.SystemTray
 import QtQuick
 import qs.settings
+import qs
 
-Item {
+Rectangle {
     id: root
-    implicitWidth: trayRow.implicitWidth + 5
-    implicitHeight: Settings.config.barHeight
+    implicitWidth: trayRow.implicitWidth + 10
+    implicitHeight: Settings.config.barHeight - 10
+    radius: implicitHeight / 2
+    color: Colors.surfaceContainer
     readonly property var count: trayRepeater.count
     visible: trayRepeater.count > 0
 
     Row {
         id: trayRow
         spacing: 5
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.centerIn: parent
         Repeater {
             id: trayRepeater
             model: SystemTray.items
