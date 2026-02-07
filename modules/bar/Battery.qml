@@ -70,7 +70,8 @@ Loader {
 
             RowLayout {
                 id: batRow
-                anchors.verticalCenter: parent.verticalCenter
+                anchors.centerIn: parent
+                height: parent.height
                 spacing: 5
                 CustomText {
                     id: batText
