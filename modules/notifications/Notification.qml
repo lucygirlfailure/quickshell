@@ -62,7 +62,6 @@ Variants {
                 }
             }
 
-            // Optional: Animate items moving up when one is dismissed
             move: Transition {
                 NumberAnimation {
                     properties: "y"

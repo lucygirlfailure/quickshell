@@ -8,7 +8,6 @@ Rectangle {
     id: root
     radius: implicitHeight / 2
     color: pavuArea.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
-    anchors.verticalCenter: parent.verticalCenter
     implicitWidth: volumeIcon.implicitWidth + 10
     implicitHeight: Settings.config.barHeight - 10
     CustomIcon {
