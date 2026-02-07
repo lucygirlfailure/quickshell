@@ -1,6 +1,7 @@
 pragma ComponentBehavior: Bound
 import Quickshell.Hyprland
 import QtQuick
+import QtQuick.Layouts
 import qs
 import qs.settings
 import qs.reusables
@@ -13,7 +14,7 @@ Rectangle {
     implicitHeight: Settings.config.barHeight - 10
     radius: Settings.config.barHeight / 2
     property var screen: screen
-    Row {
+    RowLayout {
         id: workspaceRow
         anchors.centerIn: parent
         spacing: 5 // Slightly increase spacing between workspace buttons
@@ -23,7 +24,6 @@ Rectangle {
             model: Hyprland.workspaces
             Rectangle {
                 id: workspaceNumber
-                anchors.verticalCenter: parent.verticalCenter
                 radius: 20
                 property bool isOnMon: {
                     if (!modelData)
