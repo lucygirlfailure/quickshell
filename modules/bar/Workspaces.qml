@@ -53,7 +53,7 @@ Rectangle {
                 CustomText {
                     anchors.centerIn: workspaceNumber
                     text: parent.modelData.id
-                    color: Colors.onSurfaceColor
+                    color: modelData.focused ? Colors.onPrimaryColor : Colors.onSurfaceColor
                     opacity: workspaceNumber.modelData.focused ? 1 : 0.5
                 }
                 MouseArea {
