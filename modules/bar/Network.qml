@@ -22,14 +22,20 @@ Rectangle {
                 var net = device.networks.values[i];
                 if (net.connected) {
                     if (net.signalStrength <= 0.20)
-                        return "android_wifi_0_bar";
+                        return "\uf0b0";
+                    //signa_wifi_0_bar
                     if (net.signalStrength <= 0.40)
-                        return "android_wifi_1_bar";
+                        return "\uebe4";
+                    //network_wifi_1_bar
                     if (net.signalStrength <= 0.60)
-                        return "android_wifi_2_bar";
+                        return "\uebd6";
+                    //network_wifi_2_bar
                     if (net.signalStrength <= 0.80)
-                        return "android_wifi_3_bar";
-                    return "android_wifi_4_bar";
+                        return "\uebe1";
+                    //network_wifi_3_bar
+                    if (net.signalStrength >= 0.80)
+                        return "\ue1d8";
+                    // signal_wifi_4_bar
                 }
             }
             return "wifi_off";
