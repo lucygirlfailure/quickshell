@@ -1,17 +1,28 @@
 import QtQuick
 import qs
-import qs.settings
 
-Text {
-    color: Colors.onSurfaceColor
-    verticalAlignment: Text.AlignVCenter
-    horizontalAlignment: Text.AlignHCenter
-    font.family: "Material Symbols Rounded"
-    font.pixelSize: 18
-    font.variableAxes: ({
-            FILL: 0,
-            GRAD: -25,
-            opsz: 36,
-            wght: 400
-        })
+CustomText {
+    id: root
+    property real iconSize: 16
+    property real fill: 1
+    property real truncatedFill: fill.toFixed(1) // Reduce memory consumption spikes from constant font remapping
+    renderType: Text.NativeRendering
+    font {
+        hintingPreference: Font.PreferNoHinting
+        family: "Material Symbols Rounded"
+        pixelSize: iconSize
+        weight: Font.Normal + (Font.DemiBold - Font.Normal) * truncatedFill
+        variableAxes: {
+            "FILL": truncatedFill,
+            "opsz": iconSize
+        }
+    }
+
+    Behavior on fill { // Leaky leaky, no good
+        NumberAnimation {
+            duration: 200
+            easing.type: Easing.BezierSpline
+            easing.bezierCurve: [0.34, 0.80, 0.34, 1.00, 1, 1]
+        }
+    }
 }
