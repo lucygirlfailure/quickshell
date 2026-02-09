@@ -8,17 +8,9 @@ import qs.reusables
 
 Rectangle {
     id: root
-    Behavior on width {
-        NumberAnimation {
-
-            duration: 200
-            easing.type: Easing.BezierSpline
-            easing.bezierCurve: [0.34, 0.80, 0.34, 1.00, 1, 1]
-        }
-    }
     color: Colors.surfaceContainer
 
-    implicitWidth: workspaceRow.implicitWidth + 20
+    implicitWidth: workspaceRow.implicitWidth + 10
     implicitHeight: Settings.config.barHeight - 10
     radius: Settings.config.barHeight / 2
     property var screen: screen
