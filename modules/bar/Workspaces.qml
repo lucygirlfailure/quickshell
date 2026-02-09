@@ -8,6 +8,14 @@ import qs.reusables
 
 Rectangle {
     id: root
+    Behavior on width {
+        NumberAnimation {
+
+            duration: 200
+            easing.type: Easing.BezierSpline
+            easing.bezierCurve: [0.34, 0.80, 0.34, 1.00, 1, 1]
+        }
+    }
     color: Colors.surfaceContainer
 
     implicitWidth: workspaceRow.implicitWidth + 20
@@ -38,9 +46,17 @@ Rectangle {
                 }
 
                 required property var modelData
-                width: isOnMon ? Settings.config.barHeight - Settings.config.barHeight / 2 : 0
+                width: modelData.focused ? 40 : 20
                 height: isOnMon ? Settings.config.barHeight - Settings.config.barHeight / 2 : 0
-                color: "transparent"
+                color: modelData.focused ? Colors.primary : Colors.surfaceContainerHigh
+                Behavior on width {
+                    NumberAnimation {
+
+                        duration: 200
+                        easing.type: Easing.BezierSpline
+                        easing.bezierCurve: [0.34, 0.80, 0.34, 1.00, 1, 1]
+                    }
+                }
 
                 CustomText {
                     anchors.centerIn: workspaceNumber
