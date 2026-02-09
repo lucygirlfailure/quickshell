@@ -38,22 +38,21 @@ Rectangle {
                 }
 
                 required property var modelData
-                width: modelData.focused ? 40 : 20
+                width: !modelData.focused ? 20 : 40
                 height: isOnMon ? Settings.config.barHeight - Settings.config.barHeight / 2 : 0
                 color: modelData.focused ? Colors.primary : Colors.surfaceContainerHigh
                 Behavior on width {
                     NumberAnimation {
 
-                        duration: 200
-                        easing.type: Easing.BezierSpline
-                        easing.bezierCurve: [0.34, 0.80, 0.34, 1.00, 1, 1]
+                        duration: 500
+                        easing.type: Easing.InOutBack
                     }
                 }
 
                 CustomText {
                     anchors.centerIn: workspaceNumber
                     text: parent.modelData.id
-                    color: modelData.focused ? Colors.onPrimaryColor : Colors.onSurfaceColor
+                    color: parent.modelData.focused ? Colors.onPrimaryColor : Colors.onSurfaceColor
                     opacity: workspaceNumber.modelData.focused ? 1 : 0.5
                 }
                 MouseArea {
