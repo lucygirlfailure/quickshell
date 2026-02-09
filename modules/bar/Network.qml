@@ -38,11 +38,12 @@ Rectangle {
                     // signal_wifi_4_bar
                 }
             }
-            return "wifi_off";
+            return "\ue1d8";
         } else if (device.connected) {
             return "settings_ethernet";
         }
-        return "wifi_off";
+        return "\ue1da";
+        // signal_wifi_off
     }
 
     function getStatus(device) {
