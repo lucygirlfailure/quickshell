@@ -38,7 +38,7 @@ Rectangle {
                     // signal_wifi_4_bar
                 }
             }
-            return "\ue1d8";
+            return "\ue1da";
         } else if (device.connected) {
             return "settings_ethernet";
         }

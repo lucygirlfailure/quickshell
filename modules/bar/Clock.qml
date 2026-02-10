@@ -25,7 +25,7 @@ Rectangle {
             id: clockText
             property bool showFull
             anchors.centerIn: parent
-            text: showFull ? Qt.formatDateTime(clock.date, "hh:mm  /  dd.mm.yy") : Qt.formatDateTime(clock.date, "hh:mm")
+            text: showFull ? Qt.formatDateTime(clock.date, "hh:mm  /  dd.MM.yy") : Qt.formatDateTime(clock.date, "hh:mm")
         }
     }
     MouseArea {
