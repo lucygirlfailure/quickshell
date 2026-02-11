@@ -40,7 +40,7 @@ Rectangle {
                 required property var modelData
                 width: !modelData.focused ? 20 : 40
                 height: isOnMon ? Settings.config.barHeight - Settings.config.barHeight / 2 : 0
-                color: modelData.focused ? Colors.primary : Colors.surfaceContainerHigh
+                color: modelData.focused ? Colors.primary : Colors.surfaceContainer
                 Behavior on width {
                     NumberAnimation {
 
