@@ -7,6 +7,7 @@ import Quickshell.Io
 Singleton {
     id: root
     property alias config: settingsAdapter
+    property alias currentWall: settingsAdapter.currentWall
     onConfigChanged: settingsView.writeAdapter()
     FileView {
         id: settingsView

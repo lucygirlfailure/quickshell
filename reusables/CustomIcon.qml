@@ -9,7 +9,7 @@ CustomText {
     renderType: Text.NativeRendering
     font {
         hintingPreference: Font.PreferNoHinting
-        family: "Material Symbols Outlined"
+        family: "Material Symbols Rounded"
         pixelSize: iconSize
         weight: Font.Normal + (Font.DemiBold - Font.Normal) * truncatedFill
         variableAxes: {

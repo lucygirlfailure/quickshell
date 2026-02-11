@@ -31,8 +31,8 @@ Rectangle {
                 Layout.leftMargin: 10
                 IconImage {
                     id: icon
-                    source: root.activeWindow.activated ? Quickshell.iconPath(root.activeWindow.appId, "kitty") : Quickshell.iconPath("kitty")
-                    implicitSize: 16
+                    source: root.activeWindow.activated ? Quickshell.iconPath(root.activeWindow.appId, "kitty") : ""
+                    implicitSize: root.activeWindow.activated ? 16 : 0
                 }
             }
             CustomText {
