@@ -51,6 +51,8 @@ Rectangle {
 
                 CustomText {
                     anchors.centerIn: workspaceNumber
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
                     text: parent.modelData.id
                     color: parent.modelData.focused ? Colors.onPrimaryColor : Colors.onSurfaceColor
                     opacity: workspaceNumber.modelData.focused ? 1 : 0.5
