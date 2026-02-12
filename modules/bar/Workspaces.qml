@@ -44,8 +44,8 @@ Rectangle {
                 Behavior on width {
                     NumberAnimation {
 
-                        duration: 500
-                        easing.type: Easing.InOutBack
+                        duration: 200
+                        easing.type: Easing.Linear
                     }
                 }
 
