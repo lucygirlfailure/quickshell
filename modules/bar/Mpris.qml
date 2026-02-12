@@ -10,7 +10,7 @@ Rectangle {
     visible: root.spotify != null
     radius: implicitHeight / 2
     implicitHeight: Settings.config.barHeight - 10
-    color: clickHandler.containsMouse ? Colors.primary : Colors.surfaceContainer
+    color: clickHandler.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
     implicitWidth: statusRow.width + 20
 
     property var spotify: root.getSpotify()
@@ -35,11 +35,9 @@ Rectangle {
             Layout.topMargin: 2
             text: root.spotify != null ? parent.combinedText : ""
             elide: Text.ElideRight
-            color: clickHandler.containsMouse ? Colors.onPrimaryColor : Colors.onSurfaceColor
         }
         CustomIcon {
             id: mprisStatus
-            color: clickHandler.containsMouse ? Colors.onPrimaryColor : Colors.onSurfaceColor
             Layout.topMargin: 2
             text: root.spotify != null ? parent.status : ""
         }
