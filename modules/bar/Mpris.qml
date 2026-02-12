@@ -6,51 +6,42 @@ import qs.settings
 import qs.reusables
 
 Rectangle {
-    id: container
+    id: root
     visible: root.spotify != null
     radius: implicitHeight / 2
-    color: clickHandler.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
     implicitHeight: Settings.config.barHeight - 10
-    implicitWidth: 400
-    Item {
-        id: root
-        width: Math.min(statusRow.implicitWidth, parent.width - 20)
-        anchors.centerIn: parent
+    color: clickHandler.containsMouse ? Colors.primary : Colors.surfaceContainer
+    implicitWidth: statusRow.width + 20
 
-        property var spotify: root.getSpotify()
-        function getSpotify() {
-            for (let i = 0; i < Mpris.players.values.length; i++) {
-                if (Mpris.players.values[i].identity.toLowerCase() === "spotify") {
-                    return Mpris.players.values[i];
-                }
+    property var spotify: root.getSpotify()
+    function getSpotify() {
+        for (let i = 0; i < Mpris.players.values.length; i++) {
+            if (Mpris.players.values[i].identity.toLowerCase() === "spotify") {
+                return Mpris.players.values[i];
             }
-            return null;
         }
-        implicitWidth: statusRow.implicitWidth
-        implicitHeight: statusRow.implicitHeight
+        return null;
+    }
 
-        RowLayout {
-            id: statusRow
-            anchors.fill: parent
-            spacing: 5
-            anchors.verticalCenter: parent.verticalCenter
-            property var combinedText: root.spotify != null ? root.spotify.trackArtist + " - " + root.spotify.trackTitle : ""
-            property var status: root.spotify != null ? !root.spotify.isPlaying ? "play_arrow" : "pause" : ""
-            CustomText {
-                id: mprisText
-                Layout.leftMargin: 10
-                Layout.fillWidth: true
-                Layout.topMargin: 2
-                text: root.spotify != null ? parent.combinedText : ""
-                elide: Text.ElideRight
-                clip: true
-                wrapMode: Text.NoWrap
-            }
-            CustomIcon {
-                id: mprisStatus
-                Layout.topMargin: 2
-                text: root.spotify != null ? parent.status : ""
-            }
+    RowLayout {
+        id: statusRow
+        spacing: 5
+        anchors.centerIn: parent
+        property var combinedText: root.spotify != null ? root.spotify.trackArtist + " - " + root.spotify.trackTitle : ""
+        property var status: root.spotify != null ? !root.spotify.isPlaying ? "play_arrow" : "pause" : ""
+        CustomText {
+            id: mprisText
+            Layout.maximumWidth: 300
+            Layout.topMargin: 2
+            text: root.spotify != null ? parent.combinedText : ""
+            elide: Text.ElideRight
+            color: clickHandler.containsMouse ? Colors.onPrimaryColor : Colors.onSurfaceColor
+        }
+        CustomIcon {
+            id: mprisStatus
+            color: clickHandler.containsMouse ? Colors.onPrimaryColor : Colors.onSurfaceColor
+            Layout.topMargin: 2
+            text: root.spotify != null ? parent.status : ""
         }
     }
     MouseArea {
