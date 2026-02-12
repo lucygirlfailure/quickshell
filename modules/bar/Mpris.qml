@@ -10,11 +10,13 @@ Rectangle {
     visible: root.spotify != null
     radius: implicitHeight / 2
     color: clickHandler.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
-    implicitWidth: root.implicitWidth + 20
     implicitHeight: Settings.config.barHeight - 10
+    implicitWidth: 400
     Item {
         id: root
+        width: Math.min(statusRow.implicitWidth, parent.width - 20)
         anchors.centerIn: parent
+
         property var spotify: root.getSpotify()
         function getSpotify() {
             for (let i = 0; i < Mpris.players.values.length; i++) {
@@ -29,14 +31,20 @@ Rectangle {
 
         RowLayout {
             id: statusRow
+            anchors.fill: parent
             spacing: 5
             anchors.verticalCenter: parent.verticalCenter
             property var combinedText: root.spotify != null ? root.spotify.trackArtist + " - " + root.spotify.trackTitle : ""
             property var status: root.spotify != null ? !root.spotify.isPlaying ? "play_arrow" : "pause" : ""
             CustomText {
                 id: mprisText
+                Layout.leftMargin: 10
+                Layout.fillWidth: true
                 Layout.topMargin: 2
                 text: root.spotify != null ? parent.combinedText : ""
+                elide: Text.ElideRight
+                clip: true
+                wrapMode: Text.NoWrap
             }
             CustomIcon {
                 id: mprisStatus
