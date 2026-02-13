@@ -23,7 +23,7 @@ FloatingWindow {
     }
     Process {
         id: wallustRunner
-        property string cmd: "matugen image " + Settings.config.currentWall
+        property string cmd: "wallust run " + Settings.config.currentWall
         command: ["sh", "-c", cmd]
     }
     GlobalShortcut {
