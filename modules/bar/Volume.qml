@@ -9,7 +9,7 @@ import qs
 Rectangle {
     id: root
     radius: implicitHeight / 2
-    color: pavuArea.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
+    color: pavuArea.containsMouse ? Colors.base01 : Colors.base00
     implicitWidth: textRow.implicitWidth + 20
     implicitHeight: Settings.config.barHeight - 10
     property var sink: Pipewire.defaultAudioSink

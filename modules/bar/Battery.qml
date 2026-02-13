@@ -15,7 +15,7 @@ Loader {
     sourceComponent: Rectangle {
         id: container
         radius: implicitHeight / 2
-        color: Colors.surfaceContainer
+        color: Colors.base00
         anchors.verticalCenter: parent.verticalCenter
         implicitWidth: UPower.displayDevice.isLaptopBattery ? root.implicitWidth + 20 : 0
         implicitHeight: Settings.config.barHeight - 10

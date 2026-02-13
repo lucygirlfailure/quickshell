@@ -8,7 +8,7 @@ Rectangle {
     implicitWidth: trayRow.implicitWidth + 10
     implicitHeight: Settings.config.barHeight - 10
     radius: implicitHeight / 2
-    color: Colors.surfaceContainer
+    color: Colors.base00
     readonly property var count: trayRepeater.count
     visible: trayRepeater.count > 0
 
