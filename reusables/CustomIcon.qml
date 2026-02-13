@@ -1,7 +1,8 @@
 import QtQuick
 import qs
 
-CustomText {
+Text {
+	color: Colors.onSurfaceColor
     id: root
     property real iconSize: 16
     property real fill: 1
