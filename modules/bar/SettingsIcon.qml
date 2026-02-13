@@ -7,7 +7,7 @@ import qs
 Rectangle {
     id: root
     radius: implicitHeight / 2
-    color: pavuArea.containsMouse ? Colors.base01 : Colors.base00
+    color: pavuArea.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
     implicitWidth: Settings.config.barHeight - 8
     implicitHeight: Settings.config.barHeight - 10
     CustomIcon {

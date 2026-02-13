@@ -14,7 +14,7 @@ FloatingWindow {
     onClosed: {
         Settings.config.settingsShown = false;
     }
-    color: Colors.base00
+    color: Colors.surfaceContainer
     title: "qs-settings"
     implicitWidth: 800
     implicitHeight: 600
@@ -50,7 +50,7 @@ FloatingWindow {
             Layout.preferredWidth: 200
             Layout.rightMargin: 0
             margin: 20
-            color: Colors.base00
+    	    color: Colors.surfaceContainer
             radius: 12
             ListView {
                 id: pageView
@@ -61,7 +61,7 @@ FloatingWindow {
                     id: pageDelegate
                     Rectangle {
                         radius: 24
-                        color: ListView.isCurrentItem ? Colors.base01 : "transparent"
+                        color: ListView.isCurrentItem ? Colors.primaryContainer : "transparent"
                         implicitHeight: 30
                         implicitWidth: pageWrapper.width - 50
                         required property var modelData

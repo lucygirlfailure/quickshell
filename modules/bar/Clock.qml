@@ -8,7 +8,7 @@ import qs.reusables
 Rectangle {
     id: container
     radius: implicitHeight / 2
-    color: formatSwitch.containsMouse ? Colors.base01 : Colors.base00
+    color: formatSwitch.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
     anchors.verticalCenter: parent.verticalCenter
     implicitHeight: Settings.config.barHeight - 10
     implicitWidth: root.implicitWidth + 20
