@@ -10,7 +10,7 @@ import QtQuick.Layouts
 Rectangle {
     id: container
     radius: implicitHeight / 2
-    color: Colors.base00
+    color: Colors.surfaceContainer
     implicitWidth: root.implicitWidth
     implicitHeight: Settings.config.barHeight - 10
     Item {

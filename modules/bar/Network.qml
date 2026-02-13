@@ -12,7 +12,7 @@ Rectangle {
     // You might want to make this transparent if you only want the "pills" to show
     implicitHeight: Settings.config.barHeight - 10
     implicitWidth: mainLayout.implicitWidth + 20
-    color: Colors.base00
+    color: Colors.surfaceContainer
     radius: implicitHeight / 2
 
     // --- Logic Functions ---

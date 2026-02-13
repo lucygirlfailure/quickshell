@@ -26,7 +26,7 @@ ClippingWrapperRectangle {
     }
     anchors.centerIn: parent
     clip: true
-    color: Colors.base01
+    color: Colors.surfaceContainerHigh
     radius: 12
     margin: 20
 
@@ -45,7 +45,7 @@ ClippingWrapperRectangle {
             bottomRightRadius: 4
             bottomLeftRadius: 4
 
-            color: Colors.base01
+            color: Colors.primaryContainer
             implicitHeight: 30
             child: RowLayout {
                 id: fontLayout
@@ -73,7 +73,7 @@ ClippingWrapperRectangle {
             bottomRightRadius: 4
             topRightRadius: 4
             topLeftRadius: 4
-            color: Colors.base01
+            color: Colors.primaryContainer
             child: RowLayout {
                 id: floatingToggleLayout
                 spacing: 40
@@ -102,7 +102,7 @@ ClippingWrapperRectangle {
             bottomRightRadius: 4
             topRightRadius: 4
             topLeftRadius: 4
-            color: Colors.base01
+            color: Colors.primaryContainer
             child: RowLayout {
                 id: screenCornerLayout
                 spacing: 40
@@ -131,7 +131,7 @@ ClippingWrapperRectangle {
             bottomRightRadius: 4
             topRightRadius: 4
             topLeftRadius: 4
-            color: Colors.base01
+            color: Colors.primaryContainer
             child: RowLayout {
                 id: screenCornerRadiusLayout
                 spacing: 5
@@ -174,7 +174,7 @@ ClippingWrapperRectangle {
             bottomRightRadius: 4
             topRightRadius: 4
             topLeftRadius: 4
-            color: Colors.base01
+            color: Colors.primaryContainer
             child: RowLayout {
                 id: barControlsLayout
                 spacing: 5
@@ -217,7 +217,7 @@ ClippingWrapperRectangle {
             bottomRightRadius: 4
             topRightRadius: 4
             topLeftRadius: 4
-            color: Colors.base01
+            color: Colors.primaryContainer
             child: RowLayout {
                 id: barMarginLayout
                 spacing: 5
@@ -257,7 +257,7 @@ ClippingWrapperRectangle {
             bottomRightRadius: 12
             topRightRadius: 4
             topLeftRadius: 4
-            color: Colors.base01
+            color: Colors.primaryContainer
             Layout.fillWidth: true
             RowLayout {
                 id: translucencyLayout

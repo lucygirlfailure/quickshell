@@ -15,9 +15,7 @@ Button {
     }
     background: Rectangle {
         id: contentBackground
-        border.color: control.down ? Colors.primaryFixed : Colors.primary
-        border.width: 1
         radius: parent.implicitHeight / 2
-        color: Colors.surfaceContainerLow
+        color: Colors.surfaceContainerHigh
     }
 }

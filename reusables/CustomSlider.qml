@@ -20,7 +20,6 @@ Slider {
             height: parent.height
             color: Colors.primary
             radius: 2
-            border.color: Colors.outline
         }
     }
 
@@ -31,6 +30,5 @@ Slider {
         implicitHeight: control.implicitHeight - 2
         radius: 13
         color: control.pressed ? Colors.primary : Colors.surfaceContainerLowest
-        border.color: control.pressed ? Colors.surfaceContainerLowest : Colors.primary
     }
 }

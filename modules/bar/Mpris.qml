@@ -10,7 +10,7 @@ Rectangle {
     visible: root.spotify != null
     radius: implicitHeight / 2
     implicitHeight: Settings.config.barHeight - 10
-    color: clickHandler.containsMouse ? Colors.base01 : Colors.base00
+    color: clickHandler.containsMouse ? Colors.primaryContainer : Colors.surfaceContainer
     implicitWidth: statusRow.width + 20
 
     property var spotify: root.getSpotify()

@@ -12,7 +12,6 @@ Switch {
         implicitHeight: parent.implicitHeight
         radius: 26
         color: Colors.surfaceContainerLow
-        border.color: control.checked ? Colors.primary : Colors.onSurfaceColor
 
         Rectangle {
             implicitHeight: parent.implicitHeight - 6
