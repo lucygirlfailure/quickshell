@@ -35,11 +35,11 @@ Variants {
 
             RowLayout {
                 id: leftStuff
-                anchors.margins: Settings.config.floating ? 0 : Settings.config.barHeight / 4
                 spacing: 10
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
                 Workspaces {
+                    Layout.leftMargin: 5
                     property var screen: root.modelData
                 }
                 Title {}
@@ -54,13 +54,13 @@ Variants {
 
             RowLayout {
                 id: rightStuff
-                anchors.margins: Settings.config.barHeight / 4
                 spacing: 10
-                clip: true
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 SysTray {}
-                StatusIcons {}
+                StatusIcons {
+                    Layout.rightMargin: 5
+                }
             }
         }
     }
