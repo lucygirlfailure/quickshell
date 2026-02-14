@@ -67,7 +67,7 @@ Rectangle {
         }
         if (frame1) {
             lowBat.running = true;
-            return "battery_android_frame_1";
+            return "battery_android_alert";
         }
         if (frame2) {
             return "battery_android_frame_2";

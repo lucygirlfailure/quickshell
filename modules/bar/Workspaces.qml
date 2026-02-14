@@ -8,7 +8,7 @@ import qs.reusables
 
 Rectangle {
     id: root
-    color: "transparent"
+    color: Colors.surfaceContainer
 
     implicitWidth: workspaceRow.implicitWidth + 10
     implicitHeight: Settings.config.barHeight - 10
@@ -38,9 +38,9 @@ Rectangle {
                 }
 
                 required property var modelData
-                width: Settings.config.barHeight - 8
+                width: 20
                 height: Settings.config.barHeight - 10
-                color: modelData.focused ? Colors.primaryContainer : "transparent"
+                color: "transparent"
                 Behavior on width {
                     NumberAnimation {
 
@@ -54,6 +54,8 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                     text: parent.modelData.id
+                    color: Colors.primary
+                    opacity: workspaceNumber.modelData.focused ? 1 : 0.5
                 }
                 MouseArea {
                     anchors.fill: parent
