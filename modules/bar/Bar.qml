@@ -59,11 +59,8 @@ Variants {
                 clip: true
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                Network {}
-                Volume {}
-                Battery {}
                 SysTray {}
-                SettingsIcon {}
+                StatusIcons {}
             }
         }
     }

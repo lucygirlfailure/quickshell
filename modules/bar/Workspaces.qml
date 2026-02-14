@@ -38,7 +38,7 @@ Rectangle {
                 }
 
                 required property var modelData
-                width: Settings.config.barHeight - 5
+                width: Settings.config.barHeight - 8
                 height: Settings.config.barHeight - 10
                 color: modelData.focused ? Colors.primaryContainer : "transparent"
                 Behavior on width {

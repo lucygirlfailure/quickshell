@@ -12,7 +12,7 @@ Text {
     font {
         hintingPreference: Font.PreferNoHinting
         family: "Material Symbols Rounded"
-        pixelSize: Settings.config.fontSize
+        pixelSize: iconSize
         weight: Font.Normal + (Font.DemiBold - Font.Normal) * truncatedFill
         variableAxes: {
             "FILL": truncatedFill,
