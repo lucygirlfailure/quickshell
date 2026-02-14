@@ -4,7 +4,7 @@ import qs.settings
 
 Text {
     id: root
-    color: Colors.primary
+    color: Colors.onSurfaceColor
     property real iconSize: 16
     property real fill: 1
     property real truncatedFill: fill.toFixed(1) // Reduce memory consumption spikes from constant font remapping

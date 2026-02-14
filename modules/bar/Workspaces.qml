@@ -54,7 +54,6 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                     text: parent.modelData.id
-                    color: Colors.primary
                     opacity: workspaceNumber.modelData.focused ? 1 : 0.5
                 }
                 MouseArea {
