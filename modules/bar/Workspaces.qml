@@ -17,7 +17,7 @@ Rectangle {
     Row {
         id: workspaceRow
         anchors.centerIn: parent
-        spacing: 5 // Slightly increase spacing between workspace buttons
+        spacing: 0 // Slightly increase spacing between workspace buttons
 
         Repeater {
             id: wsRepeater
@@ -38,8 +38,8 @@ Rectangle {
                 }
 
                 required property var modelData
-                width: !modelData.focused ? 20 : 40
-                height: isOnMon ? Settings.config.barHeight - Settings.config.barHeight / 2 : 0
+                width: Settings.config.barHeight - 5
+                height: Settings.config.barHeight - 10
                 color: modelData.focused ? Colors.primaryContainer : "transparent"
                 Behavior on width {
                     NumberAnimation {

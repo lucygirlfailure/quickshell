@@ -1,9 +1,10 @@
 import QtQuick
 import qs
+import qs.settings
 
 Text {
-	color: Colors.onSurfaceColor
     id: root
+    color: Colors.onSurfaceColor
     property real iconSize: 16
     property real fill: 1
     property real truncatedFill: fill.toFixed(1) // Reduce memory consumption spikes from constant font remapping
@@ -11,7 +12,7 @@ Text {
     font {
         hintingPreference: Font.PreferNoHinting
         family: "Material Symbols Rounded"
-        pixelSize: iconSize
+        pixelSize: Settings.config.fontSize
         weight: Font.Normal + (Font.DemiBold - Font.Normal) * truncatedFill
         variableAxes: {
             "FILL": truncatedFill,
