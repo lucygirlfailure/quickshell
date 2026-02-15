@@ -50,7 +50,7 @@ FloatingWindow {
             Layout.preferredWidth: 200
             Layout.rightMargin: 0
             margin: 20
-    	    color: Colors.surfaceContainer
+            color: Colors.surfaceContainer
             radius: 12
             ListView {
                 id: pageView

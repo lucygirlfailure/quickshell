@@ -5,7 +5,7 @@ import qs
 
 Rectangle {
     id: root
-    implicitWidth: trayRow.implicitWidth + 10
+    implicitWidth: implicitHeight + 2
     implicitHeight: Settings.config.barHeight - 10
     radius: implicitHeight / 2
     color: Colors.surfaceContainer

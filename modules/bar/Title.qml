@@ -40,10 +40,7 @@ Rectangle {
                 Layout.rightMargin: 10
                 Layout.maximumWidth: 300
                 text: root.activeWindow ? root.activeWindow.activated ? root.activeWindow.title : "Desktop" : "Desktop"
-                onTextChanged: {
-                    console.log(root.activeWindow.title);
-                    console.log(icon.source);
-                }
+                onTextChanged: {}
                 elide: Text.ElideRight
             }
         }

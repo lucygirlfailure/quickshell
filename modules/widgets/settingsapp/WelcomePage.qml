@@ -8,7 +8,9 @@ ClippingWrapperRectangle {
     id: root
     anchors.centerIn: parent
     clip: true
-    color: Colors.surfaceContainerLow
+    color: Colors.surfaceContainerHigh
+    border.width: 1
+    border.color: Colors.primary
     radius: 12
     margin: 20
     ColumnLayout {

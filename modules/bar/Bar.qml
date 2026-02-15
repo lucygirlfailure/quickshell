@@ -39,7 +39,7 @@ Variants {
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
                 Workspaces {
-                    Layout.leftMargin: 5
+                    Layout.leftMargin: Settings.config.floating ? 5 : 20
                     property var screen: root.modelData
                 }
                 Title {}
@@ -59,7 +59,10 @@ Variants {
                 anchors.verticalCenter: parent.verticalCenter
                 SysTray {}
                 StatusIcons {
-                    Layout.rightMargin: 5
+                    margin: Layout.rightMargin
+                    barWindow: root
+                    barContainer: container
+                    Layout.rightMargin: Settings.config.floating ? 5 : 20
                 }
             }
         }

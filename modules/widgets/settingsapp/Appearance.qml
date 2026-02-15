@@ -27,6 +27,8 @@ ClippingWrapperRectangle {
     anchors.centerIn: parent
     clip: true
     color: Colors.surfaceContainerHigh
+    border.color: Colors.primary
+    border.width: 1
     radius: 12
     margin: 20
 
