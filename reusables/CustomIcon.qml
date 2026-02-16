@@ -6,16 +6,15 @@ Text {
     id: root
     color: Colors.onSurfaceColor
     property real iconSize: 16
-    property real fill: 0
-    property real truncatedFill: fill.toFixed(1) // Reduce memory consumption spikes from constant font remapping
+    property real fill: 1
     renderType: Text.NativeRendering
     font {
         hintingPreference: Font.PreferNoHinting
-        family: "Material Symbols Rounded"
+        family: "Material Symbols Outlined"
         pixelSize: iconSize
-        weight: Font.Normal + (Font.DemiBold - Font.Normal) * truncatedFill
+        weight: Font.Normal + (Font.DemiBold - Font.Normal) * fill
         variableAxes: {
-            "FILL": truncatedFill,
+            "FILL": fill,
             "opsz": iconSize
         }
     }

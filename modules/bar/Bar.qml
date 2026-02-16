@@ -32,7 +32,6 @@ Variants {
             anchors.fill: parent
             color: Qt.rgba(Colors.surface.r, Colors.surface.g, Colors.surface.b, Settings.config.translucency)
             radius: Settings.config.floating ? Settings.config.barHeight / 2 : 0
-
             RowLayout {
                 id: leftStuff
                 spacing: 10

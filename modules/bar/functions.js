@@ -48,7 +48,7 @@
         if (perc < 0.9) {
             return "battery_android_frame_5";
         }
-        if (perc == 1) {
+        if (perc > 0.9) {
             return "battery_android_frame_full";
         }
     }
